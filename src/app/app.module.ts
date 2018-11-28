@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GeoPipe } from './page/geo.pipe';
+import { NewsFeedComponent } from './news-feed/news-feed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GeoPipe
+    GeoPipe,
+    NewsFeedComponent
   ],
   imports: [
     BrowserModule

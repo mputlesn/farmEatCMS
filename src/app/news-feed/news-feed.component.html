@@ -1,0 +1,8 @@
+<p>
+  <input type="file" accept="image/*" (change)="insertpic($event)">
+<img [src]="url">  <br>
+
+<ion-textarea  [(ngModel)]="message"></ion-textarea>
+<input type ="text" placeholder ="title" [(ngModel)] ="title">
+<button (click)="newFeed(message , title , image)">Save</button>
+</p>
