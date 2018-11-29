@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Geo-Location</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="main.js"></script>
+</head>
+<body>
+  <h1>Geo-Location</h1>
+    <input type="number" placeholder="Latitude" #lat required>
+    <br>
+     
+    <input type="number" placeholder="Langitude" #lng required>
+    <br>
+    <input type="text" placeholder="Name of Place" #name required>
+    <br>
+    <input type="text" placeholder="Address" #address required>
+    <br>
+    <label>Type of Urban Farm</label>
+    <select #farmType>
+        <option value="Vertical Farming">Vertical Farming</option>
+        <option value="Traditional Farming">Traditional Farming</option>
+        <option value="Green House">Green House</option>
+      </select>
+    <br>
+    <input type="text" placeholder="Description" #description required>
+    <br>
+    <label>Crops</label>
+    <select #crops required>
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+    <br>
+    <label>Live Stock</label>
+    <select #liveStock required>
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+    <br>
+    <label>BeeKeeping</label>
+    <select #beeKeeping required>
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+    <br>
+    <label>Aquatic</label>
+    <select #aquatic required>
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+    <br>
+    <input type="text" placeholder="Email" #email required>
+    <br>
+    <input type="text" placeholder="Phone Number" #tel required>
+    <br>
+    <input type="text" placeholder="Website" #website required>
+    <br>
+    <input type="text" placeholder="Facebook" #facebook required>
+    <br>
+
+    
+    
+    <input type="file" accept="image/*" (change)="insertImage($event)"><br>
+    <button (click)="initMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value, lat.value, lng.value)">ADD Farm</button>
+    
+    <br>
+
+    <!-- <br><br><br><br><br>
+    <input type="text" placeholder="Name of Place" #placeName required>
+    <button (click)="initMap(placeName.value)">ADD Farm</button> -->
+</body>
+</html>
