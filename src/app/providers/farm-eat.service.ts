@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 declare var firebase ;
 @Injectable({
   providedIn: 'root'
 })
 export class FarmEatService {
 
+
+
+
+ 
   constructor(public http: HttpClient) { }
 
   register(email , password , name){
