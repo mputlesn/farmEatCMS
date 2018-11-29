@@ -9,6 +9,53 @@ export class FarmEatService {
 
   constructor(public http: HttpClient) { }
 
+  register(email , password , name){
+    return new Promise((resolve, reject)=>{
+ 
+      firebase.auth().createUserWithEmailAndPassword(email , password) .then(()=>{
+        var uid= firebase.auth().currentUser.uid;
+        firebase.database().ref("admins/"+uid).set({
+          name:name,
+          email:email,
+        })
+
+        var user = firebase.auth().currentUser;
+ 
+        user.sendEmailVerification().then(function() {
+        // Email sent.
+        }).catch(function(error) {
+        // An error happened.
+        });
+ 
+ 
+        resolve();
+ 
+      } , (error)=>{
+        reject(error);
+      });
+ 
+ 
+ })
+  }
+
+  login(email , password){
+
+  
+    return new Promise((resolve, reject)=>{
+      firebase.auth().signInWithEmailAndPassword(email , password).then(()=>{
+        resolve();
+      }, Error =>{
+        reject(Error)
+      }) ;
+    
+     
+  })
+  
+  
+  }
+
+
+
   addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng){
     
     return new Promise((resolve, reject)=>{
