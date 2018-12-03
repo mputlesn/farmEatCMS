@@ -23,9 +23,9 @@ export class NewsFeedComponent implements OnInit {
     
   }
 
-  newsfeed(message , title ){
+  newsfeed(message , title , image){
    
-   alert("clicked")
+
 
    console.log(message);
    console.log(title);
