@@ -59,6 +59,13 @@ export class FarmEatService {
   
   }
 
+  signout(){
+    firebase.auth().signOut().then(function() {
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
+
 
 
   addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng){
