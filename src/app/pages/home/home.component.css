@@ -1,7 +1,30 @@
 h1{
+    color: #087150;
+    text-shadow: 2px 2px 4px #000000;
+     font-size: 4rem;
+     margin-top: -5%;
+
+}
+
+.logo-box{
     text-align: center;
-    margin-top: 20%;
-    font-size: 5em;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: rgb(24, 105, 78)
+    display: block;
+    padding-bottom: 20%;
+    margin-top: 30%;
+
+}
+.img{
+    margin-top: 0%;
+    width: 200px;
+}
+body{
+    /* background-image: url("../../../assets/t97su8cxm8.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header{
+    position: relative;
+    top: 200px;
+
+
 }
