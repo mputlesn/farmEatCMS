@@ -1,41 +1,45 @@
-<body>
 
 
-
+<!DOCTYPE html>
+<html>
 <head>
-Welcome to Newsfeed
-
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <title>Add your News here</title> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="main.js"></script>
 </head>
+<body>
+  <!-- <h1>News feed</h1> -->
+<form>
+    <header class="head-form">
+        <h5>Add your News here</h5>
+    </header>
+     <table>
+      
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">News Title</label><br><br>
+              <input type="text" #title required>
+          </div>
+       </tr>
+<br>
 
-<br>
-<br>
-<br>
-<br>
+       <tr>
+            <div class="input">
+                <label for="Checkin Date">Type your news message here</label><br><br>
+                <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #news required></textarea>
+            </div>
+         </tr><br><br><br>
 
-<input type="text" placeholder=" News Title" #title required>
-<br>
-<br>
-<br>
-<label>Type your news message here</label>  <br>
-<textarea large type="text" placeholder="Your News" #message required>
-    </textarea>
-
-
-    <br>
+       <label>Choose your News image</label>  <br><br>
+       <input type="file" accept="image/*" (change)="insertImage($event)" ><br>
+       <br><br>
+       <button block large (click)="newsfeed(title.value , message.value)"> Add Newsfeed</button>
+       
+     </table>  
+ 
+</form>
     
-
-
-<br>
-<label>Choose your News image</label>  <br>
-<input type="file" accept="image/*" (change)="insertImage($event)" ><br>
-
-
-
-<br>
-
-<button block large (click)="newsfeed(title.value , message.value)"> Add Newsfeed</button>
-
-<br>
-    
-
 </body>
+</html>
