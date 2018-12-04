@@ -1,0 +1,41 @@
+<body>
+
+
+
+<head>
+Welcome to Newsfeed
+
+</head>
+
+<br>
+<br>
+<br>
+<br>
+
+<input type="text" placeholder=" News Title" #title required>
+<br>
+<br>
+<br>
+<label>Type your news message here</label>  <br>
+<textarea large type="text" placeholder="Your News" #message required>
+    </textarea>
+
+
+    <br>
+    
+
+
+<br>
+<label>Choose your News image</label>  <br>
+<input type="file" accept="image/*" (change)="insertImage($event)" ><br>
+
+
+
+<br>
+
+<button block large (click)="newsfeed(title.value , message.value)"> Add Newsfeed</button>
+
+<br>
+    
+
+</body>
