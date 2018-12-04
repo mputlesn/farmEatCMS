@@ -1,5 +1,25 @@
 
 
+<!-- <input type="file" accept="image/*" (change)="insertImage($event)" ><br>
+
+<input type="text" placeholder="Title" #title required>
+<br>
+
+<input type="text" placeholder="message" #message required>
+
+
+
+
+<br>
+
+<button (click)="newsfeed(title.value , message.value)">Newsfeed</button>
+
+
+ -->
+
+
+ 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,14 +48,14 @@
        <tr>
             <div class="input">
                 <label for="Checkin Date">Type your news message here</label><br><br>
-                <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #news required></textarea>
+                <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea>
             </div>
          </tr><br><br><br>
 
        <label>Choose your News image</label>  <br><br>
        <input type="file" accept="image/*" (change)="insertImage($event)" ><br>
        <br><br>
-       <button block large (click)="newsfeed(title.value , message.value)"> Add Newsfeed</button>
+      <button (click)="newsfeed(title.value , message.value)">Newsfeed</button>
        
      </table>  
  
@@ -43,3 +63,4 @@
     
 </body>
 </html>
+
