@@ -9,12 +9,94 @@
 </head>
 <body>
   <h1>Geo-Location</h1>
-    <input type="number" placeholder="Latitude" #lat required>
-    <br>
-     
-    <input type="number" placeholder="Langitude" #lng required>
-    <br>
-    <input type="text" placeholder="Name of Place" #name required>
+
+<form>
+    <header class="head-form">
+        <h2>Geo-Location</h2>
+    </header>
+     <table>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Name of Place</label>
+              <input class="form-input" type="text" #name required>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Address</label>
+              <input class="form-input" type="text" #address required>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Description</label>
+              <input class="form-input" type="text" #description required>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Email</label>
+              <input class="form-input" type="text" #email required>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Phone\Telephone Number</label>
+              <input class="form-input" type="text" #tel required>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Website</label>
+              <input class="form-input" type="text" #website required>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Facebook</label>
+              <input class="form-input" type="text" #facebook required>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label for="Checkin Date">Type of Urban Farm</label>
+              <select class="dropdown" #farmType>
+                  <option value="Vertical Farming">Vertical Farming</option>
+                  <option value="Traditional Farming">Traditional Farming</option>
+                  <option value="Green House">Green House</option>
+              </select>
+          </div>
+       </tr>
+       <tr>
+          <div class="input">
+              <label class="container">Crops
+                  <input type="checkbox" #crops checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Live Stock
+                  <input type="checkbox" #liveStock>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">BeeKeeping
+                  <input type="checkbox" #beeKeeping>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container" >Aquatic
+                  <input type="checkbox" #aquatic>
+                  <span class="checkmark"></span>
+                </label>
+          </div>
+       </tr>
+       <tr>
+          <div class="upload-btn-wrapper">
+              <button class="btn">Upload a file</button>
+              <input type="file" accept="image/*" (change)="insertImage($event)" />
+          </div>
+       </tr>
+     </table>  
+ 
+</form>
+    <!-- <input type="text" placeholder="Name of Place" #name required>
     <br>
     <input type="text" placeholder="Address" #address required>
     <br>
@@ -58,12 +140,12 @@
     <input type="text" placeholder="Website" #website required>
     <br>
     <input type="text" placeholder="Facebook" #facebook required>
-    <br>
+    <br> -->
 
     
     
-    <input type="file" accept="image/*" (change)="insertImage($event)"><br>
-    <button (click)="initMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value, lat.value, lng.value)">ADD Farm</button>
+    <!-- <input type="file" accept="image/*" (change)="insertImage($event)"><br> -->
+    <button (click)="initMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)">ADD Farm</button>
     
     <br>
 <!-- 
