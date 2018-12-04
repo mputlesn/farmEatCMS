@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { GeoPipe } from './page/geo.pipe';
-import { NewsFeedComponent } from './news-feed/news-feed.component';
+import { NewsFeedComponent } from './pages/news-feed/news-feed.component';
 //import { GeoComponent } from './pages/geo/geo.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
