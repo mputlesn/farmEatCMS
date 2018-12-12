@@ -26,11 +26,11 @@ condition;
 
         var user = firebase.auth().currentUser;
  
-        user.sendEmailVerification().then(function() {
-        // Email sent.
-        }).catch(function(error) {
-        // An error happened.
-        });
+        // user.sendEmailVerification().then(function() {
+        // // Email sent.
+        // }).catch(function(error) {
+        // // An error happened.
+        // });
  
  
         resolve();

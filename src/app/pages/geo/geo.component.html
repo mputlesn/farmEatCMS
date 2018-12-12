@@ -7,152 +7,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="main.js"></script>
 </head>
-<body>
-
-
-<form>
-    <header class="head-form">
-        <h2>Geo-Location</h2>
-    </header>
-     <table>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Name of Place</label>
-              <input class="form-input" type="text" #name required>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Address</label>
-              <input class="form-input" type="text" #address required>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Description</label>
-              <input class="form-input" type="text" #description required>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Email</label>
-              <input class="form-input" type="text" #email required>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Phone\Telephone Number</label>
-              <input class="form-input" type="text" #tel required>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Website</label>
-              <input class="form-input" type="text" #website required>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Facebook</label>
-              <input class="form-input" type="text" #facebook required>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">Type of Urban Farm</label>
-              <select class="dropdown" #farmType>
-                  <option value="Vertical Farming">Vertical Farming</option>
-                  <option value="Traditional Farming">Traditional Farming</option>
-                  <option value="Green House">Green House</option>
-              </select>
-          </div>
-       </tr>
-       <tr>
-          <div class="input">
-              <label class="container">Crops
-                  <input type="checkbox" #crops checked="checked">
-                  <span class="checkmark"></span>
-                </label>
-                <label class="container">Live Stock
-                  <input type="checkbox" #liveStock>
-                  <span class="checkmark"></span>
-                </label>
-                <label class="container">BeeKeeping
-                  <input type="checkbox" #beeKeeping>
-                  <span class="checkmark"></span>
-                </label>
-                <label class="container" >Aquatic
-                  <input type="checkbox" #aquatic>
-                  <span class="checkmark"></span>
-                </label>
-          </div>
-       </tr>
-       <tr>
-          <div class="upload-btn-wrapper">
-              <button class="btn">Upload a file</button>
-              <input type="file" accept="image/*" (change)="insertImage($event)" />
-          </div>
-       </tr>
-     </table>  
- 
-</form>
-    <!-- <input type="text" placeholder="Name of Place" #name required>
-    <br>
-    <input type="text" placeholder="Address" #address required>
-    <br>
-    <label>Type of Urban Farm</label>
-    <select #farmType>
-        <option value="Vertical Farming">Vertical Farming</option>
-        <option value="Traditional Farming">Traditional Farming</option>
-        <option value="Green House">Green House</option>
-      </select>
-    <br>
-    <input type="text" placeholder="Description" #description required>
-    <br>
-    <label>Crops</label>
-    <select #crops required>
-      <option value="true">True</option>
-      <option value="false">False</option>
-    </select>
-    <br>
-    <label>Live Stock</label>
-    <select #liveStock required>
-      <option value="true">True</option>
-      <option value="false">False</option>
-    </select>
-    <br>
-    <label>BeeKeeping</label>
-    <select #beeKeeping required>
-      <option value="true">True</option>
-      <option value="false">False</option>
-    </select>
-    <br>
-    <label>Aquatic</label>
-    <select #aquatic required>
-      <option value="true">True</option>
-      <option value="false">False</option>
-    </select>
-    <br>
-    <input type="text" placeholder="Email" #email required>
-    <br>
-    <input type="text" placeholder="Phone Number" #tel required>
-    <br>
-    <input type="text" placeholder="Website" #website required>
-    <br>
-    <input type="text" placeholder="Facebook" #facebook required>
-    <br> -->
-
-    
-    
-    <!-- <input type="file" accept="image/*" (change)="insertImage($event)"><br> -->
-    <button (click)="initMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)">ADD Farm</button>
-    
-    <br>
-<!-- 
-    <button (click)="addImage()">Add url</button> -->
-
-    <!-- <br><br><br><br><br>
-    <input type="text" placeholder="Name of Place" #placeName required>
-    <button (click)="initMap(placeName.value)">ADD Farm</button> -->
+<body > 
+        <ul class="side-menu">
+                <ul class="side-menu">
+                        <li><a routerLink="/dashboard"><span class="icons"><img src="../assets/icons8-menu-48 (1).png" width="46px" height="46px"></span>Menu</a></li>
+                        <li><a routerLink="/newsfeed"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>News Feed</a></li>
+                        <li><a routerLink="/geo"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Add Farms</a></li>
+                        <li (click)="logout()"><a ><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Logout</a></li>
+                    </ul>
+        </ul>
+        <div class="main">
+         <div class="header">Add a new farm</div>
+                <form>
+                        
+                         <table>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Name of Place</label>
+                                  <input class="form-input" type="text" #name required>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Address</label>
+                                  <input class="form-input" type="text" #address required>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Description</label>
+                                  <input class="form-input" type="text" #description required>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Email</label>
+                                  <input class="form-input" type="text" #email required>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Phone\Telephone Number</label>
+                                  <input class="form-input" type="text" #tel required>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Website</label>
+                                  <input class="form-input" type="text" #website required>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Facebook</label>
+                                  <input class="form-input" type="text" #facebook required>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">Type of Urban Farm</label>
+                                  <select class="dropdown" #farmType>
+                                      <option value="Vertical Farming">Vertical Farming</option>
+                                      <option value="Traditional Farming">Traditional Farming</option>
+                                      <option value="Green House">Green House</option>
+                                  </select>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="input">
+                                  <label class="container">Crops
+                                      <input type="checkbox" #crops checked="checked">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Live Stock
+                                      <input type="checkbox" #liveStock>
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">BeeKeeping
+                                      <input type="checkbox" #beeKeeping>
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container" >Aquatic
+                                      <input type="checkbox" #aquatic>
+                                      <span class="checkmark"></span>
+                                    </label>
+                              </div>
+                           </tr>
+                           <tr>
+                              <div class="upload-btn-wrapper">
+                                  <button class="btn">Upload a file</button>
+                                  <input type="file" accept="image/*" (change)="insertImage($event)" />
+                              </div>
+                           </tr>
+                         </table>  
+                     
+                    </form>
+                        
+                        <button (click)="initMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)">ADD Farm</button>
+                        
+                        <br>
+        </div>
 </body>
+
+
 </html>

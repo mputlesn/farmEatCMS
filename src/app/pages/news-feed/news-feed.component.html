@@ -1,25 +1,3 @@
-
-
-<!-- <input type="file" accept="image/*" (change)="insertImage($event)" ><br>
-
-<input type="text" placeholder="Title" #title required>
-<br>
-
-<input type="text" placeholder="message" #message required>
-
-
-
-
-<br>
-
-<button (click)="newsfeed(title.value , message.value)">Newsfeed</button>
-
-
- -->
-
-
- 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,38 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="main.js"></script>
 </head>
-<body>
-  <!-- <h1>News feed</h1> -->
-<form>
-    <header class="head-form">
-        <h5>Add your News here</h5>
-    </header>
-     <table>
-      
-       <tr>
-          <div class="input">
-              <label for="Checkin Date">News Title</label><br><br>
-              <input type="text" #title required>
-          </div>
-       </tr>
-<br>
-
-       <tr>
-            <div class="input">
-                <label for="Checkin Date">Type your news message here</label><br><br>
-                <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea>
-            </div>
-         </tr><br><br><br>
-
-       <label>Choose your News image</label>  <br><br>
-       <input type="file" accept="image/*" (change)="insertImage($event)" ><br>
-       <br><br>
-      <button (click)="newsfeed(title.value , message.value)">Newsfeed</button>
-       
-     </table>  
- 
-</form>
-    
+<body > 
+        <ul class="side-menu">
+                <ul class="side-menu">
+                        <li><a routerLink="/dashboard"><span class="icons"><img src="../assets/icons8-menu-48 (1).png" width="46px" height="46px"></span>Menu</a></li>
+                        <li><a routerLink="/newsfeed"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>News Feed</a></li>
+                        <li><a routerLink="/geo"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Add Farms</a></li>
+                        <li (click)="logout()"><a ><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Logout</a></li>
+                </ul>
+        </ul>
+        <div class="main">
+                <form>
+                        <header class="head-form">
+                            <h5>Add your News here</h5>
+                        </header>
+                         <table>
+                          
+                           <tr>
+                              <div class="input">
+                                  <label for="Checkin Date">News Title</label><br><br>
+                                  <input type="text" #title required>
+                              </div>
+                           </tr>
+                    <br>
+                    
+                           <tr>
+                                <div class="input">
+                                    <label for="Checkin Date">Type your news message here</label><br><br>
+                                    <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea>
+                                </div>
+                             </tr><br><br><br>
+                    
+                           <label>Choose your News image</label>  <br><br>
+                           <input type="file" accept="image/*" (change)="insertImage($event)" ><br>
+                           <br><br>
+                          <button (click)="newsfeed(title.value , message.value)">Newsfeed</button>
+                           
+                         </table>  
+                     
+                    </form>
+        </div>
 </body>
+
 </html>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Logs } from 'selenium-webdriver';
+import { Router } from '@angular/router';
 declare var firebase;
 
 @Component({
@@ -11,7 +12,7 @@ export class NewsFeedComponent implements OnInit {
   newsMessage
 
   url 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {
   }
@@ -62,4 +63,14 @@ export class NewsFeedComponent implements OnInit {
   }
   
 
+  logout(){
+    firebase.auth().signOut().then(()=>{
+      this.router.navigate(['']);
+      console.log("have logged out");
+      
+    }).catch(function(error) {
+      // An error happened.
+    });
+  
+}
 }

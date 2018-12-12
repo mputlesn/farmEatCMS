@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FarmEatService } from '../../providers/farm-eat.service';
+import { Router } from '@angular/router';
 
 declare var google: any;
 declare var firebase;
@@ -19,7 +20,7 @@ export class GeoComponent implements OnInit {
   //   "https://firebasestorage.googleapis.com/v0/b/farmeat-1542889200508.appspot.com/o/Urban%20Fresh%20South%20Africa%2FUrban%20Fresh3.jpg?alt=media&token=a23f24a6-558f-4dc0-a9d5-aabf2bf6b41e"
   // ];
   imageArr = []
-  constructor(private farmEat:FarmEatService) { }
+  constructor(private farmEat:FarmEatService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -133,4 +134,15 @@ export class GeoComponent implements OnInit {
   //     }
   //   });
   // }
+
+  logout(){
+    firebase.auth().signOut().then(()=>{
+      this.router.navigate(['']);
+      console.log("have logged out");
+      
+    }).catch(function(error) {
+      // An error happened.
+    });
+  
+}
 }

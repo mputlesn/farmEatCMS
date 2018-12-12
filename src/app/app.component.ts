@@ -26,22 +26,22 @@ export class AppComponent {
   }
   
 
-  // checkstate(){
-  //   return new Promise((resolve, reject)=>{
-  //   firebase.auth().onAuthStateChanged((user)=>
-  //    {
-  //     if (user != null) {
-  //      // alert('user signed in')
-  //      this.condition = 1
+  checkstate(){
+    return new Promise((resolve, reject)=>{
+    firebase.auth().onAuthStateChanged((user)=>
+     {
+      if (user != null) {
+       // alert('user signed in')
+       this.router.navigateByUrl('/dashboard');
    
-  //     } else {
+      } else {
    
-  //       this.condition = 0
-  //      // alert('no user signed in')
-  //     }
-  //     resolve(this.condition)
-  //   })
+        this.router.navigateByUrl('/home');
+       // alert('no user signed in')
+      }
+      //resolve(this.condition)
+    })
  
-  // })
-  //}
+  })
+  }
 }
