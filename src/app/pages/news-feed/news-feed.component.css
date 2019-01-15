@@ -1,29 +1,6 @@
-.bd{
-
-    border: 1%;
-    border-color: black;
-    align-content: center
-}
 
 
-body {
-    background-color: whitesmoke;
-}
-form {
-    width: 1000px;
-    min-height: 550px;
-    height: auto;
-    border-radius: 5px;
-    margin: 2% auto;
-    box-shadow: 0 9px 50px  #04A36F;
-    padding: 5%;
-}
-header {
-    margin: 2% auto 10% auto;
-    text-align: center;
-    font-size: 3em;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+
 input[class="form-input"]{
     width: 100%;
     height: 50px;
@@ -46,10 +23,7 @@ input[class="form-input"]{
     box-sizing: border-box;
     
 }
-table{
-    width: 100%;
-    color: #5E6472; 
-}
+
 input[class="form-box"]{
     width: 15%;
     height: 50px;
@@ -118,139 +92,120 @@ button {
     border-radius: 4px;
     box-sizing: border-box;
 }
-/* Create a custom checkbox */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
+body {
+  font-family: "Lato", sans-serif;
 }
-/* Hide the browser's default checkbox */
-.container input {
-    position: absolute;
-    opacity: 0;
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    height: 0;
-    width: 0;
-}
-/* The container */
-.container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .container {
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #0871505e;
+    padding: 20px;
+    width:50%;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  
+  .row:after {
     content: "";
-    position: absolute;
-    display: none;
-}
-
-@import 'https://fonts.googleapis.com/css?family=Roboto';
-.side-menu {
-  font-family: 'Roboto', sans-serif;
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100px;
-  list-style-type: none;
-  background: rgb(112, 202, 174);
-  overflow: hidden;
-  transition: width .5s;
-}
-
-.side-menu:hover {
-  width: 300px;
-}
-
-.side-menu li {
-  width: 300px;
-}
-
-.side-menu li span {
-  font-size: 1rem;
-  margin: 20px 30px 0 22px;
-}
-
-.side-menu li a {
-  display: block;
-  font-size: .9rem;
-  text-decoration: none;
-  color: #FFF;
-  height: 60px;
-}
-
-.side-menu li a:hover,
-.side-menu li:first-child a {
-  background: rgb(8,113,80);
-  display: block;
-}
-
-@import 'https://fonts.googleapis.com/css?family=Roboto';
-.side-menu {
-  font-family: 'Roboto', sans-serif;
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100px;
-  list-style-type: none;
-  background: rgba(5, 100, 33, 0.657);
-  overflow: hidden;
-  transition: width .5s;
-}
-
-.side-menu:hover {
-  width: 300px;
-}
-
-.side-menu li {
-  width: 300px;
-  /* margin-top: 10%; */
-}
-
-.side-menu li span {
-  font-size: 1rem;
-  margin: 50px 40px 50px 25px;
-}
-
-.side-menu li a {
-  display: block;
-  font-size: .9rem;
-  text-decoration: none;
-  color: #FFF;
-  height: 80px;
-}
-
-.side-menu li a:hover,
-.side-menu li:first-child a {
-  background: #eea111d2;
-  display: block;
- 
-}
-
-.main{
-    margin-left: 100px
-}
+    display: table;
+    clear: both;
+  }
+  
+  
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+  

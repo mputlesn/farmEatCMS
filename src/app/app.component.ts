@@ -17,14 +17,12 @@ export class AppComponent {
   logout(){
       firebase.auth().signOut().then(function() {
         console.log("logout");
-        
+
         this.router.navigateByUrl('/home');
       }).catch(function(error) {
         // An error happened.
       });
-    
   }
-  
 
   checkstate(){
     return new Promise((resolve, reject)=>{

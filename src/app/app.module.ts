@@ -25,7 +25,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component' ;
     NewsFeedComponent ,
     GeoComponent,
     HomeComponent,
-    
     RegisterComponent,
     LoginComponent,
     NewsFeedComponent,
