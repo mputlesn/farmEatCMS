@@ -24,7 +24,7 @@ export class NewsFeedComponent implements OnInit {
     
   }
 
-  newsfeed(message , title , image){
+  newsfeed(message , title){
    
 
 
