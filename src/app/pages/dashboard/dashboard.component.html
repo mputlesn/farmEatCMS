@@ -1,20 +1,19 @@
-
-
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="main.js"></script>
-  </head>
-<body > 
-   <!-- <span style="font-size:30px;cursor:pointer" (click)=" openNav()">&#9776; </span> -->
-  <div id="mySidenav" class="sidenav">  
-   
-      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
-    
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <!-- <span style="font-size:30px;cursor:pointer" (click)=" openNav()">&#9776; </span> -->
+  <div id="mySidenav" class="sidenav">
+
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
+
     <br>
     <br>
     <a routerLink="/dashboard"><span class="icons"> </span>Home</a>
@@ -28,145 +27,204 @@
 
   </div>
   <div id="main" class="container">
-      
-      <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
-  
 
- 
+    <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
 
-          <div class="form-container" >
-              <form action="/action_page.php">
-                <div class="row">
-                  <div class="col-25">
-                          <label for="Checkin Date">Name of Place</label>
-                  </div>
-                  <div class="col-75">
-                          <input class="form-input" type="text" #name required>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-25">
-                          <label for="Checkin Date">Address</label>
-                  </div>
-                  <div class="col-75">
-                          <input class="form-input" type="text" #address required>
-                  </div>
-                </div>
-                <div class="row">
-                      <div class="col-25">
-                              <label for="Checkin Date">Email</label>
-                      </div>
-                      <div class="col-75">
-                              <input class="form-input" type="text" #email required>
-                      </div>
-                    </div>
-                    <div class="row">
-                          <div class="col-25">
-                                  <label for="Checkin Date">Contact Number</label>
-                          </div>
-                          <div class="col-75">
-                                  <input class="form-input" type="text" #tel required>
-                          </div>
-                        </div>
-                        <div class="row">
-                              <div class="col-25">
-                                      <label for="Checkin Date">Website</label>
-                              </div>
-                              <div class="col-75">
-                                      <input class="form-input" type="text" #website required>
-                              </div>
-                            </div>
-                            <div class="row">
-                                  <div class="col-25">
-                                          <label for="Checkin Date">Facebook</label>
-                                  </div>
-                                  <div class="col-75">
-                                          <input class="form-input" type="text" #facebook required>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="Checkin Date">Select type of urban farm business</label>
-                                      </div>
-                                      <div class="col-75">
-                                          <select class="dropdown" #farmType>
-                                  <option value="Vertical Farming">Vertical Farming</option>
-                                  <option value="Traditional Farming">Traditional Farming</option>
-                                  <option value="Green House">Green House</option>
-                              </select>
-                          </div>
-                      </div>
-                      <div class="row" >
-                                    <div class="col-25">
-                                        <label for="offer"> What you offer </label> 
-                                      </div> 
-                                      <div class="col-75">
-                                          <label>Crops
-                                          <input type="checkbox" #crops checked="checked">
-                                        </label>
-                                       
-                                        <label >Live Stock
-                                          <input type="checkbox" #liveStock>
-                                      
-                                        </label>
-                                        <label >BeeKeeping
-                                          <input type="checkbox" #beeKeeping>
-                                         
-                                        </label>
-                                        <label  >Aquatic
-                                          <input type="checkbox" #aquatic>
-                      
-                                        </label>
-                                    </div>
-                                    </div >
-      
-                                    <div class="row">
-                                        <div class="col-25">
-                                              <label  >Upload a picture</label>
-                                      </div>
-                                      <div class="col-75">
-                                              <input type="file" accept="image/*" (change)="insertImage($event)" />
-      
-                                      </div>
-      
-                                    </div>
-    
-            
-                <div class="row">
-                  <div class="col-25">
-                     <label for="Checkin Date">Description</label>
-                  </div>
-                  <div class="col-75">
-                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px " #description required></textarea>
-                  
-                  </div>
-                </div>
-                <div class="row">
-      
-                  <input onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" class="submit" (click)="initMap (name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" type="submit" value="Submit">
-                </div>
-              </form>
-            </div>
-    
-   
-    
-  
-  
+
+
+
+    <div class="form-container">
+      <form action="/action_page.php">
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Name of Place</label>
+          </div>
+          <div class="col-75">
+            <input class="form-input" type="text" #name required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Address</label>
+          </div>
+          <div class="col-75">
+            <input class="form-input" type="text" #address required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Email</label>
+          </div>
+          <div class="col-75">
+            <input class="form-input" type="text" #email required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Contact Number</label>
+          </div>
+          <div class="col-75">
+            <input class="form-input" type="text" #tel required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Website</label>
+          </div>
+          <div class="col-75">
+            <input class="form-input" type="text" #website required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Facebook</label>
+          </div>
+          <div class="col-75">
+            <input class="form-input" type="text" #facebook required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Select type of urban farm business</label>
+          </div>
+          <div class="col-75">
+            <select class="dropdown" #farmType>
+              <option value="Vertical Farming">Vertical Farming</option>
+              <option value="Traditional Farming">Traditional Farming</option>
+              <option value="Green House">Green House</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="offer"> What you offer</label>
+          </div>
+          <div class="col-75">
+            <label>Crops
+              <input type="checkbox" #crops checked="checked">
+            </label>
+
+            <label>Live Stock
+              <input type="checkbox" #liveStock>
+
+            </label>
+            <label>BeeKeeping
+              <input type="checkbox" #beeKeeping>
+
+            </label>
+            <label>Aquatic
+              <input type="checkbox" #aquatic>
+
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label>Upload a picture</label>
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" (change)="insertImage($event)" />
+
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" (change)="insertImage($event)" />
+
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" (change)="insertImage($event)" />
+
+          </div>
+          <div class="col-75">
+            <input type="file" accept="image/*" (change)="insertImage($event)" />
+
+          </div>
+
+        </div>
+
+        <div>
+          <div class="col-25">
+            <label>What do you offer(Products) ?</label>
+          </div>
+          <select #products multiple>
+            <option value="Pig">Pig</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Cow">Cow</option>
+            <option value="Banana">Banana</option>
+            <option value="Beetroot">Beetroot</option>
+            <option value="Broccoli">Broccoli</option>
+            <option value="Bull">Bull</option>
+            <option value="Carrot">Carrot</option>
+            <option value="Celery">Celery</option>
+            <option value="Cheese">Cheese</option>
+            <option value="Fish">Fish</option>
+            <option value="Corn">Corn</option>
+            <option value="Crab">Crab</option>
+            <option value="Garlic">Garlic</option>
+            <option value="Hay">Hay</option>
+            <option value="Hazelnuts">Hazelnuts</option>
+            <option value="Honey">Honey</option>
+            <option value="Horse">Horse</option>
+            <option value="Lamb">Lamb</option>
+            <option value="Lattuce">Lattuce</option>
+            <option value="Mushroom">Mushroom</option>
+            <option value="Orange">Orange</option>
+            <option value="Peanuts">Peanuts</option>
+            <option value="Pear">Pear</option>
+            <option value="Potato">Potato</option>
+            <option value="Prown">Prown</option>
+            <option value="Rabbit">Rabbit</option>
+            <option value="Raspberry">Raspberry</option>
+            <option value="Goat">Goat</option>
+            <option value="Zuchini">Zuchini</option>
+          </select>
+        </div>
+        
+
+
+
+        <div class="row">
+          <div class="col-25">
+            <label for="Checkin Date">Description</label>
+          </div>
+          <div class="col-75">
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px " #description
+              required></textarea>
+
+          </div>
+        </div>
+        <div class="row">
+
+          <input onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" class="submit"
+            (click)="initMap (name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value, products.values)"
+            type="submit" value="Submit">
+        </div>
+      </form>
     </div>
 
-    <div class="w3-container">
-      
-        <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
-      
-        <div id="id01" class="w3-modal">
-          <div class="w3-modal-content">
-            <div class="w3-container">
-              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-              <h1>You have loged in</h1>
-             
-            </div>
+
+
+
+
+  </div>
+
+  <div class="w3-container">
+
+    <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
+
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-container">
+          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+          <div *ngIf="err == 'good'">
+            Your Farm has been added succsesfully
+          </div>
+          <div *ngIf="err != 'good'">
+            Ops! Something went wrong. Please try saving the again.
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
 </body>

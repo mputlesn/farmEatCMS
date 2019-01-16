@@ -17,7 +17,10 @@ export class DashboardComponent implements  OnInit {
   url ;
   desLatLng;
   imageArr = [];
-
+  err;
+  imgError
+  testImg = []
+  
 constructor( private farmEat: FarmEatService, private router: Router) { }
 
   ngOnInit() {
@@ -35,20 +38,40 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
 
   insertImage(event: any) {
     this.url = event.target.files[0];
+    if(this.url != "undefined"){
+      this.testImg.push(this.url)
+      console.log(this.testImg);
+    }
+    
+    
   }
 
-  initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
-    var downloadURL: any;
-    var filename = this.url.name;
-    const metaData = {'contentType': this.url.type};
-    var storageRef = firebase.storage().ref().child(filename);
-    var uploadTask = storageRef.put(this.url, metaData);
+  initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, products) {
 
-    storageRef.getDownloadURL().then((url) => {
-      this.imageArr.push(url);
-      console.log(this.imageArr);
-    }).catch((error) => { 
-    });
+    console.log(products);
+    
+    var downloadURL: any;
+    for (let index = 0; index < this.testImg.length; index++) {
+    
+      var filename = this.url.name;
+      const metaData = {'contentType': this.url.type};
+      var storageRef = firebase.storage().ref().child(filename);
+      var uploadTask = storageRef.put(this.url, metaData);
+  
+      storageRef.getDownloadURL().then((url) => {
+        this.imageArr.push(url);
+        console.log(this.imageArr);
+        this.err = "good";
+      }).catch((error) => { 
+        this.err = error.message;
+        console.log(error.message);
+        console.log(error);
+        
+        
+      });
+
+    }
+   
 
     const geocoder = new google.maps.Geocoder;
 
@@ -71,9 +94,12 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     });
 
     setTimeout(()=>{
-      this.farmEat.addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
-        alert("Farm Info Added")
-      })
+      if(this.err == "good"){
+        this.farmEat.addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
+         
+        })
+      }
+     
     }, 5000)
   }
   logout() {
