@@ -1,150 +1,92 @@
 import { Component, OnInit } from '@angular/core';
-import * as Chartist from 'chartist';
+import { Router } from '@angular/router';
+import { FarmEatService } from '../../providers/farm-eat.service';
+
+
+declare var firebase;
+declare var google: any;
+declare var firebase;
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements  OnInit {
 
-  constructor() { }
-  startAnimationForLineChart(chart){
-      let seq: any, delays: any, durations: any;
-      seq = 0;
-      delays = 80;
-      durations = 500;
+  url ;
+  desLatLng;
+  imageArr = [];
 
-      chart.on('draw', function(data) {
-        if(data.type === 'line' || data.type === 'area') {
-          data.element.animate({
-            d: {
-              begin: 600,
-              dur: 700,
-              from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-              to: data.path.clone().stringify(),
-              easing: Chartist.Svg.Easing.easeOutQuint
-            }
-          });
-        } else if(data.type === 'point') {
-              seq++;
-              data.element.animate({
-                opacity: {
-                  begin: seq * delays,
-                  dur: durations,
-                  from: 0,
-                  to: 1,
-                  easing: 'ease'
-                }
-              });
-          }
-      });
+constructor( private farmEat: FarmEatService, private router: Router) { }
 
-      seq = 0;
-  };
-  startAnimationForBarChart(chart){
-      let seq2: any, delays2: any, durations2: any;
-
-      seq2 = 0;
-      delays2 = 80;
-      durations2 = 500;
-      chart.on('draw', function(data) {
-        if(data.type === 'bar'){
-            seq2++;
-            data.element.animate({
-              opacity: {
-                begin: seq2 * delays2,
-                dur: durations2,
-                from: 0,
-                to: 1,
-                easing: 'ease'
-              }
-            });
-        }
-      });
-
-      seq2 = 0;
-  };
   ngOnInit() {
-      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
-      const dataDailySalesChart: any = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-              [12, 17, 7, 17, 23, 18, 38]
-          ]
-      };
-
-     const optionsDailySalesChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-      }
-
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-      this.startAnimationForLineChart(dailySalesChart);
-
-
-      /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
-      const dataCompletedTasksChart: any = {
-          labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-          series: [
-              [230, 750, 450, 300, 280, 240, 200, 190]
-          ]
-      };
-
-     const optionsCompletedTasksChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
-      }
-
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-      // start animation for the Completed Tasks Chart - Line Chart
-      this.startAnimationForLineChart(completedTasksChart);
-
-
-
-      /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-      var datawebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-        series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-        ]
-      };
-      var optionswebsiteViewsChart = {
-          axisX: {
-              showGrid: false
-          },
-          low: 0,
-          high: 1000,
-          chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
-      };
-      var responsiveOptions: any[] = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function (value) {
-              return value[0];
-            }
-          }
-        }]
-      ];
-      var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-
-      //start animation for the Emails Subscription Chart
-      this.startAnimationForBarChart(websiteViewsChart);
   }
+   openNav() {
+    document.getElementById('mySidenav').style.width = '250px';
+  document.getElementById('main').style.marginLeft = '250px';
+  }
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+    document.getElementById('main').style.marginLeft = '0';
+  }
+
+
+
+  insertImage(event: any) {
+    this.url = event.target.files[0];
+  }
+
+  initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
+    var downloadURL: any;
+    var filename = this.url.name;
+    const metaData = {'contentType': this.url.type};
+    var storageRef = firebase.storage().ref().child(filename);
+    var uploadTask = storageRef.put(this.url, metaData);
+
+    storageRef.getDownloadURL().then((url) => {
+      this.imageArr.push(url);
+      console.log(this.imageArr);
+    }).catch((error) => { 
+    });
+
+    const geocoder = new google.maps.Geocoder;
+
+    var lat;
+    var lng;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        this.desLatLng = results[0].geometry.location;
+        console.log("Des method "+this.desLatLng);
+        console.log(this.desLatLng);
+        console.log("ghffdh"+this.desLatLng);
+        lat = results[0].geometry.location.lat();
+        lng = results[0].geometry.location.lng();
+        console.log(lat);
+        console.log(lng);
+        
+       } else {
+         alert('Geocode was not successful for the following reason: ' + status);
+       }
+    });
+
+    setTimeout(()=>{
+      this.farmEat.addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
+        alert("Farm Info Added")
+      })
+    }, 5000)
+  }
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.router.navigate(['']);
+      console.log('have logged out');
+
+    }).catch(function(error) {
+      // An error happened.
+    });
+
+}
+
+
 
 }

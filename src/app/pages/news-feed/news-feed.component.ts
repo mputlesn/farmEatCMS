@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Logs } from 'selenium-webdriver';
+import { Router } from '@angular/router';
 declare var firebase;
 
 @Component({
@@ -11,9 +12,17 @@ export class NewsFeedComponent implements OnInit {
   newsMessage
 
   url 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {
+  }
+  openNav() {
+    document.getElementById('mySidenav').style.width = '250px';
+  document.getElementById('main').style.marginLeft = '250px';
+  }
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+    document.getElementById('main').style.marginLeft = '0';
   }
 
 
@@ -23,7 +32,7 @@ export class NewsFeedComponent implements OnInit {
     
   }
 
-  newsfeed(message , title , image){
+  newsfeed(message , title){
    
 
 
@@ -62,4 +71,14 @@ export class NewsFeedComponent implements OnInit {
   }
   
 
+  logout(){
+    firebase.auth().signOut().then(()=>{
+      this.router.navigate(['']);
+      console.log("have logged out");
+      
+    }).catch(function(error) {
+      // An error happened.
+    });
+  
+}
 }

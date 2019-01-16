@@ -7,7 +7,7 @@ declare var firebase ;
   providedIn: 'root'
 })
 export class FarmEatService {
-
+condition;
 
 
 
@@ -26,11 +26,11 @@ export class FarmEatService {
 
         var user = firebase.auth().currentUser;
  
-        user.sendEmailVerification().then(function() {
-        // Email sent.
-        }).catch(function(error) {
-        // An error happened.
-        });
+        // user.sendEmailVerification().then(function() {
+        // // Email sent.
+        // }).catch(function(error) {
+        // // An error happened.
+        // });
  
  
         resolve();
@@ -41,6 +41,25 @@ export class FarmEatService {
  
  
  })
+  }
+
+  checkstate(){
+    return new Promise((resolve, reject)=>{
+    firebase.auth().onAuthStateChanged((user)=>
+     {
+      if (user != null) {
+       // alert('user signed in')
+       this.condition = 1
+   
+      } else {
+   
+        this.condition = 0
+       // alert('no user signed in')
+      }
+      resolve(this.condition)
+    })
+ 
+  })
   }
 
   login(email , password){

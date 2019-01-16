@@ -1,0 +1,309 @@
+body {
+    background-color: whitesmoke;
+}
+
+/* form {
+    width: 1000px;
+    min-height: 550px;
+    height: auto;
+    border-radius: 5px;
+    margin: 0 auto;
+ 
+} */
+
+
+
+input[class="form-input"]{
+    width: 100%;
+    height: 50px;
+  
+    padding: 12px 20px;
+    margin: 8px 0;
+    
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #5E6472;
+  
+    outline: none;
+    border: none;
+  
+    /* border-radius: 0px 5px 5px 0px; */
+    transition: 0.2s linear;
+
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    
+}
+label{
+    color: white;
+    font-size: 1.5em;
+}
+
+table{
+    
+    width: 60%;
+    color: #5E6472;
+    margin: 0% auto;
+    padding-top: 10%;
+    
+}
+
+
+input[class="form-box"]{
+    width: 15%;
+    height: 50px;
+    padding: 12px 20px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #5E6472;
+    outline: none;
+    border: none;
+    transition: 0.2s linear;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+
+/* focus  */
+input:focus {
+    transform: translateX(-2px);
+    border-radius: 10px;
+}
+
+button {
+    display: inline-block;
+    color: white;
+    font-size: 1em;
+    width:40em;
+    height: 5em;
+  
+    padding: 0 20px;
+    background: #078150;
+    border-radius: 10px;
+    
+    outline: none;
+    border: none;
+  
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+
+    display: block;
+    margin: 0 auto;
+}
+.btn{
+    display: inline-block;
+    color: white;
+    font-size: 1em;
+    width: 15em;
+    height: 4em;
+    padding: 0 20px;
+    background: #078150;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+    /* transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    z-index: 999999;
+    position: absolute; */
+}
+
+.dropdown{
+    width: 50%;
+    height: 50px;
+  
+    padding: 12px 20px;
+    margin: 8px 10px;
+
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #5E6472;
+  
+    outline: none;
+    border: none;
+  
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.2s linear;
+
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #087150;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  /* @import 'https://fonts.googleapis.com/css?family=Roboto'; */
+  .side-menu {
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100px;
+    list-style-type: none;
+    background: rgba(5, 100, 33, 0.657);
+    overflow: hidden;
+    transition: width .5s;
+  }
+  
+  .side-menu:hover {
+    width: 300px;
+  }
+  
+  .side-menu li {
+    width: 300px;
+    /* margin-top: 10%; */
+  }
+  
+  .side-menu li span {
+    font-size: 1rem;
+    margin: 50px 40px 50px 25px;
+  }
+  
+  .side-menu li a {
+    display: block;
+    font-size: .9rem;
+    text-decoration: none;
+    color: #FFF;
+    height: 80px;
+  }
+  
+  .side-menu li a:hover,
+  .side-menu li:first-child a {
+    background: #eea111d2;
+    display: block;
+   
+  }
+  
+  .main{
+      margin-left: 100px;
+    
+      width:100%;
+	height:100%;
+  }
+.header{
+    height: 100px;
+    text-align: center;
+    font-size: 3em;
+    padding-top: 1em;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+label{
+font-size: 1.5em;
+}
+.form{
+    
+        margin: 0 auto; 
+      width: 45%;
+        border:2px #5E6472;
+        background-color: #0871505e;
+        align-items: center;
+        justify-content: center;
+      
+      
+        
+    
+}
+.icons{
+    width: 1000%;
+    height: 50%;
+}
+.imgg{
+    position: relative;
+    top: 12px
+   }
+   .main[_ngcontent-c1] {
+    margin-left: 0%;
+    width: 100%;
+    height: 100%;
+}
