@@ -49,14 +49,14 @@ export class GeoComponent implements OnInit {
     });
 
 
-    // if (email == this.validateEmail){
-    //   console.log(email);
+    if (email == this.validateEmail){
+      console.log(email);
       
-    // }else{
-    //   console.log('wrong');
+    }else{
+      console.log('wrong');
    
       
-    // }
+    }
 
     const geocoder = new google.maps.Geocoder;
    
