@@ -11,25 +11,29 @@
                 <div id="mySidenav" class="sidenav">  
    
                                 <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-                              <ul  >
                               <br>
-                              <li><a routerLink="/dashboard"><span class="icons"><img class="imgg"  src="../../../assets/icons8_Home_Page_100px.png" width="40px" height="40px"> &nbsp; </span>Home</a></li>
                               <br>
-                              <li><a routerLink="/newsfeed"><span class="icons"><img class="imgg"  src="../../../assets/icons8_News_100px_1.png" width="40px" height="40px"> &nbsp; </span>News Feed</a></li>
+                             <a routerLink="/dashboard"><span class="icons"> &nbsp; </span>Home</a>
+                              <br>
+                              <br>
+                              <a routerLink="/newsfeed"><span class="icons"> &nbsp; </span>News Feed</a>
+                              <br>
                               <br>
                               <!-- <li><a routerLink="/geo"><span class="icons"><img class="imgg" src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Add Farms</a></li> -->
-                              <br>
-                              <li (click)="logout()"><a ><img class="imgg"  src="../../../assets/icons8_Logout_Rounded_Up_100px.png" width="40px" height="40px"><span class="icons">&nbsp; </span>Logout</a></li>
-                          </ul>
+                              
+                              <a (click)="logout()" ><span class="icons">&nbsp; </span>Logout</a>
+                          
                             </div>
                             
-                            <div id="main">
-                                    <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; </span>
-                                        <div class="container">
+                            <div id="main" class="container">
+                                    <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
+                                        <div  class="form-container">
                                                         <form>
                                                                 <header class="head-form">
-                                                                    <h5>Add your News here</h5>
+                                                                    <h1 style="color:white ">Add your News here</h1>
                                                                 </header>
+                                                                <br>
+                                                                <br>
                                                                 <div class="row" >
                                                                     <div class=col-25 >
                                                                             <label for="Checkin Date">News Title</label>
@@ -45,6 +49,7 @@
                                             
                                                                         </div>
                                                                         <div class="col-75" >
+                                                                                <br>
                                                                                 <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea>
                                             
                                                                         </div>
@@ -52,16 +57,27 @@
                                                                     </div>
                                                                     <div class="row" >
                                                                             <div class=col-25 >
-                                                                                    <label>Choose your News image</label> 
+                                                                                    <br>
+                                                                                    
+                                                                                    <label>Add image</label> 
                                                 
                                                                             </div>
+                                                                            <br>
+                                                                            <br>
                                                                             <div class="col-75" >
                                                                                     <input type="file" accept="image/*" (change)="insertImage($event)" >
                                                 
                                                                             </div>
-                                                
+                                                                            <br>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br>
+                                                                            <input (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">
                                                                         </div>
-                                                                   <input (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">
+                                                                        
+                                                                 
                                                                   <!-- <button (click)="newsfeed(title.value , message.value)">Newsfeed</button> -->
                                                                    
                                                        

@@ -1,4 +1,8 @@
+
+html{
+}
 body {
+ 
   font-family: "Lato", sans-serif;
 }
 
@@ -9,7 +13,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: rgb(8, 113, 80);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -19,7 +23,7 @@ body {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #fff;
   display: block;
   transition: 0.3s;
 }
@@ -148,7 +152,7 @@ body {
   }
 input[class="form-input"]{
     width: 100%;
-    height: 50px;
+    height: 35px;
   
     padding: 12px 20px;
     margin: 8px 0;
@@ -169,20 +173,11 @@ input[class="form-input"]{
 }
 label{
     color: white;
-    font-size: 1.5em;
-}
-
-table{
-    
-    width: 60%;
-    color: #5E6472;
-    margin: 0% auto;
-    padding-top: 10%;
-    
+    font-size: 1em;
 }
 
 
-/* input[class="form-box"]{
+input[class="form-box"]{
     width: 10%;
     padding: 12px 20px;
     margin: 0 auto;
@@ -196,7 +191,7 @@ table{
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
-} */
+}
 
 input:focus {
     transform: translateX(-2px);
@@ -285,7 +280,7 @@ button {
     display: inline-block;
   }
   .images{
-    width: 100%;
+    width:167.5%;
     
   }
   
@@ -313,7 +308,6 @@ button {
 }
 
 input[type=text], select, textarea {
-  /* width: 50%; */
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -340,13 +334,27 @@ input[type=submit]:hover {
 }
 
 .container {
+  background-image:linear-gradient(rgba(85, 87, 85, 0.315),rgba(0,0,0,0.5)),url('../../../assets/farm.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0 auto;
-  width: 55%;
+  width: 100%;
+  border-radius: 5px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+
+}
+.form-container{
+  margin: 0 auto;
+  width: 45%;
   border-radius: 5px;
   background-color: #0871505e;
   padding: 20px;
   align-items: center;
   justify-content: center;
+  padding-right:50px; 
 
 }
 
@@ -368,11 +376,40 @@ input[type=submit]:hover {
   display: table;
   clear: both;
 }
+.menuside{
+  color: #fff
+}
 
+textarea{
+  width: 100%;
+}
+input{
+  /* margin: 100px; */
+  /* padding: 100px; */
+  width: 100%;
+}
+.submit{
+  
+}
 
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {
     width: 100%;
     margin-top: 0;
   }
+}
+
+@media screen and (max-width: 1000px) {
+  .form-container{
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #0871505e;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+
+  
+  }
+  
 }
