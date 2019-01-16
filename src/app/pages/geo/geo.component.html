@@ -10,15 +10,15 @@
 <body > 
         <ul class="side-menu">
                 <ul class="side-menu">
-                        <li><a routerLink="/dashboard"><span class="icons"><img src="../assets/icons8-menu-48 (1).png" width="46px" height="46px"></span>Menu</a></li>
-                        <li><a routerLink="/newsfeed"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>News Feed</a></li>
-                        <li><a routerLink="/geo"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Add Farms</a></li>
-                        <li (click)="logout()"><a ><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Logout</a></li>
+                        <li><a routerLink="/dashboard"><span class="icons"><img class="imgg"  src="../../../assets/icons8_Home_Page_100px.png" width="40px" height="40px"></span>Home</a></li>
+    <li><a routerLink="/newsfeed"><span class="icons"><img class="imgg"  src="../../../assets/icons8_News_100px_1.png" width="40px" height="40px"></span>News Feed</a></li>
+    <!-- <li><a routerLink="/geo"><span class="icons"><img class="imgg"  src="../assets/icons8-plus-96.png" width="40px" height="40px"></span>Add Farms</a></li> -->
+    <li (click)="logout()"><a ><span class="icons"><img class="imgg"  src="../../../assets/icons8_Logout_Rounded_Up_100px.png" width="40px" height="40px"></span>Logout</a></li>
                     </ul>
         </ul>
         <div class="main">
-         <div class="header">Add a new farm</div>
-                <form>
+         <div class="header">Add a new farm business</div>
+                <form class="form" >
                         
                          <table>
                            <tr>
@@ -65,7 +65,7 @@
                            </tr>
                            <tr>
                               <div class="input">
-                                  <label for="Checkin Date">Type of Urban Farm</label>
+                                  <label for="Checkin Date">Select type of urban farm business</label>
                                   <select class="dropdown" #farmType>
                                       <option value="Vertical Farming">Vertical Farming</option>
                                       <option value="Traditional Farming">Traditional Farming</option>
@@ -94,16 +94,22 @@
                               </div>
                            </tr>
                            <tr>
-                              <div class="upload-btn-wrapper">
-                                  <button class="btn">Upload a file</button>
+                              <div >
+                                  <label  >Upload a picture</label> &nbsp;
                                   <input type="file" accept="image/*" (change)="insertImage($event)" />
                               </div>
                            </tr>
+                           <tr>
+                                <button (click)="initMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)">Submit</button>
+
+                           </tr>
+                           <br>
+                           <br>
                          </table>  
                      
                     </form>
                         
-                        <button (click)="initMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)">ADD Farm</button>
+                     
                         
                         <br>
         </div>

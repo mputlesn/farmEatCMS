@@ -8,45 +8,85 @@
   <script src="main.js"></script>
 </head>
 <body > 
-        <ul class="side-menu">
-                <ul class="side-menu">
-                        <li><a routerLink="/dashboard"><span class="icons"><img src="../assets/icons8-menu-48 (1).png" width="46px" height="46px"></span>Menu</a></li>
-                        <li><a routerLink="/newsfeed"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>News Feed</a></li>
-                        <li><a routerLink="/geo"><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Add Farms</a></li>
-                        <li (click)="logout()"><a ><span class="icons"><img src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Logout</a></li>
-                </ul>
-        </ul>
-        <div class="main">
-                <form>
-                        <header class="head-form">
-                            <h5>Add your News here</h5>
-                        </header>
-                         <table>
+                <div id="mySidenav" class="sidenav">  
+   
+                                <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+                              <br>
+                              <br>
+                             <a routerLink="/dashboard"><span class="icons"> &nbsp; </span>Home</a>
+                              <br>
+                              <br>
+                              <a routerLink="/newsfeed"><span class="icons"> &nbsp; </span>News Feed</a>
+                              <br>
+                              <br>
+                              <!-- <li><a routerLink="/geo"><span class="icons"><img class="imgg" src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Add Farms</a></li> -->
+                              
+                              <a (click)="logout()" ><span class="icons">&nbsp; </span>Logout</a>
                           
-                           <tr>
-                              <div class="input">
-                                  <label for="Checkin Date">News Title</label><br><br>
-                                  <input type="text" #title required>
-                              </div>
-                           </tr>
-                    <br>
-                    
-                           <tr>
-                                <div class="input">
-                                    <label for="Checkin Date">Type your news message here</label><br><br>
-                                    <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea>
-                                </div>
-                             </tr><br><br><br>
-                    
-                           <label>Choose your News image</label>  <br><br>
-                           <input type="file" accept="image/*" (change)="insertImage($event)" ><br>
-                           <br><br>
-                          <button (click)="newsfeed(title.value , message.value)">Newsfeed</button>
-                           
-                         </table>  
-                     
-                    </form>
-        </div>
+                            </div>
+                            
+                            <div id="main" class="container">
+                                    <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
+                                        <div  class="form-container">
+                                                        <form>
+                                                                <header class="head-form">
+                                                                    <h1 style="color:white ">Add your News here</h1>
+                                                                </header>
+                                                                <br>
+                                                                <br>
+                                                                <div class="row" >
+                                                                    <div class=col-25 >
+                                                                            <label for="Checkin Date">News Title</label>
+                                                                    </div>
+                                                                    <div class="col-75" >
+                                                                            <input type="text" #title required>
+                                                                    </div>
+                                        
+                                                                </div>
+                                                                <div class="row" >
+                                                                        <div class=col-25 >
+                                                                                <label for="Checkin Date">Type your news message here</label>
+                                            
+                                                                        </div>
+                                                                        <div class="col-75" >
+                                                                                <br>
+                                                                                <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea>
+                                            
+                                                                        </div>
+                                            
+                                                                    </div>
+                                                                    <div class="row" >
+                                                                            <div class=col-25 >
+                                                                                    <br>
+                                                                                    
+                                                                                    <label>Add image</label> 
+                                                
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="col-75" >
+                                                                                    <input type="file" accept="image/*" (change)="insertImage($event)" >
+                                                
+                                                                            </div>
+                                                                            <br>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br>
+                                                                        <br>
+                                                                            <input (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">
+                                                                        </div>
+                                                                        
+                                                                 
+                                                                  <!-- <button (click)="newsfeed(title.value , message.value)">Newsfeed</button> -->
+                                                                   
+                                                       
+                                                             
+                                                            </form>
+                                                </div>
+
+  </div>
+     
 </body>
 
 </html>

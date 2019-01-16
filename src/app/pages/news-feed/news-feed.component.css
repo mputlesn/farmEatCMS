@@ -1,32 +1,164 @@
-.bd{
-
-    border: 1%;
-    border-color: black;
-    align-content: center
-}
-
-
 body {
-    background-color: whitesmoke;
+ 
+  font-family: "Lato", sans-serif;
 }
-form {
-    width: 1000px;
-    min-height: 550px;
-    height: auto;
-    border-radius: 5px;
-    margin: 2% auto;
-    box-shadow: 0 9px 50px  #04A36F;
-    padding: 5%;
+html{
+  /* background-image:linear-gradient(rgba(85, 87, 85, 0.315),rgba(0,0,0,0.5)),url('../../../assets/farm.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%; */
+
 }
-header {
-    margin: 2% auto 10% auto;
-    text-align: center;
-    font-size: 3em;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(8, 113, 80);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+.text{
+  text-align: center;
+  padding: 1%
+}
+.primary-text{
+  text-align: center;
+  font-size: 35px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.829);
+ 
+}
+
+.sub-text{
+  display :flex;
+  padding: 50px;
+  text-align: center;
+  font-weight: 100;
+  font-size: 30px;
+  letter-spacing: 1px;
+  animation: moveInRight 1.5s ease-out;
+
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.829);
+	
+}
+.btn, .btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active, .btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn--white {
+  background-color: #087150;
+  color: #fff; }
+  .btn--white::after {
+    background-color: #fff; }
+
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .3s; }
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; }
+
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+.imgg{
+ position: relative;
+ top: 12px
+}
+  [class*="col-"] {
+    width: 100%;
+  }
+  
+  @media only screen and (min-width: 768px) {
+   
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+  }
 input[class="form-input"]{
     width: 100%;
-    height: 50px;
+    height: 35px;
   
     padding: 12px 20px;
     margin: 8px 0;
@@ -37,54 +169,51 @@ input[class="form-input"]{
   
     outline: none;
     border: none;
-  
-    border-radius: 0px 5px 5px 0px;
     transition: 0.2s linear;
+
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     box-sizing: border-box;
     
 }
-table{
-    width: 100%;
-    color: #5E6472; 
+label{
+    color: white;
+    font-size: 1em;
 }
+
+
 input[class="form-box"]{
-    width: 15%;
-    height: 50px;
-  
+    width: 10%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 0 auto;
     font-size: 16px;
     font-family: 'Abel', sans-serif;
     color: #5E6472;
-  
     outline: none;
     border: none;
-  
-    border-radius: 0px 5px 5px 0px;
     transition: 0.2s linear;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
-/* focus  */
+
 input:focus {
     transform: translateX(-2px);
-    border-radius: 5px;
+    border-radius: 10px;
 }
+
 button {
     display: inline-block;
     color: white;
-  
-    width: 20em;
+    font-size: 1em;
+    width:40em;
     height: 5em;
   
     padding: 0 20px;
-    background: #04A36F;
-    border-radius: 5px;
+    background: #078150;
+    border-radius: 10px;
     
     outline: none;
     border: none;
@@ -95,15 +224,36 @@ button {
     
     margin: 7% auto;
     letter-spacing: 0.05em;
+
     display: block;
     margin: 0 auto;
 }
+.btn{
+    display: inline-block;
+    color: white;
+    font-size: 1em;
+    width: 15em;
+    height: 4em;
+    padding: 0 20px;
+    background: #078150;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.01em;
+
+}
+
 .dropdown{
     width: 50%;
     height: 50px;
   
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 10px;
+
     font-size: 16px;
     font-family: 'Abel', sans-serif;
     color: #5E6472;
@@ -113,12 +263,14 @@ button {
   
     border-radius: 0px 5px 5px 0px;
     transition: 0.2s linear;
+
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
-/* Create a custom checkbox */
+
+
 .checkmark {
     position: absolute;
     top: 0;
@@ -127,130 +279,147 @@ button {
     width: 25px;
     background-color: #eee;
 }
-/* Hide the browser's default checkbox */
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-/* The container */
-.container {
-    display: block;
+
+.upload-btn-wrapper {
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-    content: "";
+    overflow: hidden;
+    display: inline-block;
+  }
+  .images{
+    width:167.5%;
+    
+  }
+  
+  .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
     position: absolute;
-    display: none;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+
+* {
+  box-sizing: border-box;
 }
 
-@import 'https://fonts.googleapis.com/css?family=Roboto';
-.side-menu {
-  font-family: 'Roboto', sans-serif;
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
+input[type=text], select, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  background-image:linear-gradient(rgba(85, 87, 85, 0.315),rgba(0,0,0,0.5)),url('../../../assets/farm.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  width: 100%;
   height: 100%;
-  width: 100px;
-  list-style-type: none;
-  background: rgb(112, 202, 174);
-  overflow: hidden;
-  transition: width .5s;
+  border-radius: 5px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+
+}
+.form-container{
+  margin: 0 auto;
+  width: 45%;
+  border-radius: 5px;
+  background-color: #0871505e;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-right:50px; 
+
 }
 
-.side-menu:hover {
-  width: 300px;
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
 }
 
-.side-menu li {
-  width: 300px;
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
 }
 
-.side-menu li span {
-  font-size: 1rem;
-  margin: 20px 30px 0 22px;
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.menuside{
+  color: #fff
 }
 
-.side-menu li a {
-  display: block;
-  font-size: .9rem;
-  text-decoration: none;
-  color: #FFF;
-  height: 60px;
+textarea{
+  width: 100%;
+}
+input{
+  /* margin: 100px; */
+  /* padding: 100px; */
+  width: 100%;
+}
+.submit{
+  
+}
+h1{
+  font-size: 3rem
 }
 
-.side-menu li a:hover,
-.side-menu li:first-child a {
-  background: rgb(8,113,80);
-  display: block;
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
 }
 
-@import 'https://fonts.googleapis.com/css?family=Roboto';
-.side-menu {
-  font-family: 'Roboto', sans-serif;
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100px;
-  list-style-type: none;
-  background: rgba(5, 100, 33, 0.657);
-  overflow: hidden;
-  transition: width .5s;
-}
+@media screen and (max-width: 1000px) {
+  .form-container{
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #0871505e;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
 
-.side-menu:hover {
-  width: 300px;
-}
-
-.side-menu li {
-  width: 300px;
-  /* margin-top: 10%; */
-}
-
-.side-menu li span {
-  font-size: 1rem;
-  margin: 50px 40px 50px 25px;
-}
-
-.side-menu li a {
-  display: block;
-  font-size: .9rem;
-  text-decoration: none;
-  color: #FFF;
-  height: 80px;
-}
-
-.side-menu li a:hover,
-.side-menu li:first-child a {
-  background: #eea111d2;
-  display: block;
- 
-}
-
-.main{
-    margin-left: 100px
+  
+  }
+  
 }

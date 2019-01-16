@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/FARMEATCMS",
+    "public": "dist/FarmEatCMS",
     "ignore": [
       "firebase.json",
       "**/.*",
