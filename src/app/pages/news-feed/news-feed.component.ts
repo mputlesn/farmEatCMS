@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Logs } from 'selenium-webdriver';
 import { Router } from '@angular/router';
+import { error } from '@angular/compiler/src/util';
 declare var firebase;
 
 @Component({
@@ -38,35 +39,45 @@ export class NewsFeedComponent implements OnInit {
 
    console.log(message);
    console.log(title);
-   
-   var downloadURL: any;
-   var filename = this.url.name;
-   const metaData = {'contentType': this.url.type};
-   //create reference
-   var storageRef = firebase.storage().ref(name+'/'+filename)
-   //upload the selected image to the storage
-   var uploadTask = storageRef.put(this.url, metaData)
-   // Get the download URL
-   storageRef.getDownloadURL().then((url) => {
-     downloadURL = url;
-     console.log(downloadURL);
-   }).catch((error) => { 
-   });
 
-    setTimeout(()=>{
-      firebase.database().ref('Newsfeed').push({
+
    
-   
-        message:message ,
-        title:title ,
-        image:downloadURL,
-       
-   
-      })
-    }, 3000)
-      
-   
-     alert('You have successfully saved ')
+
+     if(message != undefined && title != undefined){
+      var downloadURL: any;
+      var filename = this.url.name;
+      const metaData = {'contentType': this.url.type};
+      //create reference
+      var storageRef = firebase.storage().ref(name+'/'+filename)
+      //upload the selected image to the storage
+      var uploadTask = storageRef.put(this.url, metaData)
+      // Get the download URL
+      storageRef.getDownloadURL().then((url) => {
+        downloadURL = url;
+        console.log(downloadURL);
+      }).catch((error) => { 
+      });
+         setTimeout(()=>{
+           firebase.database().ref('Newsfeed').push({
+        
+        
+             message:message ,
+             title:title ,
+             image:downloadURL,
+            
+        
+           })
+         }, 3000)
+           
+        
+          alert('You have successfully saved ')
+     
+     }
+     else if( message == undefined && title == undefined) {
+       alert('ccc')
+          
+  
+   }
   
   }
   
