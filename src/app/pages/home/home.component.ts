@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
       this.farmEat.login(email ,password).then(()=>{
         var users= firebase.auth().currentUser;
         console.log(users.uid);      
-        alert("Loggin in")
         this.router.navigateByUrl('/dashboard');
         //this.router.navigate(['dashboard']);
        //alert("Loggin in")
@@ -48,8 +47,6 @@ export class HomeComponent implements OnInit {
     //  alert('We have sent an email to ' + email + ', please click the link to confirm your email')
     //this.router.navigate(['dashboard']);
     this.router.navigateByUrl('/dashboard');
-   
-    alert('You have registered successfully')
       // email = "" 
       // password = ""
       // name = ""
