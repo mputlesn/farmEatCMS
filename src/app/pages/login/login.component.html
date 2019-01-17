@@ -1,56 +1,103 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login Page</title>
-</head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 <body>
-  <h1>Login</h1>
-    <input type="email" placeholder="Email" #email>
-    <input type="password" placeholder="Password" #password>
-    <button (click)="Login(email.value, password.value)">Login</button>
-</body>
-</html> -->
-<!DOCTYPE html>
-<html  align="center" lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Registration Page</title>
-</head>
-<body align="center">
-  <h1 class="header" >SignIn</h1>
-  <div  class="body" >
- <!-- <div  class="input" >
-    <span>
-       <input type="text"  class="input" placeholder="Name" #name>  
-    </span>
-  </div> -->
-  <br>
-  <div  class="input" >
-     <span>
-            <input type="email"  class="input" placeholder="Email" #email>
-       </span> 
-  </div>
-  <div  class="input" >
-    <br>
- <span>
-        <input  type="password"  class="input"   placeholder="Password" #password>
-       </span>
-       <br>
+    <!-- <div id="login">
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="text" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="#" class="text-info">Register here</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
-  </div>
-  </div>
-  <br>
-  <br> 
+
+
+
     
-  <button  id="button" (click)="Login(email.value, password.value)">Login</button>
-
-
-<br>
-<br>
+<div class="container" >
+    
+        <div class="col-12 ">
+       <div class="aside">
+           <div class="login-wrap">
+               
+               <div class="login-html"> 
+                   <div class="signinup"></div>
+                      <h2>DISCOVER YOUR LOCAL FARMS WITH</h2>
+                      <h1>FARM-EAT</h1>
+                    <br> 
+                   <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                   <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                   <div class="login-form">
+                       <div class="sign-in-htm col-md-6 ">
+                           <div class="group">
+                               <label for="pass" class="label">Email Address</label>
+                               <input id="pass" type="text"  class="col-md-12" #email>
+                           </div>
+                           <div class="group">
+                               <label for="pass" class="label">Password</label>
+                               <input id="pass" type="password" class="col-md-12" data-type="password" #password>
+                             </div>
+                             <div class="group">
+                               <input type="submit" class="button" value="Sign In" (click)="Login(email.value, password.value)">
+                             </div>
+                             <!-- <div class="hr"></div> -->
+                             <div class="foot-lnk">
+                               <a href="#forgot">Forgot Password?</a>
+                             </div>
+                       </div>
+                       <div class="sign-up-htm">
+                            <div class="sign-up-htm col-md-6 ">
+                           <div class="group">
+                             <label for="user" class="label">Username</label>
+                             <input id="pass" type="text" class="col-md-12" #rName>
+                           </div>
+                           <div class="group">
+                               <label for="pass" class="label">Email Address</label>
+                               <input id="pass" type="text" class="col-md-12" #rEmail>
+                           </div>
+                           <div class="group">
+                             <label for="pass" class="label">Password</label>
+                             <input id="pass" type="password" class="col-md-12" data-type="password" #rPassword>
+                           </div>
+                           
+                           <div class="group">
+                             <input type="submit" class="button" value="Sign Up" (click)="Register(rEmail.value, rPassword.value, rName.value)">
+                           </div>
+                         </div>
+                        </div>
+                   </div>
+             </div>
+             </div>
+       </div>
+     </div>
+   
+   
+   </div>
+    
+   
+      
 </body>
-</html>
