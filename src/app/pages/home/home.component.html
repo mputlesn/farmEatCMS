@@ -60,6 +60,7 @@
  
 
     -->
+    
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -67,6 +68,10 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <body>
+   <br>
+   <br>
+   <br>
+
     <!-- <div id="login">
         <h3 class="text-center text-white pt-5">Login form</h3>
         <div class="container">
@@ -99,7 +104,7 @@
 
 
 
-
+ <div class="con" >
     
 <div class="container" >
     
@@ -112,6 +117,7 @@
                       <h2>DISCOVER YOUR LOCAL FARMS WITH</h2>
                       <h1>FARM-EAT</h1>
                     <br> 
+                    
                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                    <div class="login-form">
@@ -132,6 +138,22 @@
                                <a href="#forgot">Forgot Password?</a>
                              </div>
                        </div>
+                       <div class="customAlert0">
+                            <div class="text">
+
+                                <p>Provide the correct email and password</p>
+                              <!-- <img src="../../assets/imgs/custom alert/loader.gif" alt="" class="loading"><br> -->
+                              <!-- {{this.message}} -->
+                            </div>
+                            <div class="confirmer" id="theOkay" (click)="dismissAlert()">
+                              <div class="OK">
+                                OK
+                              </div>
+                            </div>
+                          </div>
+
+                    
+
                        <div class="sign-up-htm">
                             <div class="sign-up-htm col-md-6 ">
                            <div class="group">
@@ -147,7 +169,7 @@
                              <input id="pass" type="password" class="col-md-12" data-type="password" #rPassword>
                            </div>
                            
-                           <div class="group">
+                           <div  class="group"  >
                              <input type="submit" class="button" value="Sign Up" (click)="Register(rEmail.value, rPassword.value, rName.value)">
                            </div>
                          </div>
@@ -160,7 +182,11 @@
    
    
    </div>
+
+   
     
    
+</div>
       
 </body>
+

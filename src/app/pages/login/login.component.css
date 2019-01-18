@@ -5,8 +5,7 @@ body {
   margin-bottom: 3%;
   padding: 0;
   background: -webkit-linear-gradient(left, #087150, #43d397);
-  /* height: 100%;
-  width: 100%; */
+  height: 100vh;
 }
 
 

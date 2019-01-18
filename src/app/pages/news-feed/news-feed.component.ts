@@ -26,23 +26,26 @@ export class NewsFeedComponent implements OnInit {
   }
 
 
-  insertImage(event: any){
+  insertImage(event: any) {
     this.url = event.target.files[0];
     console.log(this.url);
-    
+
   }
 
-  newsfeed(message , title){
-   
+  newsfeed(message , title) {
+
 
 
    console.log(message);
    console.log(title);
-   
+
+   // tslint:disable-next-line:no-var-keyword
    var downloadURL: any;
-   var filename = this.url.name;
+   // tslint:disable-next-line:prefer-const
+    let filename = this.url.name;
    const metaData = {'contentType': this.url.type};
    //create reference
+
    var storageRef = firebase.storage().ref(name+'/'+filename)
    //upload the selected image to the storage
    var uploadTask = storageRef.put(this.url, metaData)
@@ -53,29 +56,36 @@ export class NewsFeedComponent implements OnInit {
    }).catch((error) => { 
    });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       firebase.database().ref('Newsfeed').push({
-   
-   
-        message:message ,
-        title:title ,
-        image:downloadURL,
-       
-   
-      })
-    }, 3000)
-      
-   
-     alert('You have successfully saved ')
-  
+    message: message ,
+        title: title ,
+        image: downloadURL,
+
+
+      });
+    }, 3000);
+
+    const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
+      const theOK = document.getElementById('theOkay' );
+    const b = window.innerHeight;
+  myAlert[0].style.top = (b / 3.5) + 'px';
+  myAlert[0].style.left = '50%';
+  myAlert[0].style.transform = 'translateX(-54%)';
+    //  alert('You have successfully saved ')
+
   }
-  
+  dismissAlert() {
+    const alerter = document.getElementsByClassName('customAlert0') as HTMLCollectionOf<HTMLElement>;
+    alerter[0].style.left = '-100%';
+    // this.message = 'please fill in your email and password' ;
+  }
 
   logout(){
-    firebase.auth().signOut().then(()=>{
+    firebase.auth().signOut().then(() => {
       this.router.navigate(['']);
       console.log("have logged out");
-      
+
     }).catch(function(error) {
       // An error happened.
     });

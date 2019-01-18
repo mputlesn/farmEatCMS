@@ -303,15 +303,81 @@ min-height:670px;
 } */
 
 
-body {
+.con {
+  
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   margin-bottom: 3%;
   padding: 0;
   background: -webkit-linear-gradient(left, #087150, #43d397);
   /* height: 100%;
   width: 100%; */
+}
+
+body {
+  padding: 0;
+  background-image:linear-gradient(rgba(21, 29, 28, 0.589),#43d3976c),url('../../../assets/farm.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+ 
+  font-family: "Lato", sans-serif;
+}
+
+
+.customAlert0{
+  z-index: 100000;
+  position: absolute;
+  background: whitesmoke;
+  width: 55%;
+  height: 15vh;
+  color: #222;
+  position: relative;
+  top: 50%;
+  left: -100%;
+  box-shadow: 0 5px 15px grey;
+  transition: 300ms;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.651);
+}
+.text{
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-weight: bold;
+}
+.confirmer{
+  width: 50px;
+  height: 50px;
+  background: #087150;
+  border-radius: 5px;
+  transition: 300ms;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 10px;
+  box-shadow: 0 5px 15px grey;
+}
+.confirmer:active{
+  width: 50px;
+  height: 50px;
+  background: #0f808d;
+  border-radius: 5px;position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 10px;
+  box-shadow: 0 5px 10px black;
+}
+.OK{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-weight: bolder;
+  color: white;
 }
 
 
@@ -323,7 +389,7 @@ body {
     margin: 0 auto;
     padding: 15px;
   }
-
+/* 
 html[_ngcontent-c1] {
   font-family: "Lucida Sans", sans-serif;
   background-image: linear-gradient(rgba(24, 22, 22, 0.911),rgba(24, 22, 22, 0.911)),url();
@@ -334,10 +400,8 @@ html[_ngcontent-c1] {
    margin: 0;
    overflow: hidden
 
-}
-  html, body {
- 
-}
+} */
+
   
   .menu ul { 
     list-style-type: none;
@@ -345,14 +409,6 @@ html[_ngcontent-c1] {
     padding: 0;
   }
   
-element.style {
-  height: 1424px;
-}
-
-  
-
-  
-
 
   a[_ngcontent-c1]{
 	color:rgb(43, 43, 43);
