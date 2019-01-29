@@ -46,9 +46,9 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     
   }
 
-  initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, products) {
+  initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
 
-    console.log(products);
+    // console.log(products);
     
     var downloadURL: any;
     for (let index = 0; index < this.testImg.length; index++) {
