@@ -68,6 +68,16 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <body>
+
+    <div class="handler">
+           <div class="custAlert">
+      <p class="myMessage"> {{message}}</p>
+       <div class="myOK" (click)="dismissTheAlert()">
+           OK
+       </div>
+    </div> 
+    </div>
+
    <br>
    <br>
    <br>
@@ -121,21 +131,26 @@
                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                    <div class="login-form">
+                       <div *ngIf="forgot == 0; else forgotPressed"></div>
+                       <ng-template #forgotPressed>
+                           <p class="emailForget">    Please enter your email address and submit</p>
+                       
+                       </ng-template>
                        <div class="sign-in-htm col-md-6 ">
                            <div class="group">
                                <label for="pass" class="label">Email Address</label>
-                               <input id="pass" type="text"  class="col-md-12" #email>
+                               <input id="pass" type="text"  class="col-md-12"  pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required #email>
                            </div>
                            <div class="group">
                                <label for="pass" class="label">Password</label>
                                <input id="pass" type="password" class="col-md-12" data-type="password" #password>
                              </div>
                              <div class="group">
-                               <input type="submit" class="button" value="Sign In" (click)="Login(email.value, password.value)">
+                               <input type="submit" class="button" value="{{content}}" (click)="Login(email.value, password.value)">
                              </div>
                              <!-- <div class="hr"></div> -->
                              <div class="foot-lnk">
-                               <a href="#forgot">Forgot Password?</a>
+                               <a href="#forgot" (click)="forgetpassword()">Forgot Password?</a>
                              </div>
                        </div>
                        <div class="customAlert0">
@@ -151,6 +166,19 @@
                               </div>
                             </div>
                           </div>
+                          <div class="customAlert01">
+                                <div class="text">
+    
+                                    <p>Please check your email to recover your password</p>
+                                  <!-- <img src="../../assets/imgs/custom alert/loader.gif" alt="" class="loading"><br> -->
+                                  <!-- {{this.message}} -->
+                                </div>
+                                <div class="confirmer" id="theOkay" (click)="dismissAlerts()">
+                                  <div class="OK">
+                                    OK
+                                  </div>
+                                </div>
+                              </div>
 
                     
 

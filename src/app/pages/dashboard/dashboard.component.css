@@ -540,6 +540,22 @@ input{
   border: 2px solid rgba(0, 0, 0, 0.651);
   
 }
+
+.customAlert01{
+  z-index:99999;
+  position: absolute;
+  background: whitesmoke;
+  width: 55%;
+  height: 15vh;
+  color: #222;
+  top: 40%;
+  left: -100%;
+  box-shadow: 0 5px 15px grey;
+  transition: 300ms;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.651);
+  
+}
 .text{
   position: relative;
   top: 40%;

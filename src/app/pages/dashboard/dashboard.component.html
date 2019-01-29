@@ -26,6 +26,10 @@
     <br>
     <br>
     <a (click)="logout()"><span class="icons"> </span>Logout</a>
+    <br>
+    <a routerLink="/addedfarms"><span class="icons"> </span>Added Farms</a>
+    <br>
+  
 
   </div>
   <div id="main" class="container">
@@ -169,6 +173,7 @@
           </div>
         </div>
       </div>
+          
 
     <div class="row">
         <div class="col-md-3 register-left">
@@ -184,11 +189,11 @@
                     <h3 class="register-heading">Add  New Farming Business</h3>
                     <div class="row register-form">
                         <div class="col-md-6">
-                            <div class="form-group" (ngSubmit)="onSubmit()" >
+                            <div class="form-group"  >
                                     <input type="text" class="form-control" maxlength="20"  placeholder="Name of place *" #name required>
                             </div>
                             <div class="form-group">
-                                    <input type="text" class="form-control"   type="text" #address required  placeholder="Address *" >
+                                    <input type="text" class="form-control"  type="text" #address required  placeholder="Address *" >
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"   id="email" #email required placeholder="Email *"  />
@@ -247,20 +252,14 @@
 
                             </div>
                             <div class="form-group">
-                                   
-                                    <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" (change)="insertImage($event)" />
-                                </div>
-                              
-
-                                  
-
-                                 
+                              <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" (change)="insertImage($event)" />
+                            </div>
+                            <div>
+                               <input class="btnRegister"(click)="initMyMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" 
+                               type="submit"
+                               value="Submit">
+                            </div>
                                
-                            <input   class="btnRegister" (click)="initMap (name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" type="submit" value="Submit">
-                            
-
-
-                            
 
                         </div>
                     </div>

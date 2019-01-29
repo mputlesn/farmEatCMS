@@ -17,12 +17,14 @@ export class FarmEatService {
   register(email, password, name) {
     return new Promise((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+        // tslint:disable-next-line:prefer-const
         let uid: any = firebase.auth().currentUser.uid;
         firebase.database().ref('admins/' + uid).set({
           name: name,
           email: email,
         });
 
+        // tslint:disable-next-line:prefer-const
         let user = firebase.auth().currentUser;
 
         // user.sendEmailVerification().then(function() {
@@ -108,6 +110,20 @@ export class FarmEatService {
       });
       resolve();
     });
+
+  }
+
+  forgetPassword(email) {
+
+    return new Promise((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(email) .then(() => {
+              resolve();
+      } , (error) => {
+        reject(error);
+
+      });
+
+  });
 
   }
 }

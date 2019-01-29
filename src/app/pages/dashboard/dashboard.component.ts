@@ -55,9 +55,8 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
 
   }
 
-  initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, products) {
-
-    console.log(products);
+  initMyMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
+    // console.log(products);
 
     // tslint:disable-next-line:prefer-const
     let downloadURL: any;
@@ -131,7 +130,7 @@ email = ' ';
 
 
 // document.getElementById.( 'email');
-// 
+
 
 // document.getElementById('name').style.display = 'none';
   }

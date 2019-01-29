@@ -9,9 +9,8 @@ declare var firebase;
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
-  newsMessage
-
-  url 
+  newsMessage;
+  url ;
   constructor( private router: Router) { }
 
   ngOnInit() {
@@ -44,16 +43,18 @@ export class NewsFeedComponent implements OnInit {
    // tslint:disable-next-line:prefer-const
     let filename = this.url.name;
    const metaData = {'contentType': this.url.type};
-   //create reference
+   // create reference
 
-   var storageRef = firebase.storage().ref(name+'/'+filename)
-   //upload the selected image to the storage
-   var uploadTask = storageRef.put(this.url, metaData)
+   // tslint:disable-next-line:prefer-const
+   let storageRef = firebase.storage().ref(name + '/' + filename);
+   // upload the selected image to the storage
+   // tslint:disable-next-line:prefer-const
+   let uploadTask = storageRef.put(this.url, metaData);
    // Get the download URL
    storageRef.getDownloadURL().then((url) => {
      downloadURL = url;
      console.log(downloadURL);
-   }).catch((error) => { 
+   }).catch((error) => {
    });
 
     setTimeout(() => {
@@ -81,14 +82,14 @@ export class NewsFeedComponent implements OnInit {
     // this.message = 'please fill in your email and password' ;
   }
 
-  logout(){
+  logout() {
     firebase.auth().signOut().then(() => {
       this.router.navigate(['']);
-      console.log("have logged out");
+      console.log('have logged out');
 
     }).catch(function(error) {
       // An error happened.
     });
-  
+
 }
 }

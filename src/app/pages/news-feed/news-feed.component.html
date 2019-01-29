@@ -115,7 +115,7 @@
                 <br>
                 <br>
                 <a (click)="logout()"><span class="icons"> </span>Logout</a>
-            
+                <a routerLink="/addedfarms"><span class="icons"> </span>Added farms</a>
               </div>
               <div id="main" class="container">
                 </div>
@@ -197,12 +197,6 @@
             </div>
               
                 <div class="w3-container">
-                    <div *ngIf="loader == 1; else notClicked">
-                        <div class="loader"></div>
-                    </div>
-                    <ng-template>
-
-                    </ng-template>
                     <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
                   
                     <div id="id01" class="w3-modal">

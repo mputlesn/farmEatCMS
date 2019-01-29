@@ -342,6 +342,25 @@ body {
   border-radius: 5px;
   border: 2px solid rgba(0, 0, 0, 0.651);
 }
+.customAlert01{
+  z-index: 100000;
+  position: absolute;
+  background: whitesmoke;
+  width: 55%;
+  height: 15vh;
+  color: #222;
+  top: 50%;
+  left: -100%;
+  box-shadow: 0 5px 15px grey;
+  transition: 300ms;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.651);
+}
+.emailForget{
+  color: red;
+  text-align: center;
+  padding: 10px;
+}
 .text{
   position: relative;
   top: 40%;
@@ -722,4 +741,37 @@ min-height:670px;
     align-content: center;
     position: relative;
     left: 0%;
+}
+
+
+.myMessage{
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 30PX;
+}
+.custAlert{
+  width: 50%;
+  height: 150px;
+  position: absolute;
+  top: 5%;
+  left: -50%;
+  background: white;
+  z-index: 100000000000;
+  transition: 300ms;
+}
+.handler{
+  height: 0;
+  /* border: 2px solid red; */
+  position: relative;
+  top: 45%;
+}
+.myOK{
+  width: 60px;
+  height: 60px;
+  background: red;
+  text-align: center;
+  padding-top: 20px;
+  margin: 0 auto;
 }
