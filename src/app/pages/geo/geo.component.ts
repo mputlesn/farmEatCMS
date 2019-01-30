@@ -67,12 +67,12 @@ export class GeoComponent implements OnInit {
        }
     });
 
-    setTimeout(()=>{
-      this.farmEat.addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
-        alert("Farm Info Added")
-      })
-    }, 5000)
-  }
+  //   setTimeout(()=>{
+  //     this.farmEat.addFarm(names, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
+  //       alert("Farm Info Added")
+  //     })
+  //   }, 5000)
+ }
 
   logout(){
     firebase.auth().signOut().then(()=>{

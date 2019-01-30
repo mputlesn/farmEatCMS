@@ -82,6 +82,8 @@
                                     <input type="text" class="form-control" placeholder="Facebook" #facebook  [(ngModel)]="FarmFacebook"  />
                                  
                                 </div>
+
+
                             <div class="form-group">
                                     <label>Crops
                                             <input type="checkbox" #crops  [(ngModel)]="Farmcrops" checked="checked">
@@ -113,6 +115,16 @@
                                         </select>
                                 
                             </div>
+                                
+                            <div class="form-group" > 
+                              <label  >Search for products you sell/offer</label>
+                              <input type="text" class="form-control" placeholder="Product" (input)="getProducts($event)" (click)="clicked()"  />
+                              <div class="list" id="hide" *ngFor="let item of products" (click)="productClicked(item)">
+                                
+                                {{item}}
+                                </div>
+                                <ng-template #non></ng-template>
+                            </div>
                             
                            
                             <div class="form-group">
@@ -137,6 +149,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 

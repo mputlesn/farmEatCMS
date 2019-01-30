@@ -23,8 +23,6 @@ import { UpdatePageComponent } from './pages/update-page/update-page.component';
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +45,7 @@ import { UpdatePageComponent } from './pages/update-page/update-page.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+  
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'geo', component: GeoComponent},

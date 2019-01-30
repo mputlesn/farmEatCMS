@@ -43,10 +43,56 @@ export class DashboardComponent implements  OnInit {
   err;
   imgError;
   testImg = [];
+  product;
+  itemsArr = []
+  val
+  products = [
+    'Search for products',
+    'Banana',
+    'Beetroot',
+    'Broccoli',
+    'Bull',
+    'Carrot',
+    'Celery',
+    'Cheese',
+    'Chicken',
+    'Corn',
+    'Cow',
+    'Crab',
+    'Fish',
+    'Garlic',
+    'Goat',
+    'Hay',
+    'Hazelnut',
+    'Honey',
+    'Horse',
+    'Juice',
+    'Lamb',
+    'Lettuce',
+    'Milk',
+    'Mashroom',
+    'Orange',
+    'Peanuts',
+    'Pear',
+    'Pig',
+    'Potato',
+    'Prown',
+    'Rabbit',
+    'Resberry',
+    'Source',
+    'Soy Beans',
+    'Streberry',
+    'Swan',
+    'Tomato',
+    'Turtle',
+    'Watermelon',
+    'Zucchini',
+  ];
 
 constructor( private farmEat: FarmEatService, private router: Router) { }
 
   ngOnInit() {
+
   }
    openNav() {
     document.getElementById('mySidenav').style.width = '250px';
@@ -57,7 +103,195 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     document.getElementById('main').style.marginLeft = '0';
   }
 
+  clicked(){
+    document.getElementById("hide").style.display = "block"
+  }
 
+  getProducts(event: any){
+    
+    console.log("hello search");
+    this.val = event.target.value;
+    console.log(this.val);
+    console.log(this.products);
+    
+
+    if(this.val && this.val.trim() != ''){
+     
+      this.products = this.products.filter((item)=>{
+        console.log(item);
+        console.log(this.products)
+        return (item.toLowerCase().indexOf(this.val.toLowerCase()) > -1)
+
+      })
+      document.getElementById("hide").style.display = "block"
+    }else{
+      console.log("the item is empty",this.val, "look...");
+      
+      this.products = [
+        'Banana',
+        'Beetroot',
+        'Broccoli',
+        'Bull',
+        'Carrot',
+        'Celery',
+        'Cheese',
+        'Chicken',
+        'Corn',
+        'Cow',
+        'Crab',
+        'Fish',
+        'Garlic',
+        'Goat',
+        'Hay',
+        'Hazelnut',
+        'Honey',
+        'Horse',
+        'Juice',
+        'Lamb',
+        'Lettuce',
+        'Milk',
+        'Mashroom',
+        'Orange',
+        'Peanuts',
+        'Pear',
+        'Pig',
+        'Potato',
+        'Prown',
+        'Rabbit',
+        'Resberry',
+        'Source',
+        'Soy Beans',
+        'Streberry',
+        'Swan',
+        'Tomato',
+        'Turtle',
+        'Watermelon',
+        'Zucchini',
+      ];
+    }
+    
+  }
+
+  productClicked(item){
+    console.log(item);
+    var icon;
+    if(item == "Banana"){
+      icon = "../../../assets/prodIcon/icons8-banana-48.png";
+    }else if(item == "Beetroot"){
+      icon = "../../../assets/prodIcon/icons8-beet-48.png";
+    }
+    else if(item == "Broccoli"){
+      icon = "../../../assets/prodIcon/icons8-broccoli-48.png";
+    }
+    else if(item == "Bull"){
+      icon = "../../../assets/prodIcon/icons8-bull-48.png";
+    }
+    else if(item == "Celery"){
+      icon = "../../../assets/prodIcon/icons8-celery-48.png";
+    }else if(item == "Cheese"){
+      icon = "../../../assets/prodIcon/icons8-cheese-48.png";
+    }
+    else if(item == "Chicken"){
+      icon = "../../../assets/prodIcon/icons8-chicken-48.png";
+    }
+    else if(item == "Corn"){
+      icon = "../../../assets/prodIcon/icons8-corn-48.png";
+    }
+    else if(item == "Cow"){
+      icon = "../../../assets/prodIcon/icons8-cow-48.png";
+    }
+    else if(item == "Crab"){
+      icon = "../../../assets/prodIcon/icons8-crab-48.png";
+    }else if(item == "Fish"){
+      icon = "../../../assets/prodIcon/icons8-fish-48.png";
+    }
+    else if(item == "Garlic"){
+      icon = "../../../assets/prodIcon/icons8-garlic-48.png";
+    }
+    else if(item == "Hay"){
+      icon = "../../../assets/prodIcon/icons8-hay-48.png";
+    }
+    else if(item == "Hazelnut"){
+      icon = "../../../assets/prodIcon/icons8-hazelnut-48.png";
+    }
+    else if(item == "Honey"){
+      icon = "../../../assets/prodIcon/icons8-honey-48.png";
+    }else if(item == "Horse"){
+      icon = "../../../assets/prodIcon/icons8-horse-48.png";
+    }
+    else if(item == "Juice"){
+      icon = "../../../assets/prodIcon/icons8-juice-48.png";
+    }
+    else if(item == "Lettuce"){
+      icon = "../../../assets/prodIcon/icons8-lettuce-48.png";
+    }
+    else if(item == "Lamb"){
+      icon = "../../../assets/prodIcon/icons8-lamb-48.png";
+    }
+    else if(item == "Milk"){
+      icon = "../../../assets/prodIcon/icons8-milk-bottle-48.png";
+    }else if(item == "Mushroom"){
+      icon = "../../../assets/prodIcon/icons8-mushroom-48.png";
+    }else if(item == "Orange"){
+      icon = "../../../assets/prodIcon/icons8-orange-48.png";
+    }
+    else if(item == "Peanuts"){
+      icon = "../../../assets/prodIcon/icons8-peanuts-48.png";
+    }
+    else if(item == "Pear"){
+      icon = "../../../assets/prodIcon/icons8-pear-48.png";
+    }
+    else if(item == "Pig"){
+      icon = "../../../assets/prodIcon/icons8-pig-48.png";
+    }
+    else if(item == "Potato"){
+      icon = "../../../assets/prodIcon/icons8-potato-48.png";
+    }
+    else if(item == "Prawn"){
+      icon = "../../../assets/prodIcon/icons8-prawn-48.png";
+    
+    }else if(item == "Rabbit"){
+      icon = "../../../assets/prodIcon/icons8-rabbit-48.png";
+    }
+    else if(item == "Raspberry"){
+      icon = "../../../assets/prodIcon/icons8-raspberry-48.png";
+    }
+    else if(item == "Source"){
+      icon = "../../../assets/prodIcon/icons8-sourse-48.png";
+    }
+    else if(item == "Soy Beans"){
+      icon = "../../../assets/prodIcon/icons8-soy-48.png";
+    }
+    else if(item == "Strawberry"){
+      icon = "../../../assets/prodIcon/icons8-strawberry-48.png";
+    }
+    else if(item == "Swan"){
+      icon = "../../../assets/prodIcon/icons8-swan-48.png";
+    }
+    else if(item == "Tomato"){
+      icon = "../../../assets/prodIcon/icons8-tomato-48.png";
+    }
+    else if(item == "Turtle"){
+      icon = "../../../assets/prodIcon/icons8-turtle-48.png";
+    }
+    else if(item == "Watermellon"){
+      icon = "../../../assets/prodIcon/icons8-watermellon-48.png";
+    }
+    else if(item == "Goat"){
+      icon = "../../../assets/prodIcon/icons8-year-of-goat-48.png";
+    }
+    else if(item == "Zucchini"){
+      icon = "../../../assets/prodIcon/icons8-zucchini-48.png";
+    }
+    else if(item == "Beetroot"){
+      icon = "../../../assets/prodIcon/icons8-beet-48.png";
+    }
+    this.itemsArr.push(icon)
+    this.product = ""
+    console.log(this.itemsArr);
+    
+    //document.getElementById("hide").style.display = "none"
+  }
 
   insertImage(event: any) {
     this.url = event.target.files[0];
@@ -159,7 +393,7 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     setTimeout(() => {
       if (this.err === 'good') {
         // tslint:disable-next-line:max-line-length
-        this.farmEat.addFarm(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(() => {
+        this.farmEat.addFarm(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng, this.itemsArr).then(() => {
         //  alert('added ')
         
 
