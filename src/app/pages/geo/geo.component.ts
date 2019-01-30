@@ -47,7 +47,7 @@ export class GeoComponent implements OnInit {
     });
 
     const geocoder = new google.maps.Geocoder;
-   
+
 
     var lat;
     var lng;

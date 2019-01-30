@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- <title>Add your News here</title> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="main.js"></script>
 </head>
@@ -19,8 +18,6 @@
                               <a routerLink="/newsfeed"><span class="icons"> &nbsp; </span>News Feed</a>
                               <br>
                               <br>
-                              <!-- <li><a routerLink="/geo"><span class="icons"><img class="imgg" src="../assets/icons8-plus-96.png" width="46px" height="46px"></span>Add Farms</a></li> -->
-                              
                               <a (click)="logout()" ><span class="icons">&nbsp; </span>Logout</a>
                           
                             </div>
@@ -76,12 +73,8 @@
                                                                         <br>
                                                                             <input (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">
                                                                         </div>
-                                                                        
-                                                                 
-                                                                  <!-- <button (click)="newsfeed(title.value , message.value)">Newsfeed</button> -->
-                                                                   
-                                                       
-                                                             
+                                                                     
+                                                              
                                                             </form>
                                                 </div>
 
@@ -90,4 +83,131 @@
 </body>
 
 </html>
+ -->
 
+
+
+ 
+<head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Page Title</title>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+                <script src="main.js"></script>
+                <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+              </head>
+            <body  onload="myFunction()" style="margin:0;">
+                
+              <div id="mySidenav" class="sidenav">  
+               
+                  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
+                
+                <br>
+                <br>
+                <a routerLink="/dashboard"><span class="icons"> </span>Home</a>
+                <br>
+                <br>
+                <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
+                <br>
+                <br>
+                <a (click)="logout()"><span class="icons"> </span>Logout</a>
+                <a routerLink="/addedfarms"><span class="icons"> </span>Added farms</a>
+              </div>
+              <div id="main" class="container">
+                </div>
+    <br> <br> <br> <br><br><br>
+    <div id="loader"></div>
+       <div class="customAlert0">
+                        <div class="text">
+                   
+                          <p>Have added news feed successfully </p>
+                        </div>
+                        <div class="confirmer" id="theOkay" (click)="dismissAlert()">
+                          <div class="OK">
+                            OK
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="customAlert01">
+                            <div class="text">
+                       
+                              <p>fill in all the field to submit</p>
+                            </div>
+                            <div class="confirmer" id="theOkay" (click)="dismissAlert()">
+                              <div class="OK">
+                                OK
+                              </div>
+                            </div>
+                          </div> -->
+<div class="container register">
+                <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
+              
+           
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="../../../assets/greenW (1).png" alt=""/>
+                        <h3>Farming is a profession of hope</h3>
+                        <p>Share news with others.</p>
+                      
+                    </div>
+                    <div class="col-md-9 register-right">
+                       
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Add your News feed here</h3>
+                                <div class="row register-form" id="newForm" >
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <input  placeholder="Title *"class="form-control" maxlength="20" minlength="5"   type="text" #title required>
+                                               
+                                        </div>
+                                        <div class="form-group" > 
+                                                        <label  >Upload Picture</label>
+                    
+                                                </div>
+                                                <div class="form-group">
+                                                       
+                                                        <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" (change)="insertImage($event)" />
+                                                    </div>
+                                       
+                                    </div>
+                                    <div class="col-md-6">
+                                                                               
+                                       
+                                        <div class="form-group">
+                                                        <!-- <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea> -->
+                                                       
+                                            <textarea minlength="10" id="subject" placeholder="Type your news message here*" name="subject" class="form-control" style="height:200px "   #message required></textarea>
+                                        </div>
+                                       
+                                        <input class="btnRegister"  (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">
+                                       
+                                        <!-- <input   class="btnRegister" (click)="initMap (name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" type="submit" value="Submit"> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+              
+                <div class="w3-container">
+                    <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
+                  
+                    <div id="id01" class="w3-modal">
+                      <div class="w3-modal-content">
+                        <div class="w3-container">
+                          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                          <h1>You have loged in</h1>
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+            </body>

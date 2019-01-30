@@ -14,13 +14,14 @@ declare var firebase;
 })
 export class DashboardComponent implements  OnInit {
 
+  message: string;
   url ;
   desLatLng;
   imageArr = [];
   err;
-  imgError
-  testImg = []
-  
+  imgError;
+  testImg = [];
+
 constructor( private farmEat: FarmEatService, private router: Router) { }
 
   ngOnInit() {
@@ -38,70 +39,108 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
 
   insertImage(event: any) {
     this.url = event.target.files[0];
-    if(this.url != "undefined"){
-      this.testImg.push(this.url)
+    if (this.url !== ' ') {
+      this.testImg.push(this.url);
       console.log(this.testImg);
+    } else {
+      const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
+      const theOK = document.getElementById('theOkay' );
+    const b = window.innerHeight;
+  myAlert[0].style.top = (b / 3.5) + 'px';
+  myAlert[0].style.left = '50%';
+  myAlert[0].style.transform = 'translateX(-54%)';
+
     }
-    
-    
+
+
   }
 
-  initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
-
+  initMyMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
     // console.log(products);
-    
-    var downloadURL: any;
+
+    // tslint:disable-next-line:prefer-const
+    let downloadURL: any;
     for (let index = 0; index < this.testImg.length; index++) {
-    
-      var filename = this.url.name;
+
+      const filename = this.url.name;
       const metaData = {'contentType': this.url.type};
-      var storageRef = firebase.storage().ref().child(filename);
-      var uploadTask = storageRef.put(this.url, metaData);
-  
+      const storageRef = firebase.storage().ref().child(filename);
+      const uploadTask = storageRef.put(this.url, metaData);
+
       storageRef.getDownloadURL().then((url) => {
         this.imageArr.push(url);
         console.log(this.imageArr);
-        this.err = "good";
-      }).catch((error) => { 
+        this.err = 'good';
+      }).catch((error) => {
         this.err = error.message;
         console.log(error.message);
         console.log(error);
-        
-        
+
       });
 
+
     }
-   
 
     const geocoder = new google.maps.Geocoder;
 
-    var lat;
-    var lng;
+    let lat;
+    let lng;
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === 'OK') {
         this.desLatLng = results[0].geometry.location;
-        console.log("Des method "+this.desLatLng);
+        console.log('Des method ' + this.desLatLng);
         console.log(this.desLatLng);
-        console.log("ghffdh"+this.desLatLng);
+        console.log('ghffdh' + this.desLatLng);
         lat = results[0].geometry.location.lat();
         lng = results[0].geometry.location.lng();
         console.log(lat);
         console.log(lng);
-        
+
        } else {
          alert('Geocode was not successful for the following reason: ' + status);
+    //      const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
+    //      const theOK = document.getElementById('theOkay' );
+    //    const b = window.innerHeight;
+    //  myAlert[0].style.top = (b / 3.5) + 'px';
+    //  myAlert[0].style.left = '50%';
+    //  myAlert[0].style.transform = 'translateX(-54%)';
        }
     });
 
-    setTimeout(()=>{
-      if(this.err == "good"){
-        this.farmEat.addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
-         
-        })
+    setTimeout(() => {
+      if (this.err === 'good') {
+        // tslint:disable-next-line:max-line-length
+        this.farmEat.addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(() => {
+        //  alert('added ')
+
+      const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
+      const theOK = document.getElementById('theOkay' );
+    const b = window.innerHeight;
+  myAlert[0].style.top = (b / 3.5) + 'px';
+  myAlert[0].style.left = '50%';
+  myAlert[0].style.transform = 'translateX(-54%)';
+        });
       }
-     
-    }, 5000)
+
+    }, 3000);
+console.log(name);
+console.log(email);
+name = ' ';
+email = ' ';
+
+
+// document.getElementById.( 'email');
+
+
+// document.getElementById('name').style.display = 'none';
   }
+
+  dismissAlert() {
+    const alerter = document.getElementsByClassName('customAlert0') as HTMLCollectionOf<HTMLElement>;
+    alerter[0].style.left = '-100%';
+    this.message = 'please fill in your email and password' ;
+  }
+
   logout() {
     firebase.auth().signOut().then(() => {
       this.router.navigate(['']);
