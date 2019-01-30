@@ -190,7 +190,7 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group"  >
-                                    <input type="text" class="form-control" maxlength="150"  placeholder="Name of place *" #name required>
+                                    <input type="text" class="form-control" maxlength="150"  placeholder="Name of place *" #names required>
                             </div>
                             <div class="form-group">
                                     <input type="text" class="form-control"  type="text" #address required  placeholder="Address *" >
@@ -267,7 +267,7 @@
                               <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" (change)="insertImage($event)" />
                             </div>
                             <div>
-                               <input class="btnRegister"(click)="initMyMap(name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" 
+                               <input class="btnRegister"(click)="initMyMap(names.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" 
                                type="submit"
                                value="Submit">
                             </div>

@@ -345,9 +345,9 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     setTimeout(() => {
       if (this.err === 'good') {
         // tslint:disable-next-line:max-line-length
-        this.farmEat.addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng, this.itemsArr).then(() => {
+        this.farmEat.addFarm(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng, this.itemsArr).then(() => {
         //  alert('added ')
-
+          
       const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
       const theOK = document.getElementById('theOkay' );
     const b = window.innerHeight;
@@ -358,10 +358,7 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
       }
 
     }, 3000);
-console.log(name);
-console.log(email);
-name = ' ';
-email = ' ';
+
 
 
 // document.getElementById.( 'email');
