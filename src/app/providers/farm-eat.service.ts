@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 
 declare var firebase;
@@ -90,6 +91,8 @@ export class FarmEatService {
   // tslint:disable-next-line:max-line-length
   addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng) {
 
+    console.log(name);
+    
     return new Promise((resolve, reject) => {
       firebase.database().ref('UrbanFarms').push({
         lat: lat,
@@ -126,4 +129,24 @@ export class FarmEatService {
   });
 
   }
+  oops(message) {
+    Swal.fire({
+      type: 'error',
+      title: 'Oops...',
+      text: message,
+
+    });
+  }
+
+
+  sucess(message) {
+    Swal.fire({
+      type: 'success',
+      title: 'Successful',
+      text: message,
+
+    });
+  }
+
+  
 }

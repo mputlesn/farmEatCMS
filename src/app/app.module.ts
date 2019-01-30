@@ -22,6 +22,7 @@ import { AddedFarmsComponent } from './pages/added-farms/added-farms.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { AddedFarmsComponent } from './pages/added-farms/added-farms.component';
     NewsFeedComponent,
     DashboardComponent,
     AddedFarmsComponent,
+    
 
 
   ],
