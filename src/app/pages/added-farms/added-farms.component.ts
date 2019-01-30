@@ -333,7 +333,9 @@ export class AddedFarmsComponent implements OnInit {
     }
   ]
  
-
+demo = [
+  
+]
   constructor(private farmEAtDb: FarmEatService) {
     console.log(document.getElementById("map"));
     //this.loadMap()
@@ -386,6 +388,9 @@ export class AddedFarmsComponent implements OnInit {
         console.log(this.farmsOnSlide);
       })
 
+
+      
+
             setTimeout(() => {
 
         for (let index = 0; index < this.farmsOnSlide.length; index++) {
@@ -393,7 +398,7 @@ export class AddedFarmsComponent implements OnInit {
           //this.icon = "../../assets/icon/icons-tree.pin.png";
           if (this.farmsOnSlide[index].crops == "true") {
             if (this.farmsOnSlide[index].aquatic == "true") {
-              this.icon = "../../../assets/icons-fish.pin.png";
+              this.icon = "../../../assets/icons-fish.pin.p ng";
               console.log(this.farmsOnSlide[index].aquatic);
             } else if (this.farmsOnSlide[index].beeKeeping == "true") {
               this.icon = "../../../assets/icons-bee.pin.png";
@@ -412,8 +417,10 @@ export class AddedFarmsComponent implements OnInit {
           }
 
 
-
-
+          var product = this.farmsOnSlide[index].products
+          console.log(product);
+          
+          
 
           var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/'
           this.abmarker = new google.maps.Marker({

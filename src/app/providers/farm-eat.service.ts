@@ -88,7 +88,7 @@ export class FarmEatService {
 
 
   // tslint:disable-next-line:max-line-length
-  addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng) {
+  addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng, products) {
 
     return new Promise((resolve, reject) => {
       firebase.database().ref('UrbanFarms').push({
@@ -106,7 +106,8 @@ export class FarmEatService {
         tel: tel,
         website: website,
         facebook: facebook,
-        image: downloadURL
+        image: downloadURL,
+        products: products
       });
       resolve();
     });
@@ -155,7 +156,8 @@ export class FarmEatService {
             image:farms[k].image ,
             beeKeeping:farms[k].beeKeeping ,
             liveStock:farms[k].liveStock ,
-            facebook:farms[k].facebook
+            facebook:farms[k].facebook,
+            products:farms[k].products
           }
           this.farmArray.push(obj) ;
           resolve(this.farmArray)

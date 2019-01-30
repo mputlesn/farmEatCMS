@@ -12,6 +12,15 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.list{
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+border: 2px solid green;
+background-color: #0f808d;
+
+}
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -652,5 +661,6 @@ input{
   transform: translate( -50%, -50%);
 }
 #hide{
-  display: none
+ display: none;
 }
+
