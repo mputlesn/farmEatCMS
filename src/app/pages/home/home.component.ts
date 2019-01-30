@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     } else if (this.passwordLogin === undefined) {
     } else {
       this.farmEat.login(this.emailLogin, this.passwordLogin).then(() => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/addedfarms');
         this.test();
       }, (error) => {
         this.cathingError(error.message);
@@ -76,8 +76,9 @@ export class HomeComponent implements OnInit {
 
     } else {
       this.farmEat.register(this.emailz, this.pass, this.username).then(() => {
-        this.router.navigateByUrl('/dashboard');
-        this.test();
+       // this.router.navigateByUrl('/addedfarms');
+       // this.test();
+       this.farmEat.sucess("Please Check your Email and Verify")
       }, (error) => {
         this.cathingError(error.message);
       });

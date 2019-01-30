@@ -12,7 +12,8 @@ declare var firebase;
 })
 export class NewsFeedComponent implements OnInit {
   @ViewChild('title') title: ElementRef;
-  @ViewChild('title') message: ElementRef;
+  @ViewChild('message') message: ElementRef;
+  @ViewChild('image')image:ElementRef; 
   newsMessage;
   url ;
   constructor( private router: Router ,  private farmEat: FarmEatService) { }
@@ -38,6 +39,7 @@ export class NewsFeedComponent implements OnInit {
   
 
   newsfeed(title, message) {
+    this.farmEat.test();
 
 
     if(title.length == 0 && message.length ==0){
@@ -78,7 +80,15 @@ export class NewsFeedComponent implements OnInit {
            this.farmEat.sucess("Added Successfully")
          }, 3000)
 
+
+
+         this.title.nativeElement.value = " ";
+         this.message.nativeElement.value = " ";
+         this.image.nativeElement.value = null;
     }
+
+
+
     
    
 

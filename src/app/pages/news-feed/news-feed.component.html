@@ -105,17 +105,20 @@
               <div id="mySidenav" class="sidenav">  
                
                   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
-                
+                  <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
                 <br>
                 <br>
-                <a routerLink="/dashboard"><span class="icons"> </span>Home</a>
+                <a routerLink="/dashboard"><span class="icons"> </span>Add farm</a>
                 <br>
                 <br>
                 <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
                 <br>
                 <br>
+                <a routerLink="/profile"><span class="icons"> </span>Profile</a>
+                <br>
+                <br>
                 <a (click)="logout()"><span class="icons"> </span>Logout</a>
-                <a routerLink="/addedfarms"><span class="icons"> </span>Added farms</a>
+                
               </div>
               <div id="main" class="container">
                 </div>
@@ -171,7 +174,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                        
-                                                        <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" (change)="insertImage($event)" />
+                                                        <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)" />
                                                     </div>
                                        
                                     </div>

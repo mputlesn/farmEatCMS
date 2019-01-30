@@ -15,6 +15,8 @@ import { LoginComponent } from './pages/login/login.component';
 import {GeoComponent} from './pages/geo/geo.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddedFarmsComponent } from './pages/added-farms/added-farms.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { UpdatePageComponent } from './pages/update-page/update-page.component';
 
 
 
@@ -35,6 +37,8 @@ import { AddedFarmsComponent } from './pages/added-farms/added-farms.component';
     NewsFeedComponent,
     DashboardComponent,
     AddedFarmsComponent,
+    ProfileComponent,
+    UpdatePageComponent
     
 
 
@@ -50,7 +54,10 @@ import { AddedFarmsComponent } from './pages/added-farms/added-farms.component';
       {path: 'login', component: LoginComponent},
       {path: 'newsfeed', component: NewsFeedComponent},
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'addedfarms', component: AddedFarmsComponent}
+      {path: 'addedfarms', component: AddedFarmsComponent},
+      {path:'profile',component:ProfileComponent } ,
+      {path:'updatepage',component:UpdatePageComponent }
+
 
     ])
   ],

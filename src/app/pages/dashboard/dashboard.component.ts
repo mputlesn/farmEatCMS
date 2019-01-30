@@ -23,6 +23,7 @@ export class DashboardComponent implements  OnInit {
   @ViewChild('tel') tel: ElementRef;
   @ViewChild('website') website: ElementRef;
   @ViewChild('facebook') facebook: ElementRef;
+  @ViewChild('image')image:ElementRef;
   FarmAquatic = false;
   Farmbees = false;
   FarmLivestock = false;
@@ -77,6 +78,7 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
   }
 
   initMyMap(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
+    this.farmEat.test();
 
   console.log(names);
 
@@ -144,18 +146,13 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
          alert('Geocode was not successful for the following reason: ' + status);
 
         // this.farmEat.oops('Geocode was not successful for the following reason');
-        
+       
         
         
         
          
         
-    //      const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
-    //      const theOK = document.getElementById('theOkay' );
-    //    const b = window.innerHeight;
-    //  myAlert[0].style.top = (b / 3.5) + 'px';
-    //  myAlert[0].style.left = '50%';
-    //  myAlert[0].style.transform = 'translateX(-54%)';
+
        }
     });
 
@@ -164,6 +161,7 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
         // tslint:disable-next-line:max-line-length
         this.farmEat.addFarm(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(() => {
         //  alert('added ')
+        
 
         this.farmEat.sucess('You added successfully');
 
@@ -174,6 +172,8 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
         this.FarmAddress = "";
         this.FarmName = "";
         this.farmDescription = "";
+        this.farmType.nativeElement.value= "";
+        this.image.nativeElement.value= null;
 
         this.imageArr = []
         });
@@ -190,11 +190,7 @@ console.log(email);
 
 
   }
-  dismissAlert() {
-    const alerter = document.getElementsByClassName('customAlert0') as HTMLCollectionOf<HTMLElement>;
-    alerter[0].style.left = '-100%';
-    this.message = 'please fill in your email and password' ;
-  }
+
 
   logout() {
     firebase.auth().signOut().then(() => {

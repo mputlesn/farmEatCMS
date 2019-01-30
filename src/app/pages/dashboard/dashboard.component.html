@@ -18,17 +18,22 @@
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
     
     <br>
-    <br>
-    <a routerLink="/dashboard"><span class="icons"> </span>Home</a>
+    <br> 
+     <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
+     <br>
+
+     <br>
+    <a routerLink="/dashboard"><span class="icons"> </span>Add farm</a>
     <br>
     <br>
     <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
     <br>
     <br>
+    <a routerLink="/profile"><span class="icons"> </span>Profile</a>
+    <br>
+    <br>
     <a (click)="logout()"><span class="icons"> </span>Logout</a>
-    <br>
-    <a routerLink="/addedfarms"><span class="icons"> </span>Added Farms</a>
-    <br>
+   
   
 
   </div>
@@ -41,18 +46,7 @@
 <div class="container register">
     <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
     
-    <div class="customAlert0">
-        <div class="text">
-<p>The farm has been added successfully</p>
 
-        </div>
-        <div class="confirmer" id="theOkay" (click)="dismissAlert()">
-          <div class="OK">
-            OK
-          </div>
-        </div>
-      </div>
-          
 
     <div class="row">
         <div class="col-md-3 register-left">
@@ -69,7 +63,7 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group"  >
-                                    <input type="text" class="form-control" maxlength="20"  placeholder="Name of place *" #nameS [(ngModel)]="FarmName"  required >
+                                    <input type="text" class="form-control" maxlength="150"  placeholder="Name of place *" #nameS [(ngModel)]="FarmName"  required >
                             </div>
                             <div class="form-group">
                                     <input type="text" class="form-control"  type="text" #address  [(ngModel)]="FarmAddress" required  placeholder="Address *" >
@@ -79,7 +73,7 @@
                                
                             </div>
                             <div class="form-group">
-                                <input type="tel"  minlength="0" maxlength="10" class="form-control" placeholder="Contact Number *" #tel  [(ngModel)]="FarmTel" required />
+                                <input type="tel"  minlength="10" maxlength="10" class="form-control" placeholder="Contact Number *" #tel  [(ngModel)]="FarmTel" required />
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"  placeholder="Website" #website  [(ngModel)]="FarmWebsite" />                                
@@ -111,7 +105,7 @@
                             
                            
                             <div class="form-group">
-                                    <select class="form-control"  #farmType  [(ngModel)]="type" >
+                                    <select class="form-control"  #farmType  >
                                             <option class="hidden"  selected disabled>Select type of urban farm business</option>
                                             <option value="Vertical Farming">Vertical Farming</option>
                                             <option value="Traditional Farming">Traditional Farming</option>
@@ -130,7 +124,7 @@
 
                             </div>
                             <div class="form-group">
-                              <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" (change)="insertImage($event)" />
+                              <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)" />
                             </div>
                             <div>
                                 <input class="btnRegister"(click)="initMyMap(nameS.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" 
