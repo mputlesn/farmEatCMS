@@ -13,7 +13,7 @@ declare var firebase;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements  OnInit {
-
+  formControlValue = '';
   message: string;
   url ;
   desLatLng;
@@ -21,6 +21,28 @@ export class DashboardComponent implements  OnInit {
   err;
   imgError;
   testImg = [];
+  products = [
+    'Reda Marriott',
+    'Cleta Cheatwood',
+    'Penney Fortman',
+    'Andy Mary',
+    'Lilia Ricci',
+    'Simonne Horne',
+    'Marquis Macgillivray',
+    'Ettie Koester',
+    'Lovie Mero',
+    'Gretta Ripley',
+    'Jutta Casteel',
+    'Donita Looby',
+    'Patrice Guillotte',
+    'Kirstin Sever',
+    'Ezra Tremper',
+    'Darell Monnier',
+    'Elvira Balser',
+    'Noriko Kluge',
+    'Zulema Shake',
+    'Kary Schreck'
+  ];
 
 constructor( private farmEat: FarmEatService, private router: Router) { }
 
@@ -34,8 +56,6 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     document.getElementById('mySidenav').style.width = '0';
     document.getElementById('main').style.marginLeft = '0';
   }
-
-
 
   insertImage(event: any) {
     this.url = event.target.files[0];
