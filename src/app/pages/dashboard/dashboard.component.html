@@ -59,7 +59,18 @@
            
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading">Add  New Farming Business</h3>
+                    <div class="dropdown">
+                        <div class="counter" (click)="smallPageCounter()">Products No. {{itemLength}}</div>
+                        <div id="myDropdown" class="dropdown-content">
+                            <div class="card" *ngFor="let prod of itemsProd  ;let i = index">
+                                <div class="container" >
+                                  <h4><b>{{prod}}</b><img src="../../../assets/icons8-multiply-50.png" (click)="delete(i)"></h4> 
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  <h3 class="register-heading">Add  New Farming Business</h3>
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group"  >
@@ -182,5 +193,27 @@
 </div>
 </div>      
 </div> -->
+
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
 
 </body>

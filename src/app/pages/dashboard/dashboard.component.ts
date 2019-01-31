@@ -44,7 +44,9 @@ export class DashboardComponent implements  OnInit {
   imgError;
   testImg = [];
   product;
-  itemsArr = []
+  itemsArr = [];
+  itemLength = 0
+  itemsProd = []
   val
   products = [
     'Search for products',
@@ -105,6 +107,16 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
 
   clicked(){
     document.getElementById("hide").style.display = "block"
+  }
+
+  delete(i){
+    this.itemsArr.splice(i, 1); 
+    this.itemsProd.splice(i, 1); 
+    this.itemLength = this.itemsProd.length
+  }
+
+  smallPageCounter(){
+    document.getElementById("myDropdown").classList.toggle("show");
   }
 
   getProducts(event: any){
@@ -287,8 +299,13 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
       icon = "../../../assets/prodIcon/icons8-beet-48.png";
     }
     this.itemsArr.push(icon)
+    this.itemsProd.push(item)
+    this.itemLength = this.itemsProd.length
+    
     this.product = ""
     console.log(this.itemsArr);
+    console.log(this.itemsProd);
+    
     
     //document.getElementById("hide").style.display = "none"
   }

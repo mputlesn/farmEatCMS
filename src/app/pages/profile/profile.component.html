@@ -34,8 +34,10 @@
 
 
  <div >
+ <div>
    <span  style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span> 
-   <img class="topimg" src="../../../assets/1841196866.jpeg" alt="" srcset="">
+   <img class="topimg" id="images" [src]="coverUrl">
+   <input type="file"  id="hide" #image accept="image/png, image/jpeg" (change)="uploadCover($event)">
  </div>
  
 

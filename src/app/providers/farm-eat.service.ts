@@ -25,6 +25,8 @@ export class FarmEatService {
         firebase.database().ref('admins/' + uid).set({
           name: name,
           email: email,
+          cover: "../../../assets/1841196866.jpeg",
+          proPicture: "../../../assets/Illustration-with-Variable-Rate_forWP.jpg"
         });
 
         // tslint:disable-next-line:prefer-const
@@ -47,6 +49,21 @@ export class FarmEatService {
 
 
     });
+  }
+
+
+  getUser(){
+    return new Promise ((accpt, rej) =>{
+      
+      let uid= firebase.auth().currentUser.uid;
+      console.log(uid);
+      firebase.database().ref('admins/'+uid).on('value' , (data:any)=>{
+        var user =data.val();
+        console.log(user);
+        accpt(user)
+       
+      })
+    })
   }
 
   checkstate() {
