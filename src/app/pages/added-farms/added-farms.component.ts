@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FarmEatService } from '../../providers/farm-eat.service';
-
+import { Logs } from 'selenium-webdriver';
+import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 declare var google: any;
+declare var firebase;
+
 
 @Component({
   selector: 'app-added-farms',
@@ -333,10 +335,8 @@ export class AddedFarmsComponent implements OnInit {
     }
   ]
  
-demo = [
-  
-]
-  constructor(private farmEAtDb: FarmEatService) {
+
+  constructor(private farmEAtDb: FarmEatService, private router: Router ) {
     console.log(document.getElementById("map"));
     //this.loadMap()
    
@@ -534,4 +534,15 @@ demo = [
       x.style.display = "block";
     }
   }
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.router.navigate(['']);
+      console.log('have logged out');
+
+    }).catch(function(error) {
+      // An error happened.
+    });
+
+}
+  
 }

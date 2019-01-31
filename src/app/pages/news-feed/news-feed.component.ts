@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Logs } from 'selenium-webdriver';
 import { Router } from '@angular/router';
+import { FarmEatService } from '../../providers/farm-eat.service';
+
 declare var firebase;
 
 @Component({
@@ -9,9 +11,12 @@ declare var firebase;
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
+  @ViewChild('title') title: ElementRef;
+  @ViewChild('message') message: ElementRef;
+  @ViewChild('image')image:ElementRef; 
   newsMessage;
   url ;
-  constructor( private router: Router) { }
+  constructor( private router: Router ,  private farmEat: FarmEatService) { }
 
   ngOnInit() {
   }
@@ -31,56 +36,64 @@ export class NewsFeedComponent implements OnInit {
 
   }
 
-  newsfeed(message , title) {
+  
+
+  newsfeed(title, message) {
+    this.farmEat.test();
 
 
+    if(title.length == 0 && message.length ==0){
+      this.farmEat.oops("Please enter all Details");
+    } else if (title.length == 0 ){
+      this.farmEat.oops("Please enter title")
+    } else if (message.length ==0){
+      this.farmEat.oops("Please enter description")
 
-   console.log(message);
-   console.log(title);
-
-   // tslint:disable-next-line:no-var-keyword
-   var downloadURL: any;
-   // tslint:disable-next-line:prefer-const
-    let filename = this.url.name;
-   const metaData = {'contentType': this.url.type};
-   // create reference
-
-   // tslint:disable-next-line:prefer-const
-   let storageRef = firebase.storage().ref(name + '/' + filename);
-   // upload the selected image to the storage
-   // tslint:disable-next-line:prefer-const
-   let uploadTask = storageRef.put(this.url, metaData);
-   // Get the download URL
-   storageRef.getDownloadURL().then((url) => {
-     downloadURL = url;
-     console.log(downloadURL);
-   }).catch((error) => {
-   });
-
-    setTimeout(() => {
-      firebase.database().ref('Newsfeed').push({
-    message: message ,
-        title: title ,
-        image: downloadURL,
-
-
+    } else {
+      var downloadURL: any;
+      var filename = this.url.name;
+      const metaData = {'contentType': this.url.type};
+      //create reference
+      var storageRef = firebase.storage().ref(name+'/'+filename)
+      //upload the selected image to the storage
+      var uploadTask = storageRef.put(this.url, metaData)
+      // Get the download URL
+      storageRef.getDownloadURL().then((url) => {
+        downloadURL = url;
+        console.log(downloadURL);
+        console.log(title);
+        console.log(message);
+        
+        
+      }).catch((error) => {
       });
-    }, 3000);
+         setTimeout(()=>{
+           firebase.database().ref('Newsfeed').push({
+ 
+ 
+             message:message ,
+             title:title ,
+             image:downloadURL,
+ 
+ 
+           })
+           this.farmEat.sucess("Added Successfully")
+         }, 3000)
 
-    const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
-      const theOK = document.getElementById('theOkay' );
-    const b = window.innerHeight;
-  myAlert[0].style.top = (b / 3.5) + 'px';
-  myAlert[0].style.left = '50%';
-  myAlert[0].style.transform = 'translateX(-54%)';
-    //  alert('You have successfully saved ')
+
+
+         this.title.nativeElement.value = " ";
+         this.message.nativeElement.value = " ";
+         this.image.nativeElement.value = null;
+    }
+
+
+
+    
+   
 
   }
-  dismissAlert() {
-    const alerter = document.getElementsByClassName('customAlert0') as HTMLCollectionOf<HTMLElement>;
-    alerter[0].style.left = '-100%';
-    // this.message = 'please fill in your email and password' ;
-  }
+
 
   logout() {
     firebase.auth().signOut().then(() => {

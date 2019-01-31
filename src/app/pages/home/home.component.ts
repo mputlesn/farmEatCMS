@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FarmEatService } from '../../providers/farm-eat.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 declare var firebase;
 
@@ -11,12 +12,17 @@ declare var firebase;
 })
 export class HomeComponent implements OnInit {
 
-  leader ;
+  leader;
 
-  message= "";
+  message = '';
   linkValue = '/';
   forgot = 0;
   content = 'Sign In';
+  username;
+  pass;
+  emailz;
+  emailLogin;
+  passwordLogin;
   constructor(private farmEat: FarmEatService, private router: Router) { }
 
   ngOnInit() {
@@ -24,131 +30,140 @@ export class HomeComponent implements OnInit {
 
 
 
-  Login(email, password) {
+  Login() {
+    if (this.emailLogin === undefined && this.passwordLogin === undefined) {
+      this.oops();
 
-    if (this.forgot === 1) {
-      this.content = 'Submit';
-      this.farmEat.forgetPassword(email).then(() => {
-        this.content = 'Sign In';
-        const myAlert = document.getElementsByClassName('customAlert01') as HTMLCollectionOf <HTMLElement>;
-        const theOK = document.getElementById('theOkay' );
-      const b = window.innerHeight;
-    myAlert[0].style.top = (b / 3.5) + 'px';
-    myAlert[0].style.left = '50%';
-    myAlert[0].style.transform = 'translateX(-54%)';
-      // alert('Please check your email to recover your password')
-    })
+    } else if (this.emailLogin === undefined) {
+      this.email();
+    } else if (this.passwordLogin === undefined) {
     } else {
- 
-    if (email !== '' && password !== '') {
-      this.farmEat.login(email , password).then(() => {
-      const users = firebase.auth().currentUser;
-        console.log(users.uid);
-        this.router.navigateByUrl('/dashboard');
-      } , (error) => {
-        // this.message = 'Please insert your and email password';
-        // theOK.style.display = 'block';
+      this.farmEat.login(this.emailLogin, this.passwordLogin).then(() => {
+        this.router.navigateByUrl('/addedfarms');
+        this.test();
+      }, (error) => {
+        this.cathingError(error.message);
       });
-      // alert('Good');
-     } else {
-      const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
-      const theOK = document.getElementById('theOkay' );
-    const b = window.innerHeight;
-  myAlert[0].style.top = (b / 3.5) + 'px';
-  myAlert[0].style.left = '50%';
-  myAlert[0].style.transform = 'translateX(-54%)';
-      // alert('bad');
+
      }
-    }
 
 
-    }
 
-  dismissAlert() {
-    const alerter = document.getElementsByClassName('customAlert0') as HTMLCollectionOf<HTMLElement>;
-    alerter[0].style.left = '-100%';
-    this.message = 'please fill in your email and password' ;
+
+
   }
-  dismissAlerts() {
-    const alerter = document.getElementsByClassName('customAlert01') as HTMLCollectionOf<HTMLElement>;
-    alerter[0].style.left = '-100%';
-    this.message = 'please fill in your email and password' ;
-  }
-
-  Register(email, password, name) {
-
-    let alerter = document.getElementsByClassName("custAlert") as HTMLCollectionOf <HTMLElement>;
-
-
-
-    if(name == undefined || name == ''){
-
-      alerter[0].style.left = "25%";
-      console.log("name");
-      this.message = "Please make sure to fill in your username"
-      
-    } 
-    else if(email == null || email == ''){
-      alerter[0].style.left = "25%";
-      console.log("email");
-      this.message = "Please insert your email address"
-    }
-    else if(password == null || password == ''){
-      alerter[0].style.left = "25%";
-      console.log("password");
-      this.message = "Please enter your password";
-      
-    }
-    else{
-
-      this.farmEat.register(email , password, name).then(() => {
-        //  alert('We have sent an email to ' + email + ', please click the link to confirm your email')
-        // this.router.navigate(['dashboard']);
-
-        this.router.navigateByUrl('/dashboard');
-        } , (error) => {
-          // this.message = error.message;
-          // alert(error.message)
-        } );
-    }
-
-
-    // console.log(name);
-  //   if (email !== ''  && password  !== ''  ) {
-    this.farmEat.register(email , password, name).then(() => {
-    //  alert('We have sent an email to ' + email + ', please click the link to confirm your email')
-    // this.router.navigate(['dashboard']);
-    this.router.navigateByUrl('/dashboard');
-    } , (error) => {
-      alerter[0].style.left = "25%";
-      this.message = error.message;
-      // alert(error.message)
-    } );
-  // } else {
-  //   const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf <HTMLElement>;
-  //   const theOK = document.getElementById('theOkay' );
-  //   // const leader = document.getElementsByClassName('loading') as HTMLCollectionOf <HTMLElement>
-  //   const b = window.innerHeight;
-
-  // myAlert[0].style.top = (b / 3.5) + 'px';
-  // myAlert[0].style.left = '50%';
-  // myAlert[0].style.transform = 'translateX(-54%)';
-
-  // }
-  }
-  dismissTheAlert(){
-    let myAlerter = document.getElementsByClassName("custAlert") as HTMLCollectionOf <HTMLElement>;
-
-    myAlerter[0].style.left = "-50%";
-    this.message = "";
-  }
-  forgetpassword(){
+  forgetpassword() {
     this.forgot = 1;
     this.content = 'Submit';
-    // this.farmEat.forgetPassword(email).then(() =>{
-    //   this.forgot = 1;
-    // })
+    this.farmEat.forgetPassword(this.emailLogin).then(() => {
+      this.forgot = 1;
+    });
 
   }
 
+
+  Registerz() {
+
+    if (this.username === undefined && this.pass === undefined && this.emailz === undefined) {
+      this.oops();
+    } else if (this.username === undefined) {
+      this.email();
+    } else if (this.emailz === undefined) {
+      this.name();
+
+    } else if (this.pass === undefined) {
+      this.password();
+
+    } else {
+      this.farmEat.register(this.emailz, this.pass, this.username).then(() => {
+       // this.router.navigateByUrl('/addedfarms');
+       // this.test();
+       this.farmEat.sucess("Please Check your Email and Verify")
+      }, (error) => {
+        this.cathingError(error.message);
+      });
+
+    }
+
+  }
+
+
+  test() {
+    // tslint:disable-next-line:prefer-const
+    let timerInterval;
+    Swal.fire({
+      title: 'Loading..',
+      html: 'Please wait, still loading',
+      timer: 3000,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+
+      },
+      onClose: () => {
+        clearInterval(timerInterval);
+      }
+    }).then((result) => {
+      if (
+        // Read more about handling dismissals
+        result.dismiss === Swal.DismissReason.timer
+      ) {
+        console.log('I was closed by the timer');
+      }
+    });
+
+  }
+
+  seccess() {
+    Swal.fire({
+      type: 'success',
+      title: 'Success ',
+      text: 'You have add Successfully',
+
+    });
+  }
+
+  name() {
+    Swal.fire({
+      type: 'error',
+      title: 'Oops...',
+      text: 'Please provide username.',
+
+    });
+  }
+  oops() {
+    Swal.fire({
+      type: 'error',
+      title: 'Oops...',
+      text: 'please enter all details',
+
+    });
+  }
+  email() {
+    Swal.fire({
+      type: 'error',
+      title: 'Oops...',
+      text: 'Please provide email.',
+
+    });
+  }
+  password() {
+    Swal.fire({
+      type: 'error',
+      title: 'Oops...',
+      text: 'please provide password ',
+
+    });
+  }
+
+
+
+
+  cathingError(message) {
+    Swal.fire({
+      type: 'error',
+      title: 'Oops...',
+      text: message,
+
+    });
+  }
 }

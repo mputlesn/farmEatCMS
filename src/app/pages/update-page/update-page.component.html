@@ -1,0 +1,160 @@
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="main.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+<body > 
+  <div id="mySidenav" class="sidenav">  
+   
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
+    
+    <br>
+    <br> 
+     <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
+     <br>
+
+     <br>
+    <a routerLink="/dashboard"><span class="icons"> </span>Add farm</a>
+    <br>
+    <br>
+    <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
+    <br>
+    <br>
+    <a routerLink="/profile"><span class="icons"> </span>Profile</a>
+    <br>
+    <br>
+    <a (click)="logout()"><span class="icons"> </span>Logout</a>
+   
+  
+
+  </div>
+  <div id="main" class="container">
+    </div>
+
+  <br><br><br>
+
+    
+<div class="container register">
+    <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
+    
+
+
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="../../../assets/greenW (1).png" alt=""/>
+            <h3>MAKE IT EFFORTLESS FOR PEOPLE TO FIND YOU.</h3>
+            <p>REGISTER YOUR FARMING BUSINESS NOW WITH FARM EAT.</p>
+          
+        </div>
+        <div class="col-md-9 register-right" *ngFor ="let profilevalue of profileArray" >
+           
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Update</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group"  >
+                                    <input type="text" class="form-control" maxlength="20"  placeholder="Name of place *" #nameS [(ngModel)]="farmName" [value]="name" required >
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control"  type="text" #address  [(ngModel)]="FarmAddress" required  placeholder="Address *" >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control"   id="email" #email  [(ngModel)]="FarmEmail" placeholder="Email"   />
+                               
+                            </div>
+                            <div class="form-group">
+                                <input type="tel"  minlength="10" maxlength="10" class="form-control" placeholder="Contact Number *" #tel  [(ngModel)]="FarmTel" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control"  placeholder="Website" #website  [(ngModel)]="FarmWebsite" />                                
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Facebook" #facebook  [(ngModel)]="FarmFacebook"  />
+                                 
+                                </div>
+                            <div class="form-group">
+                                    <label>Crops
+                                            <input type="checkbox" #crops  [(ngModel)]="Farmcrops" checked="checked">
+                                          </label>
+                                          <label >Live Stock
+                                                <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
+                                            
+                                              </label>
+                                              <label >BeeKeeping
+                                                <input type="checkbox" #beeKeeping  [(ngModel)]="Farmbees">
+                                               
+                                              </label>
+                                              <label  >Aquatic
+                                                <input type="checkbox" #aquatic  [(ngModel)]="FarmAquatic" >
+                            
+                                              </label>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            
+                           
+                            <div class="form-group" [(ngModel)]="FarmType">
+                                    <select class="form-control"  #farmType  >
+                                            <option class="hidden"  selected disabled>Select type of urban farm business</option>
+                                            <option value="Vertical Farming">Vertical Farming</option>
+                                            <option value="Traditional Farming">Traditional Farming</option>
+                                            <option value="Green House">Green House</option>
+                                        </select>
+                                
+                            </div>
+                            
+                           
+                            <div class="form-group">
+                                
+                                <textarea id="subject" placeholder="Description of a Farm..*" name="subject" class="form-control" style="height:200px " #description  [(ngModel)]="farmDescription" required></textarea>
+                            </div>
+                            <div class="form-group" > 
+                                    <label  >Upload Picture a farm</label>
+
+                            </div>
+                            <div class="form-group">
+                              <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)"   [(ngModel)]="FarmImage" />
+                            </div>
+                            <div>
+                                <input class="btnRegister"(click)="update(address.value)" type="submit" value="Update">
+                            </div>
+                               
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+ 
+    <div class="w3-container">
+      
+        <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
+      
+        
+
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content">
+            <div class="w3-container">
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+              <h1>You have loged in</h1>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>

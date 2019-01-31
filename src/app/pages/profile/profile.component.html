@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Document</title>
+</head>
+<body class="body">
+  <div id="mySidenav" class="sidenav">  
+ 
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
+    
+    <br>
+    <br>
+    <a routerLink="/dashboard"><span class="icons"> </span>Home</a>
+    <br>
+    <br>
+    <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
+    <br>
+    <br>
+    <a (click)="logout()"><span class="icons"> </span>Logout</a>
+    <br>
+    <a routerLink="/addedfarms"><span class="icons"> </span>Added Farms</a>
+    <br>
+    <a routerLink="/geo"><span class="icons"> </span>Profile</a>
+
+  </div>
+  <div id="main" class="container">
+    </div>
+
+
+ <div>
+   <span  style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span> 
+   <img class="topimg" id="images" [src]="coverUrl">
+   <input type="file"  id="hide" #image accept="image/png, image/jpeg" (change)="uploadCover($event)">
+ </div>
+<div class="flex">
+
+  <div class="left">
+      <img class="leftimg" id="images" [src]="propicUrl">
+      <input type="file"  id="hide" #image accept="image/png, image/jpeg" (change)="uploadProPic($event)">
+      <h1 class="lefthead">My farms</h1>
+      <div class="leftcard">
+        <div class="leftleft">
+            <img id="images" [src]="propicUrl" class="leftleftimg">
+        
+        </div>
+        <div class="leftright">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid eligendi porro odio molestiae vero, repellendus repellat, dolorem nihil nisi culpa eius deleniti id velit eum placeat tempora minus quia iste.
+        </div>
+
+      </div>
+
+  </div>
+
+  <div class="right" *ngFor="let profile of profileArray">
+    <h1 class="righthead"> Company description</h1>
+    <hr>
+    <div  class="rightcard">
+      <div  class="rightleft">
+       <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-building"></i>{{profile.name}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-map-marker"></i>{{profile.address}} </h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-envelope"></i> {{profile.email}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-phone"></i> {{profile.tel}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-laptop"></i>{{profile.website}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fab fa-facebook"></i>{{profile.facebook}}</h2>
+    <h2 class="round"> <i  class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-tree"></i>{{profile.type}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-home"></i>Greenhouse</h2>
+    </div>
+   
+    <div class="rightright">
+
+      <h1 class="righthead">About us</h1>
+    <h3  style="padding:16px" class="description">{{profile.description}}</h3>
+    <h1 class="righthead">What we offer</h1>
+    <div class="flex-container">
+        <div><img class="iconimg" src="../../../assets/icons/icons8-banana-48.png" alt="" srcset=""></div>
+        <div><img class="iconimg" src="../../../assets/icons/icons8-beet-48.png" alt="" srcset=""></div>
+        <div><img class="iconimg" src="../../../assets/icons/icons8-broccoli-48.png" alt="" srcset=""></div>
+        <div><img class="iconimg" src="../../../assets/icons/icons8-chicken-48.png" alt="" srcset=""></div>
+      
+        <div><img class="iconimg" src="../../../assets/icons/icons8-banana-48.png" alt="" srcset=""></div>
+        <div><img class="iconimg" src="../../../assets/icons/icons8-beet-48.png" alt="" srcset=""></div>
+        <div><img class="iconimg" src="../../../assets/icons/icons8-broccoli-48.png" alt="" srcset=""></div>
+        <div><img class="iconimg" src="../../../assets/icons/icons8-chicken-48.png" alt="" srcset=""></div>
+
+        
+      </div>
+     
+    <button class="button" (click)="nextpageupdate()">Update</button>
+    </div>
+    </div>
+    
+    
+   
+  </div>
+</div>
+</body>
+</html>

@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { polyfill as keyboardEventKeyPolyfill } from 'keyboardevent-key-polyfill';
-import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
 
 import { AppComponent } from './app.component';
 import { GeoPipe } from './page/geo.pipe';
@@ -17,8 +15,9 @@ import { LoginComponent } from './pages/login/login.component';
 import {GeoComponent} from './pages/geo/geo.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddedFarmsComponent } from './pages/added-farms/added-farms.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { UpdatePageComponent } from './pages/update-page/update-page.component';
 
-keyboardEventKeyPolyfill();
 
 
 
@@ -36,6 +35,9 @@ keyboardEventKeyPolyfill();
     NewsFeedComponent,
     DashboardComponent,
     AddedFarmsComponent,
+    ProfileComponent,
+    UpdatePageComponent
+    
 
 
   ],
@@ -43,7 +45,7 @@ keyboardEventKeyPolyfill();
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    TextInputAutocompleteModule,
+  
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'geo', component: GeoComponent},
@@ -51,7 +53,10 @@ keyboardEventKeyPolyfill();
       {path: 'login', component: LoginComponent},
       {path: 'newsfeed', component: NewsFeedComponent},
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'addedfarms', component: AddedFarmsComponent}
+      {path: 'addedfarms', component: AddedFarmsComponent},
+      {path:'profile',component:ProfileComponent } ,
+      {path:'updatepage',component:UpdatePageComponent }
+
 
     ])
   ],

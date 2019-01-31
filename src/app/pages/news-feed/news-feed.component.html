@@ -105,17 +105,20 @@
               <div id="mySidenav" class="sidenav">  
                
                   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
-                
+                  <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
                 <br>
                 <br>
-                <a routerLink="/dashboard"><span class="icons"> </span>Home</a>
+                <a routerLink="/dashboard"><span class="icons"> </span>Add farm</a>
                 <br>
                 <br>
                 <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
                 <br>
                 <br>
+                <a routerLink="/profile"><span class="icons"> </span>Profile</a>
+                <br>
+                <br>
                 <a (click)="logout()"><span class="icons"> </span>Logout</a>
-                <a routerLink="/addedfarms"><span class="icons"> </span>Added farms</a>
+                
               </div>
               <div id="main" class="container">
                 </div>
@@ -162,7 +165,7 @@
                                 <div class="row register-form" id="newForm" >
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                        <input  placeholder="Title *"class="form-control" maxlength="20" minlength="5"   type="text" #title required>
+                                        <input  placeholder="Title *"class="form-control" maxlength="20" minlength="5"   type="text" #title [(ngModel)]="Titlle" required>
                                                
                                         </div>
                                         <div class="form-group" > 
@@ -171,7 +174,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                        
-                                                        <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" (change)="insertImage($event)" />
+                                                        <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)" />
                                                     </div>
                                        
                                     </div>
@@ -181,7 +184,7 @@
                                         <div class="form-group">
                                                         <!-- <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea> -->
                                                        
-                                            <textarea minlength="10" id="subject" placeholder="Type your news message here*" name="subject" class="form-control" style="height:200px "   #message required></textarea>
+                                            <textarea minlength="10" id="subject" placeholder="Type your news message here*" name="subject" class="form-control" style="height:200px "   #message [(ngModel)]="Description" required></textarea>
                                         </div>
                                        
                                         <input class="btnRegister"  (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">

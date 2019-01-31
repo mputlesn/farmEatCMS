@@ -274,7 +274,7 @@ h2 {
 h1{
     color: white;
     text-align: center;
-    font-size: 4rem
+    font-size: 3rem;
 }
 .image{
     /* display: flex;
@@ -338,3 +338,30 @@ h1{
     line-height: 75px;
     font-size: 30px;
   } */
+
+.main-container{
+    overflow: scroll;
+    width: 50%;
+    padding: 16px;
+
+
+}
+.img-container{
+    width: 10vh;
+    height: 10vh;
+   
+}
+.right-container{
+    text-align: center;
+ /* text-align: right; */
+
+}
+.list{
+    display: flex;
+    /* float: left; */
+}
+.name p{
+  text-align: center;
+  /* display: inline-block; */
+    
+}

@@ -9,7 +9,9 @@ declare var firebase;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.checkstate()
+   }
   title = 'app';
 
 
