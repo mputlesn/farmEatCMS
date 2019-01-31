@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   constructor(private farmEat: FarmEatService, private router: Router) { }
 
   ngOnInit() {
+    
   }
 
 

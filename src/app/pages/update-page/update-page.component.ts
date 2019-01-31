@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FarmEatService } from '../../providers/farm-eat.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Router } from '@angular/router';
+import  UpdateKeyArr from '../profile/profile.component'
 declare var firebase ;
 declare var google: any;
 
@@ -15,7 +16,8 @@ export class UpdatePageComponent implements OnInit {
   FarmEmail ;
   FarmTel ;
   FarmWebsite ;
-  FarmFacebook ;
+  
+  FarmFacebook
   FarmAddress ;
   farmDescription ;
   Farmcrops ;
@@ -40,41 +42,90 @@ export class UpdatePageComponent implements OnInit {
   type =[] ;
   image =[]
 
+  updateArray = UpdateKeyArr ;
 
   constructor(private farmEAtDb: FarmEatService,  private router: Router) { 
 
-    this.farmEAtDb.getProfile().then((data:any)=>{
-      
-      this.keyArray = data[0].k ;
-      this. email =data[0].name
+    console.log(this.updateArray);
 
-      this.profileArray = data
+    this.farmEAtDb.getAFarm(this.updateArray[0]).then((data:any)=>{
+     this.keyArray =data.k
+      this.name = data.name;
+      this.email =data.email ;
+      this.address =data.address ;
+      this.tel =data.tel ;
+      this.website =data.website
+      this.description= data.description
+      this.crop =data.crops;
+      this.livestock=data.liveStock
+      this.bees =data.beeKeeping;
+      this.Aquatic =data.aquatic
+      this.type =data.type;
+      this.image =data.image[0]
+    })
+    
 
-      this.name =data[0].name 
+    // this.farmEAtDb.getProfile().then((data:any)=>{
+      
+    //   // this.keyArray = data[0].k ;
+    //   // this. email =data[0].name
 
-      this.name = data[0].name;
-      this.email =data[0].email ;
-      this.address =data[0].address ;
-      this.tel =data[0].tel ;
-      this.website =data[0].website
-      this.description= data[0].description
-      this.crop =data[0].crops;
-      this.livestock=data[0].liveStock
-      this.bees =data[0].beeKeeping;
-      this.Aquatic =data[0].aquatic
-      this.type =data[0].type;
-      this.image =data[0].image[0]
+    //   // this.profileArray = data
 
+    //   // this.name =data[0].name 
+
+    //   // this.name = data[0].name;
+    //   // this.email =data[0].email ;
+    //   // this.address =data[0].address ;
+    //   // this.tel =data[0].tel ;
+    //   // this.website =data[0].website
+    //   // this.description= data[0].description
+    //   // this.crop =data[0].crops;
+    //   // this.livestock=data[0].liveStock
+    //   // this.bees =data[0].beeKeeping;
+    //   // this.Aquatic =data[0].aquatic
+    //   // this.type =data[0].type;
+    //   // this.image =data[0].image[0]
+
+    //   for (let index = 0; index < data.length; index++) {
+    //     if(this.updateArray ==data[index].k){
+
+    //        this. email =data[index].name
+
+    //   this.profileArray = data
+
+    //   this.name =data[index].name 
+
+    //   this.name = data[index].name;
+    //   this.email =data[index].email ;
+    //   this.address =data[index].address ;
+    //   this.tel =data[index].tel ;
+    //   this.website =data[index].website
+    //   this.description= data[index].description
+    //   this.crop =data[index].crops;
+    //   this.livestock=data[index].liveStock
+    //   this.bees =data[index].beeKeeping;
+    //   this.Aquatic =data[index].aquatic
+    //   this.type =data[index].type;
+    //   this.image =data[index].image[0]
+
+        
+    //     }
+    //     break ;
+        
+    //   }
       
 
       
       
       
-     })
+    //  })
 
     
     // this.name = this.profileArray[0].name;
     // console.log(this.name);
+
+    
      
   }
 
@@ -82,6 +133,8 @@ export class UpdatePageComponent implements OnInit {
 
     console.log(this.email);
     console.log(this.name);
+    console.log(this.website);
+    
     this.farmName=this.name;
     this.FarmEmail =this.email ;
     this.FarmAddress =this.address ;
@@ -169,7 +222,7 @@ this.farmEAtDb.test() ;
     console.log(this.updateprofile);
 
     setTimeout(()=>{
-      firebase.database().ref("UrbanFarms/"+uid).child(this.keyArray).update(this.updateprofile)
+      firebase.database().ref("UrbanFarmz/"+uid).child(this.updateArray[0]).update(this.updateprofile)
 
     }, 3000)
     

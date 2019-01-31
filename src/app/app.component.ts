@@ -9,7 +9,9 @@ declare var firebase;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+   this.checkstate()
+  }
   title = 'app';
 
 
@@ -29,7 +31,7 @@ export class AppComponent {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
        // alert('user signed in')
-       this.router.navigateByUrl('/dashboard');
+       this.router.navigateByUrl('/addedfarms');
 
       } else {
 

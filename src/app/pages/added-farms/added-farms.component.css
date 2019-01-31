@@ -1,6 +1,10 @@
 
 html{
 }
+/* body{
+    height: 100vh;
+    background-image:linear-gradient(rgba(21, 29, 28, 0.589),#43d3976c),url('../../../assets/strawberry-field_1203-7581.jpg');
+} */
 
 #map{
     display: flex;
@@ -9,7 +13,10 @@ html{
     align-items: center;
     width: 100%;
     height:60%;
-    margin: 0 auto
+    margin: 0 auto;
+    /* box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
+    border-top-right-radius: 10% 50%; */
+    /* border-bottom-left-radius: 10% 50%; */
 }
 
 .sidenav {
@@ -47,7 +54,6 @@ html{
   }
   .menuside{
     color: white;
-  
   }
   
 
@@ -63,7 +69,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgb(240, 240, 240);
+  /* background-color: rgb(240, 240, 240); */
   height: 100vh;
   background-color: #faf8f1;
   font-family: "Lato", sans-serif;
@@ -120,9 +126,7 @@ body {
 }
 .menuside{
   color: white;
-  position: relative;
-  margin-left: 50px;
-  top: 40px
+margin: 16px;
 
 }
 
@@ -135,56 +139,8 @@ body {
     padding-left: 0;
     margin-bottom: 0;
 }
-.thumbnail
-{
-    /* margin-bottom: 30px;
-    padding: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px; */
-}
-
-.item.list-group-item
-{
-    /* float: none;
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 30px;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding: 0 1rem;
-    border: 0; */
-}
-/* .item.list-group-item .img-event {
-    float: left;
-    width: 30%;
-}
-
-.item.list-group-item .list-group-image
-{
-    margin-right: 10px;
-}
-.item.list-group-item .thumbnail
-{
-    margin-bottom: 0px;
-    display: inline-block;
-}
-.item.list-group-item .caption
-{
-    float: left;
-    width: 70%;
-    margin: 0;
-}
-
-.item.list-group-item:before, .item.list-group-item:after
-{
-    display: table;
-    content: " ";
-}
 
 
- */
 
 
 .stars {
@@ -209,7 +165,7 @@ body {
 
 
 section {
-    padding-top: 4rem;
+    padding-top: 1rem;
     padding-bottom: 5rem;
     background-color: #f1f4fa;
 }
@@ -223,15 +179,15 @@ section {
     margin-bottom: 2rem;
 }
 
-.wrap:hover {
+/* .wrap:hover {
     background: linear-gradient(135deg,#43d397 0%, #087150 100%);
     color: white;
-}
+} */
 
-.ico-wrap {
+/* .ico-wrap {
     margin: auto;
     display: flex;
-}
+} */
 
 .mbr-iconfont {
     font-size: 4.5rem !important;
@@ -239,9 +195,9 @@ section {
     margin: 1rem;
     padding-right: 1rem;
 }
-.vcenter {
+/* .vcenter {
     margin: auto;
-}
+} */
 
 .mbr-section-title3 {
     text-align: left;
@@ -270,15 +226,18 @@ h2 {
 }
 .topdiv{
     background-color: #087150;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    /* margin-bottom: 15px */
+    bottom: 20px;
 }
 h1{
     color: white;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 .image{
-    /* display: flex;
-    justify-content: flex-start; */
+
     width: 100px;
     height: 100px;
     margin:  16px
@@ -296,12 +255,9 @@ h1{
 }
   
   .marquee div {
-      /* width: 100%; */
-    /* display: block; */
-    /* width: 100%;
-    height: 30px; */
+
     position: relative;
-    /* overflow: hidden; */
+
  float: left;
   
     animation: marquee 5s linear infinite;
@@ -324,17 +280,3 @@ h1{
   }
 
 
-  /* .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: DodgerBlue;
-  }
-  
-  .flex-container > div {
-    background-color: #f1f1f1;
-    width: 100px;
-    margin: 10px;
-    text-align: center;
-    line-height: 75px;
-    font-size: 30px;
-  } */

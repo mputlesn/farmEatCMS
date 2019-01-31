@@ -340,7 +340,10 @@ export class AddedFarmsComponent implements OnInit {
     console.log(document.getElementById("map"));
     //this.loadMap()
    
-   
+   this.farmEAtDb.getallFarms().then((data)=>{
+     console.log(data);
+     
+   })
     
    }
 
@@ -349,6 +352,9 @@ export class AddedFarmsComponent implements OnInit {
  
 
   this.initMap()
+
+
+
    
   }
   openNav() {
@@ -389,6 +395,10 @@ export class AddedFarmsComponent implements OnInit {
       })
 
 
+        // this.farmEAtDb.getAllvideos().then((data)=>{
+        //   console.log(data);
+          
+        // })
       
 
             setTimeout(() => {

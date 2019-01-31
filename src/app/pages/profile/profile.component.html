@@ -16,7 +16,7 @@
     
     <br>
     <br>
-    <a routerLink="/dashboard"><span class="icons"> </span>Home</a>
+    <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
     <br>
     <br>
     <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
@@ -24,7 +24,7 @@
     <br>
     <a (click)="logout()"><span class="icons"> </span>Logout</a>
     <br>
-    <a routerLink="/addedfarms"><span class="icons"> </span>Added Farms</a>
+    <a routerLink="/dashboard"><span class="icons"> </span>Add Farm</a>
     <br>
     <a routerLink="/geo"><span class="icons"> </span>Profile</a>
 
@@ -33,40 +33,54 @@
     </div>
 
 
- <div  >
+ <div >
    <span  style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span> 
    <img class="topimg" src="../../../assets/1841196866.jpeg" alt="" srcset="">
  </div>
+ 
+
+
+
 <div class="flex">
+    <!-- <img class="leftimg" src="../../../assets/Illustration-with-Variable-Rate_forWP.jpg" alt="" > -->
+    
+<div class="container2">
+    <h1 class="lefthead">My Farms</h1>
+    <div class="left" *ngFor="let profile of profileArray" (click)="getFArm(profile.k)" >
 
-  <div class="left">
-      <img class="leftimg" src="../../../assets/Illustration-with-Variable-Rate_forWP.jpg" alt="" srcset="">
-      <h1 class="lefthead">My farms</h1>
-      <div class="leftcard">
-        <div class="leftleft">
-            <img class="leftleftimg" src="../../../assets/Illustration-with-Variable-Rate_forWP.jpg" alt="" srcset="">
-        
+      <div class="leftcontain">
+          <h1 class="lefthead">{{profile.name}}</h1>
+        <div class="leftcard" >
+            
+          <div class="leftleft" >
+              <!-- <h1 class="">{{profile.name}}</h1> -->
+              <img class="leftleftimg" src="{{profile.image}}" alt="" srcset="">
+          
+          </div>
+          <div class="leftright">
+           {{profile.description}}
+          </div>
+  
         </div>
-        <div class="leftright">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid eligendi porro odio molestiae vero, repellendus repellat, dolorem nihil nisi culpa eius deleniti id velit eum placeat tempora minus quia iste.
-        </div>
-
       </div>
+        
+  
+    </div>
+</div>
 
-  </div>
 
-  <div class="right" *ngFor="let profile of profileArray">
+  <div class="right">
     <h1 class="righthead"> Company description</h1>
     <hr>
     <div  class="rightcard">
       <div  class="rightleft">
-       <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-building"></i>{{profile.name}}</h2>
-    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-map-marker"></i>{{profile.address}} </h2>
-    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-envelope"></i> {{profile.email}}</h2>
-    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-phone"></i> {{profile.tel}}</h2>
-    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-laptop"></i>{{profile.website}}</h2>
-    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fab fa-facebook"></i>{{profile.facebook}}</h2>
-    <h2 class="round"> <i  class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-tree"></i>{{profile.type}}</h2>
+       <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-building"></i>{{FarmObj.name}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-map-marker"></i>{{FarmObj.address}} </h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-envelope"></i> {{FarmObj.email}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-phone"></i> {{FarmObj.tel}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-laptop"></i>{{FarmObj.website}}</h2>
+    <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fab fa-facebook"></i>{{FarmObj.facebook}}</h2>
+    <h2 class="round"> <i  class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-tree"></i>{{FarmObj.type}}</h2>
     <h2 class="round"><i class="iconss" style="font-size:30px;color:#507108; padding: 8px " class="fas fa-home"></i>Greenhouse</h2>
     </div>
    
@@ -96,6 +110,23 @@
     
    
   </div>
+  
 </div>
+<!-- <div class="leftz"  *ngFor="let profile of profileArray" (click)="getFArm(profile.k)">
+
+    <h1 class="lefthead">{{profile.name}}</h1>
+    <div class="leftcard" >
+      <div class="leftleft" >
+        
+          <img class="leftleftimg" src="{{profile.image}}" alt="" srcset="">
+      
+      </div>
+      <div class="leftright">
+       {{profile.description}}
+      </div>
+
+    </div>
+
+</div> -->
 </body>
 </html>
