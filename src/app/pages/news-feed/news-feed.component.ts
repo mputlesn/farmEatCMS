@@ -11,27 +11,23 @@ declare var firebase;
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
-  @ViewChild('title') title: ElementRef;
-  @ViewChild('message') message: ElementRef;
   @ViewChild('image')image:ElementRef; 
   newsMessage;
+  Description;
+  Title;
   url ;
   constructor( private router: Router ,  private farmEat: FarmEatService) { }
 
   ngOnInit() {
+   
   }
-  openNav() {
-    document.getElementById('mySidenav').style.width = '250px';
-  document.getElementById('main').style.marginLeft = '250px';
-  }
-  closeNav() {
-    document.getElementById('mySidenav').style.width = '0';
-    document.getElementById('main').style.marginLeft = '0';
-  }
+
 
 
   insertImage(event: any) {
     this.url = event.target.files[0];
+
+    
     console.log(this.url);
 
   }
@@ -40,7 +36,8 @@ export class NewsFeedComponent implements OnInit {
 
   newsfeed(title, message) {
     this.farmEat.test();
-
+this.Title = " ";
+this.Description = "";
 
     if(title.length == 0 && message.length ==0){
       this.farmEat.oops("Please enter all Details");
@@ -52,17 +49,24 @@ export class NewsFeedComponent implements OnInit {
     } else {
       var downloadURL: any;
       var filename = this.url.name;
+      console.log("in");
+      
       const metaData = {'contentType': this.url.type};
       //create reference
       var storageRef = firebase.storage().ref(name+'/'+filename)
       //upload the selected image to the storage
       var uploadTask = storageRef.put(this.url, metaData)
       // Get the download URL
+
+      console.log("out");
+      
       storageRef.getDownloadURL().then((url) => {
         downloadURL = url;
         console.log(downloadURL);
         console.log(title);
         console.log(message);
+        console.log(url);
+        
         
         
       }).catch((error) => {
@@ -79,11 +83,7 @@ export class NewsFeedComponent implements OnInit {
            })
            this.farmEat.sucess("Added Successfully")
          }, 3000)
-
-
-
-         this.title.nativeElement.value = " ";
-         this.message.nativeElement.value = " ";
+      
          this.image.nativeElement.value = null;
     }
 

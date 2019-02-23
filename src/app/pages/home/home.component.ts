@@ -26,38 +26,55 @@ export class HomeComponent implements OnInit {
   constructor(private farmEat: FarmEatService, private router: Router) { }
 
   ngOnInit() {
+    this.Logintab();
     
   }
 
 
 
   Login() {
-    if (this.emailLogin === undefined && this.passwordLogin === undefined) {
-      this.oops();
 
-    } else if (this.emailLogin === undefined) {
-      this.email();
-    } else if (this.passwordLogin === undefined) {
-    } else {
-      this.farmEat.login(this.emailLogin, this.passwordLogin).then(() => {
+    if(this.emailLogin == undefined && this.passwordLogin ==undefined){
+      this.farmEat.oops("Please Enter email or Password")
+
+    }else{
+
+      this.farmEat.loginx(this.emailLogin, this.passwordLogin).then((data) => {
+        console.log(data.user.emailVerified);
+       if (data.user.emailVerified == true) {
         this.router.navigateByUrl('/addedfarms');
-        this.test();
-      }, (error) => {
-        this.cathingError(error.message);
-      });
+  
+  
+        } 
+      else {
+          this.farmEat.oops('Please verify your Email')
+          firebase.auth().signOut().then(function () {
+            console.log('logout');
+  
+            this.router.navigateByUrl('/home');
+          }).catch(function (error) {
+            // An error happened.
+          });
+  
+        }
+  
+  
+      }).catch((error) => {
+  
+        this.farmEat.oops(error.message)
+  
+  
+      })
 
-     }
+    }
+    
 
+     
 
-
-
-
-  }
+   
+   }
   forgetpassword() {
-    this.forgot = 1;
-    this.content = 'Submit';
-    this.farmEat.forgetPassword(this.emailLogin).then(() => {
-      this.forgot = 1;
+    this.farmEat.forgetPassword().then(() => {
     });
 
   }
@@ -166,5 +183,18 @@ export class HomeComponent implements OnInit {
       text: message,
 
     });
+  }
+
+  registertab() {
+    document.getElementById('register').style.display = 'block'
+    document.getElementById('Login').style.display = 'none'
+
+
+
+  }
+  Logintab() {
+    document.getElementById('Login').style.display = 'block'
+    document.getElementById('register').style.display = 'none'
+
   }
 }

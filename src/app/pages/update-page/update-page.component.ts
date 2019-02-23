@@ -41,7 +41,7 @@ export class UpdatePageComponent implements OnInit {
   updateprofile = {}
   type =[] ;
   image =[]
-
+  updateDescription ;
   updateArray = UpdateKeyArr ;
 
   constructor(private farmEAtDb: FarmEatService,  private router: Router) { 
@@ -65,67 +65,7 @@ export class UpdatePageComponent implements OnInit {
     })
     
 
-    // this.farmEAtDb.getProfile().then((data:any)=>{
-      
-    //   // this.keyArray = data[0].k ;
-    //   // this. email =data[0].name
 
-    //   // this.profileArray = data
-
-    //   // this.name =data[0].name 
-
-    //   // this.name = data[0].name;
-    //   // this.email =data[0].email ;
-    //   // this.address =data[0].address ;
-    //   // this.tel =data[0].tel ;
-    //   // this.website =data[0].website
-    //   // this.description= data[0].description
-    //   // this.crop =data[0].crops;
-    //   // this.livestock=data[0].liveStock
-    //   // this.bees =data[0].beeKeeping;
-    //   // this.Aquatic =data[0].aquatic
-    //   // this.type =data[0].type;
-    //   // this.image =data[0].image[0]
-
-    //   for (let index = 0; index < data.length; index++) {
-    //     if(this.updateArray ==data[index].k){
-
-    //        this. email =data[index].name
-
-    //   this.profileArray = data
-
-    //   this.name =data[index].name 
-
-    //   this.name = data[index].name;
-    //   this.email =data[index].email ;
-    //   this.address =data[index].address ;
-    //   this.tel =data[index].tel ;
-    //   this.website =data[index].website
-    //   this.description= data[index].description
-    //   this.crop =data[index].crops;
-    //   this.livestock=data[index].liveStock
-    //   this.bees =data[index].beeKeeping;
-    //   this.Aquatic =data[index].aquatic
-    //   this.type =data[index].type;
-    //   this.image =data[index].image[0]
-
-        
-    //     }
-    //     break ;
-        
-    //   }
-      
-
-      
-      
-      
-    //  })
-
-    
-    // this.name = this.profileArray[0].name;
-    // console.log(this.name);
-
-    
      
   }
 
@@ -152,11 +92,16 @@ export class UpdatePageComponent implements OnInit {
   }
 
 
-  update(address){
+  update(address, farmtype){
     
 
 this.farmEAtDb.test() ;
 
+console.log(this.FarmType);
+console.log(farmtype);
+
+
+    console.log("in")
     
     console.log(this.email);
      console.log(this.keyArray);
@@ -175,6 +120,8 @@ this.farmEAtDb.test() ;
         console.log(lat);
         console.log(lng);
 
+        this.navigateByUrl[('/profile')];
+
        } else {
          alert('Geocode was not successful for the following reason: ' + status);
 
@@ -188,7 +135,7 @@ this.farmEAtDb.test() ;
 
        }
     });
-
+    console.log("out")
      console.log(this.farmName);
      console.log(this.FarmEmail);
      console.log(this.FarmTel);
@@ -207,6 +154,7 @@ this.farmEAtDb.test() ;
         tel:this.FarmTel ,
         website :this.FarmWebsite ,
         description:this.farmDescription ,
+        type:farmtype ,
 
   
         address:address ,
@@ -228,21 +176,46 @@ this.farmEAtDb.test() ;
     
 this.farmEAtDb.sucess("Updatess successfully")
 
-//this.router.navigateByUrl('/profile');
+this.router.navigate(['/profile']);
 
 
 
   
     
   }
-  openNav() {
-    document.getElementById('mySidenav').style.width = '250px';
-  document.getElementById('main').style.marginLeft = '250px';
-  }
-  closeNav() {
-    document.getElementById('mySidenav').style.width = '0';
-    document.getElementById('main').style.marginLeft = '0';
-  }
 
 
+
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.router.navigate(['']);
+      console.log('have logged out');
+
+    }).catch(function(error) {
+      // An error happened.
+    });
+
+}
+addfarm(){
+  console.log('click');
+  if( document.getElementById('showfab').style.display == 'block'){
+    document.getElementById('showfab').style.display = 'none'
+ console.log('in');
+  }else if (document.getElementById('showfab').style.display == 'none'){
+    document.getElementById('showfab').style.display = 'block'
+    console.log('out');
+  }
+  
+  else{
+    document.getElementById('showfab').style.display = 'block'
+    console.log('out');
+    
+  }
+  
+ 
+ 
+}
+show(){
+  document.getElementById('showfab').style.display = 'none'
+}
 }

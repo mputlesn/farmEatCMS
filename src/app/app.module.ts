@@ -54,8 +54,8 @@ import { UpdatePageComponent } from './pages/update-page/update-page.component';
       {path: 'newsfeed', component: NewsFeedComponent},
       {path: 'dashboard', component: DashboardComponent},
       {path: 'addedfarms', component: AddedFarmsComponent},
-      {path:'profile',component:ProfileComponent } ,
-      {path:'updatepage',component:UpdatePageComponent }
+      {path:'profile', component:ProfileComponent } ,
+      {path:'updatepage', component:UpdatePageComponent }
 
 
     ])

@@ -12,7 +12,7 @@ export class FarmEatService {
   farmArray = []
 
   getAllFarmArray = []
-
+  newFeedArray = []
 
 
   constructor(public http: HttpClient) { }
@@ -20,7 +20,7 @@ export class FarmEatService {
   register(email, password, name) {
     return new Promise((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-        // tslint:disable-next-line:prefer-const
+        //tslint:disable-next-line:prefer-const
         let uid: any = firebase.auth().currentUser.uid;
         firebase.database().ref('admins/' + uid).set({
           name: name,
@@ -30,7 +30,7 @@ export class FarmEatService {
         });
 
         // tslint:disable-next-line:prefer-const
-        let user = firebase.auth().currentUser;
+         let user = firebase.auth().currentUser;
 
         user.sendEmailVerification().then(function(a) {
           console.log(a);
@@ -51,6 +51,30 @@ export class FarmEatService {
     });
   }
 
+
+  getNewsFeed(){
+
+    return new Promise((resolve ,reject)=>{
+      firebase.database().ref('Newsfeed').on('value' , (data:any)=>{
+        var Newsfeed =data.val();
+        var keys:any =Object.keys(Newsfeed);
+        for(var i =0 ; i<keys.length;i++){
+          var  k =keys[i] ;
+          let NewsfeedObj = {
+            k:k ,
+            title: Newsfeed[k].title,
+            message: Newsfeed[k].message,
+            image:Newsfeed[k].image,
+
+          }
+          this.newFeedArray.push(NewsfeedObj);
+
+          resolve( this.newFeedArray);
+        }
+
+      })
+    })
+   }
 
   getUser(){
     return new Promise ((accpt, rej) =>{
@@ -139,19 +163,60 @@ export class FarmEatService {
 
   }
 
-  forgetPassword(email) {
+  async forgetPassword() {
+  // Swal.fire({
+  //   title: 'Fill in your registered email address.',
+  //   input: 'text',
+  //   inputAttributes: {
+  //     autocapitalize: 'off'
+  //   },
+  //   showCancelButton: true,
+  //   confirmButtonText: 'Reset',
+  //   showLoaderOnConfirm: true,
+  //   preConfirm: (email) => {
 
-    return new Promise((resolve, reject) => {
+  //      return new Promise((resolve, reject) => {
+  //     firebase.auth().sendPasswordResetEmail(email) .then(() => {
+  //             resolve();
+  //     } , (error) => {
+  //       reject(error);
+        
+  //     });
+  // });
+  //   }
+  // })
+    
+
+   
+
+  const {value: email} = await Swal.fire({
+    title: 'Input email address',
+    input: 'email',
+    inputPlaceholder: 'Enter your email address',
+
+    
+   })
+   
+       return new Promise((resolve, reject) => {
       firebase.auth().sendPasswordResetEmail(email) .then(() => {
               resolve();
       } , (error) => {
         reject(error);
-
+        
       });
-
+      if (email) {
+    // Swal.fire('Your email ' + email +  'has been reset ')
+    Swal.fire(`Your email password has been resend, please check ${email} 
+    to reset. `)
+   }
   });
-
+   
+   
+  
   }
+
+
+
   oops(message) {
     Swal.fire({
       type: 'error',
@@ -171,12 +236,21 @@ export class FarmEatService {
     });
   }
   
+  alertInfo(message , title) {
+    Swal.fire({
+     
+     title: title,
+      text: message,
+
+    });
+  }
+  
   test(){
     let timerInterval
    Swal.fire({
     title: 'Loading',
     html: 'Please wait, still loading',
-    timer: 2000,
+    timer: 3000,
     onBeforeOpen: () => {
       Swal.showLoading()
    
@@ -208,6 +282,8 @@ export class FarmEatService {
         console.log(farms);
         console.log(farms2)
         var keys:any =Object.keys(farms2)
+
+
         this.farmArray.length = 0;
         console.log(keys);
         for(var i =0 ; i <keys.length;i++){
@@ -224,6 +300,7 @@ export class FarmEatService {
                var k3 = keys3[a];
                console.log(k3)
                let obj = {
+                     
                 k:k ,
                 lat:FarmDetails[k3].lat ,
                 lng:FarmDetails[k3].lng ,
@@ -288,7 +365,8 @@ getProfile(){
            image:farms[k].image ,
            beeKeeping:farms[k].beeKeeping ,
            liveStock:farms[k].liveStock ,
-           facebook:farms[k].facebook
+           facebook:farms[k].facebook,
+           website:farms[k].website
          }
          this.farmArray.push(obj) ;
          resolve(this.farmArray)
@@ -316,47 +394,22 @@ getAFarm(key){
   }
   
 
-// getAllvideos(){
-//   return new Promise ((accpt, rej) =>{
-//     firebase.ref('UrbanFarms/').on('value', (data: any) => {
-//       var videos = data.val();
-//       this.getAllFarmArray.length = 0;
-//       var keys:any =  Object.keys(videos);
-//         for (var i = 0; i < keys.length; i++){
-//           var x = keys[i];
-//           var y  = 'UrbanFarms/' + x;
-//           var details;
-//           var colour;
-//           firebase.ref(y).on('value', (data2: any) => {
-//            details = data2.val();
-//             })
-//           var keys2:any = Object.keys(details);
-//           for (var a = 0; a < keys2.length; a++){
-//                 var key = keys2[a];
-           
-//                 let obj = {
-//                 likes: details[key].likes,
-//                 comments : details[key].comments - 1,
-//                 vidurl : details[key].downloadurl,
-//                 vidDesc : details[key].description,
-//                 vidname : details[key].name,
-//                 name : details[key].username,
-//                 img : details[key].userImg,
-//                // date : moment(details[key].date).startOf('day').fromNow(),
-//                 color :colour,
-//                 key: key
-//           }
-//           this.getAllFarmArray.push(obj);
-//           console.log(this.getAllFarmArray) ;
-//           }
-//         }
-//        accpt(this.getAllFarmArray);
-//   }, Error =>{
-//     rej(Error.message)
-//   })
-//   })
+  loginx(email , password){
+    return firebase.auth().signInWithEmailAndPassword(email, password) ;
+  }
+fgdf(){
+  Swal.fire({
+    title: 'Submit your Github username',
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Look up',
+    showLoaderOnConfirm: true,
+  })
 
-// } 
-
+  
+}
 
 }

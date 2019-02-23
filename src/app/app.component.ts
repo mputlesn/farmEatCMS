@@ -31,7 +31,7 @@ export class AppComponent {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
        // alert('user signed in')
-       this.router.navigateByUrl('/addedfarms');
+       this.router.navigateByUrl('/addedfarm');
 
       } else {
 
