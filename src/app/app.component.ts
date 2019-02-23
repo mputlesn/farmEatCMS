@@ -10,7 +10,20 @@ declare var firebase;
 })
 export class AppComponent {
   constructor(private router: Router) {
-    this.checkstate()
+    //this.checkstate()
+
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user != null) {
+    //    // alert('user signed in')
+    //    this.router.navigateByUrl('/dashboard');
+
+    //   } else {
+
+    //     this.router.navigateByUrl('/home');
+    //    // alert('no user signed in')
+    //   }
+    //   // resolve(this.condition)
+    // });
    }
   title = 'app';
 
@@ -43,3 +56,4 @@ export class AppComponent {
    });
   }
 }
+

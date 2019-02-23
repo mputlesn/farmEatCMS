@@ -98,6 +98,10 @@ export class FarmEatService {
 
   }
 
+  loginx(email , password){
+    return firebase.auth().signInWithEmailAndPassword(email, password) ;
+  }
+
   signout() {
     firebase.auth().signOut().then(function () {
     }).catch(function (error) {
@@ -115,6 +119,36 @@ export class FarmEatService {
    console.log(uid);
     return new Promise((resolve, reject) => {
       firebase.database().ref('UrbanFarms/'+ uid).push({
+        lat: lat,
+        lng: lng,
+        name: name,
+        address: address,
+        type: farmType,
+        description: description,
+        crops: crops,
+        liveStock: liveStock,
+        beeKeeping: beeKeeping,
+        aquatic: aquatic,
+        email: email,
+        tel: tel,
+        website: website,
+        facebook: facebook,
+        image: downloadURL,
+        products: products
+      });
+      resolve();
+    });
+
+  }
+
+
+  oldAddFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng, products) {
+
+    console.log(name);
+    let uid: any = firebase.auth().currentUser.uid;
+   console.log(uid);
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('UrbanFarms/').push({
         lat: lat,
         lng: lng,
         name: name,

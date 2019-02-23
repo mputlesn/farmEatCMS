@@ -12,6 +12,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+div.counter{
+ display: block;
+ left: 80%;
+}
 .list{
   /* display: flex;
   flex-direction: row;

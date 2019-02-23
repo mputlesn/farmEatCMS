@@ -28,30 +28,55 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
   Login() {
-    if (this.emailLogin === undefined && this.passwordLogin === undefined) {
-      this.oops();
-
-    } else if (this.emailLogin === undefined) {
-      this.email();
-    } else if (this.passwordLogin === undefined) {
-    } else {
-      this.farmEat.login(this.emailLogin, this.passwordLogin).then(() => {
+    this.farmEat.loginx(this.emailLogin, this.passwordLogin).then((data) => {
+      console.log(data.user.emailVerified);
+      if (data.user.emailVerified == true) {
         this.router.navigateByUrl('/addedfarms');
-        this.test();
-      }, (error) => {
-        this.cathingError(error.message);
-      });
-
-     }
 
 
+      } else {
+        this.farmEat.oops('Please verify your Email')
+        firebase.auth().signOut().then(function () {
+          console.log('logout');
+
+          this.router.navigateByUrl('/home');
+        }).catch(function (error) {
+          // An error happened.
+        });
+
+      }
 
 
+    }).catch((error) => {
+
+      this.farmEat.oops(error.message)
+
+
+    })
 
   }
+
+
+
+  // Login() {
+  //   if (this.emailLogin === undefined && this.passwordLogin === undefined) {
+  //     this.oops();
+
+  //   } else if (this.emailLogin === undefined) {
+  //     this.email();
+  //   } else if (this.passwordLogin === undefined) {
+  //   } else {
+  //     this.farmEat.login(this.emailLogin, this.passwordLogin).then(() => {
+  //       this.router.navigateByUrl('/addedfarms');
+  //       this.test();
+  //     }, (error) => {
+  //       this.cathingError(error.message);
+  //     });
+
+  //    }
+
+  // }
   forgetpassword() {
     this.forgot = 1;
     this.content = 'Submit';
@@ -75,15 +100,22 @@ export class HomeComponent implements OnInit {
       this.password();
 
     } else {
+
       this.farmEat.register(this.emailz, this.pass, this.username).then(() => {
-       // this.router.navigateByUrl('/addedfarms');
-       // this.test();
-       this.farmEat.sucess("Please Check your Email and Verify")
+        // this.router.navigateByUrl('/addedfarms');
+        // this.test();
+        this.farmEat.sucess("Please Check your Email and Verify")
+
+        this.emailz = ""
+        this.pass = ""
+        this.username = ""
       }, (error) => {
         this.cathingError(error.message);
       });
 
     }
+
+
 
   }
 

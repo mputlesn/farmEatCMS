@@ -47,7 +47,8 @@ export class DashboardComponent implements  OnInit {
   itemsArr = [];
   itemLength = 0
   itemsProd = []
-  val
+  val;
+  chooseItem
   products = [
     'Search for products',
     'Banana',
@@ -298,11 +299,22 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     else if(item == "Beetroot"){
       icon = "../../../assets/prodIcon/icons8-beet-48.png";
     }
-    this.itemsArr.push(icon)
-    this.itemsProd.push(item)
-    this.itemLength = this.itemsProd.length
+
+
+    if(item != 'Search for products'){
+      
+      var dup = this.itemsProd.indexOf(item)
+      if(dup == -1){
+        this.itemsArr.push(icon)
+        this.itemsProd.push(item)
+        this.itemLength = this.itemsProd.length
+      }
+      
+    }
+    
     
     this.product = ""
+    this.chooseItem = ""
     console.log(this.itemsArr);
     console.log(this.itemsProd);
     
@@ -333,7 +345,14 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
 
   console.log(names);
 
+  console.log(crops, liveStock, beeKeeping, aquatic);
+  console.log(this.Farmcrops, this.FarmLivestock, this.Farmbees, this.FarmAquatic);
 
+  var strNumber = ''+this.FarmTel
+  console.log(strNumber);
+  console.log(strNumber.length);
+  
+  
     // console.log(products);
 
     // tslint:disable-next-line:prefer-const
@@ -343,7 +362,7 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
       this.farmEat.oops('Fill in all requeried fields');
 
     }else if (names.length === 0){
-      this.farmEat.oops('Fill in Farmm name');
+      this.farmEat.oops('Fill in Farm name');
 
     }  else if (description.length === 0  ) {
       this.farmEat.oops('Fill in farm Description');
@@ -354,7 +373,12 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
     } else if (address.length  === 0 ) {
       this.farmEat.oops('Fill in farm address');
   
-    } else {
+    }else if (strNumber.length < 10 ) {
+      this.farmEat.oops('Fill in 10 degits');
+  
+    }else if (this.itemsProd.length == 0 ) {
+      this.farmEat.oops('Fill in products you offer in your farm');
+    }else {
 
       let downloadURL: any;
     for (let index = 0; index < this.testImg.length; index++) {
@@ -397,22 +421,18 @@ constructor( private farmEat: FarmEatService, private router: Router) { }
          alert('Geocode was not successful for the following reason: ' + status);
 
         // this.farmEat.oops('Geocode was not successful for the following reason');
-       
-        
-        
-        
-         
-        
-
        }
     });
 
     setTimeout(() => {
       if (this.err === 'good') {
         // tslint:disable-next-line:max-line-length
-        this.farmEat.addFarm(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng, this.itemsArr).then(() => {
+        //this.farmEat.addFarm(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng, this.itemsArr).then(() => {
         //  alert('added ')
+
+        console.log();
         
+        this.farmEat.oldAddFarm(names, address, farmType, description,this.Farmcrops, this.FarmLivestock, this.Farmbees, this.FarmAquatic, email, tel, website, facebook, this.imageArr, lat, lng, this.itemsArr).then(() => {
 
         this.farmEat.sucess('You added successfully');
 

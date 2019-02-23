@@ -97,7 +97,7 @@
 
                             <div class="form-group">
                                     <label>Crops
-                                            <input type="checkbox" #crops  [(ngModel)]="Farmcrops" checked="checked">
+                                            <input type="checkbox" #crops  [(ngModel)]="Farmcrops">
                                           </label>
                                           <label >Live Stock
                                                 <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
@@ -129,7 +129,7 @@
                                 
                             <div class="form-group" > 
                               <label  >Search for products you sell/offer</label>
-                              <input type="text" class="form-control" placeholder="Product" (input)="getProducts($event)" (click)="clicked()"  />
+                              <input type="text" class="form-control" placeholder="Product" (input)="getProducts($event)" (click)="clicked()"  [(ngModel)]="chooseItem"/>
                               <div class="list" id="hide" *ngFor="let item of products" (click)="productClicked(item)">
                                 
                                 {{item}}
