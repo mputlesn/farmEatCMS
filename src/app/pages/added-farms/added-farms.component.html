@@ -1,6 +1,5 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,11 +72,11 @@
 
         <div id="add-farm">
 
-            <div class="card flex-row mt-3 " style="width: 25rem; height: 8rem; margin: 0 auto; box-shadow: 5px 5px 10px rgba(49, 49, 49, 0.432);"
+            <div class="card flex-row mt-3 " 
                 id="hover" *ngFor="let a of farmsOnSlide" (click)="moreInfo(a.description, a.name)">
-                <img class="card-img" style="width: 7rem; height: auto;" src="{{a.image}}" alt="" srcset="">
+                <img class="card-img"  src="{{a.image}}" alt="" srcset="">
 
-                <div class="card-body " style="display: flex; flex-direction: column; justify-content: center; align-items: left">
+                <div class="card-body ">
                     <h5 class="card-title " style="font-size: 1.5em; ">{{a.name}}</h5>
 
                 </div>
@@ -93,11 +92,11 @@
                     </button> -->
 
 
-            <div class="card flex-row mt-3 " style="width: 25rem; height: 8rem; margin: 0 auto; box-shadow: 5px 5px 10px rgba(49, 49, 49, 0.432);"
+            <div class="card flex-row mt-3 " 
                 id="hover" *ngFor="let b of newsFeed" (click)="moreInfonews( b.message, b.title,b.image)">
-                <img class="card-img" style="width: 7rem; height: auto;" src="{{b.image}}" alt="" srcset="">
+                <img class="card-img"  src="{{b.image}}" alt="" srcset="">
 
-                <div class="card-body " style="display: flex; flex-direction: column; justify-content: center; align-items: left">
+                <div class="card-body ">
 
                     <h5 class="card-title ">{{b.title}}</h5>
                     <!-- <p>{{b.message}}</p> -->
