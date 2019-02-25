@@ -9,22 +9,9 @@ declare var firebase;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private router: Router) {
-    //this.checkstate()
-
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user != null) {
-    //    // alert('user signed in')
-    //    this.router.navigateByUrl('/dashboard');
-
-    //   } else {
-
-    //     this.router.navigateByUrl('/home');
-    //    // alert('no user signed in')
-    //   }
-    //   // resolve(this.condition)
-    // });
-   }
+  constructor(private router: Router) { 
+   this.checkstate()
+  }
   title = 'app';
 
 
@@ -44,7 +31,7 @@ export class AppComponent {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
        // alert('user signed in')
-       this.router.navigateByUrl('/dashboard');
+       this.router.navigateByUrl('/addedfarm');
 
       } else {
 

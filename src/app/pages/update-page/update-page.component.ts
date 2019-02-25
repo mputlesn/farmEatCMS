@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FarmEatService } from '../../providers/farm-eat.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Router } from '@angular/router';
+import  UpdateKeyArr from '../profile/profile.component'
 declare var firebase ;
 declare var google: any;
 
@@ -15,7 +16,8 @@ export class UpdatePageComponent implements OnInit {
   FarmEmail ;
   FarmTel ;
   FarmWebsite ;
-  FarmFacebook ;
+  
+  FarmFacebook
   FarmAddress ;
   farmDescription ;
   Farmcrops ;
@@ -39,42 +41,31 @@ export class UpdatePageComponent implements OnInit {
   updateprofile = {}
   type =[] ;
   image =[]
-
+  updateDescription ;
+  updateArray = UpdateKeyArr ;
 
   constructor(private farmEAtDb: FarmEatService,  private router: Router) { 
 
-    this.farmEAtDb.getProfile().then((data:any)=>{
-      
-      this.keyArray = data[0].k ;
-      this. email =data[0].name
+    console.log(this.updateArray);
 
-      this.profileArray = data
-
-      this.name =data[0].name 
-
-      this.name = data[0].name;
-      this.email =data[0].email ;
-      this.address =data[0].address ;
-      this.tel =data[0].tel ;
-      this.website =data[0].website
-      this.description= data[0].description
-      this.crop =data[0].crops;
-      this.livestock=data[0].liveStock
-      this.bees =data[0].beeKeeping;
-      this.Aquatic =data[0].aquatic
-      this.type =data[0].type;
-      this.image =data[0].image[0]
-
-      
-
-      
-      
-      
-     })
-
+    this.farmEAtDb.getAFarm(this.updateArray[0]).then((data:any)=>{
+     this.keyArray =data.k
+      this.name = data.name;
+      this.email =data.email ;
+      this.address =data.address ;
+      this.tel =data.tel ;
+      this.website =data.website
+      this.description= data.description
+      this.crop =data.crops;
+      this.livestock=data.liveStock
+      this.bees =data.beeKeeping;
+      this.Aquatic =data.aquatic
+      this.type =data.type;
+      this.image =data.image[0]
+    })
     
-    // this.name = this.profileArray[0].name;
-    // console.log(this.name);
+
+
      
   }
 
@@ -82,6 +73,8 @@ export class UpdatePageComponent implements OnInit {
 
     console.log(this.email);
     console.log(this.name);
+    console.log(this.website);
+    
     this.farmName=this.name;
     this.FarmEmail =this.email ;
     this.FarmAddress =this.address ;
@@ -99,11 +92,16 @@ export class UpdatePageComponent implements OnInit {
   }
 
 
-  update(address){
+  update(address, farmtype){
     
 
 this.farmEAtDb.test() ;
 
+console.log(this.FarmType);
+console.log(farmtype);
+
+
+    console.log("in")
     
     console.log(this.email);
      console.log(this.keyArray);
@@ -122,6 +120,8 @@ this.farmEAtDb.test() ;
         console.log(lat);
         console.log(lng);
 
+        this.navigateByUrl[('/profile')];
+
        } else {
          alert('Geocode was not successful for the following reason: ' + status);
 
@@ -135,7 +135,7 @@ this.farmEAtDb.test() ;
 
        }
     });
-
+    console.log("out")
      console.log(this.farmName);
      console.log(this.FarmEmail);
      console.log(this.FarmTel);
@@ -154,6 +154,7 @@ this.farmEAtDb.test() ;
         tel:this.FarmTel ,
         website :this.FarmWebsite ,
         description:this.farmDescription ,
+        type:farmtype ,
 
   
         address:address ,
@@ -169,27 +170,52 @@ this.farmEAtDb.test() ;
     console.log(this.updateprofile);
 
     setTimeout(()=>{
-      firebase.database().ref("UrbanFarms/"+uid).child(this.keyArray).update(this.updateprofile)
+      firebase.database().ref("UrbanFarmz/"+uid).child(this.updateArray[0]).update(this.updateprofile)
 
     }, 3000)
     
 this.farmEAtDb.sucess("Updatess successfully")
 
-//this.router.navigateByUrl('/profile');
+this.router.navigate(['/profile']);
 
 
 
   
     
   }
-  openNav() {
-    document.getElementById('mySidenav').style.width = '250px';
-  document.getElementById('main').style.marginLeft = '250px';
-  }
-  closeNav() {
-    document.getElementById('mySidenav').style.width = '0';
-    document.getElementById('main').style.marginLeft = '0';
-  }
 
 
+
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.router.navigate(['']);
+      console.log('have logged out');
+
+    }).catch(function(error) {
+      // An error happened.
+    });
+
+}
+addfarm(){
+  console.log('click');
+  if( document.getElementById('showfab').style.display == 'block'){
+    document.getElementById('showfab').style.display = 'none'
+ console.log('in');
+  }else if (document.getElementById('showfab').style.display == 'none'){
+    document.getElementById('showfab').style.display = 'block'
+    console.log('out');
+  }
+  
+  else{
+    document.getElementById('showfab').style.display = 'block'
+    console.log('out');
+    
+  }
+  
+ 
+ 
+}
+show(){
+  document.getElementById('showfab').style.display = 'none'
+}
 }

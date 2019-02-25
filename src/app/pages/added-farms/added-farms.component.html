@@ -1,98 +1,625 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <body>
-        <div id="main" class="container">
-            </div>
-        <div id="mySidenav" class="sidenav">  
-   
-                <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
-               
-              <br>
-              <br>
-             <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
-              <br>
-              <br> <a routerLink="/dashboard"><span class="icons"> </span>Add Farm</a>
-              
-              <br>
-              <br>
-            <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
-              <br>
-              <br>
-              <a routerLink="/profile"><span class="icons"> </span>Profile</a>
-              <br>
-              <br>
-
-               <a (click)="logout()"><span class="icons"> </span>Logout</a>
-              <br>
-            
-          
-            </div>
-
-      <!-- <div class="topdiv">
-            <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
-          <h1>MAKE IT EFFORTLESS FOR PEOPLE TO FIND YOU.</h1>
-      </div> -->
-       <div id="map"></div>
-  
-  <!-- <section>
-       
-  <div class="container">
-  
-      
-          <div class="row mbr-justify-content-center">
-  
-              <div class="col-lg-6 mbr-col-md-10"  *ngFor="let a of farmsOnSlide">
-                  <div class="wrap">
-                      <div class="ico-wrap">
-                          <span class=""  ><img class="image" src="{{a.image}}" alt=""></span>
-                      </div>
-                      <div class="text-wrap vcenter">
-                          <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">{{a.name}}</h2>
-                          <p class="mbr-fonts-style text1 mbr-text display-6">{{a.description}}</p>
-                          
-                      </div>
-        
-                 
-                  </div>
-              
-              </div>
-  
-              
-          </div>
-  
-  </div>
-  
-  </section> -->
-</body>
 
 
-    <body>
-        <div></div>
-        <div class="main-container">
 
-        
-        <div *ngFor="let a of farmsOnSlide" >
-            <div class="list" >
-                <div class="image-container" >
-                    <img class="img-container" src="{{a.image}}" alt="">
-                  
-                </div>
-                <div class="right-container" >
-                    <div class="name">
-                    <p>{{a.name}}</p>
-                </div>
-            </div>
-               
-    
-            </div>
-    
+<body>
+
+
+
+    <div class="topnav" id="myTopnav">
+        <div class="farmeat" style=" color: white; padding: 16px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.548); font-size: 30px; font-weight: bold">
+            Farmeat
         </div>
     </div>
-    </body>
+    <div id="main">
+    </div>
+    <div id="mySidenav">
+
+
+
+    </div>
+
+
+    <div id="map"></div>
+
+
+    <div id="absoluteNews"  onclick="document.getElementById('id01').style.display='block'" (click)="absoluteNews()">
+        <button class="buttonNewsFeeds ">
+            <i id="icon" class="fas fa-newspaper"></i>
+        </button>
+        <label class="flabel">News feed</label>
+    </div>
+
+    <div id="absoluteFarm" class="nfarms" onclick="document.getElementById('id02').style.display='block'" (click)="absoluteFarm()">
+        <button class="bfarms">
+                <i id="icon" class="fas fa-plus"></i>
+        </button>
+        <label class="flabel">Add farm</label>
+    </div>
+    <div class="flexbox">
+
+
+        <div class="tab">
+            
+            <button id="target1" class="tablinks  " [class.active]="seltab == 'farms'" style="text-align: center;" (click)="showAddFarms(); seltab = 'farms'">All Farms</button>
+            <button class="tablinks" id="target2" [class.active]="seltab == 'feeds'" style="text-align: center;" (click)="showNewsFeed(); seltab = 'feeds'">News Feeds</button>
+
+        </div>
+
+        <div id="add-farm">
+
+            <div class="card flex-row mt-3 " style="width: 25rem; height: 8rem; margin: 0 auto; box-shadow: 5px 5px 10px rgba(49, 49, 49, 0.432);"
+                id="hover" *ngFor="let a of farmsOnSlide" (click)="moreInfo(a.description, a.name)">
+                <img class="card-img" style="width: 7rem; height: auto;" src="{{a.image}}" alt="" srcset="">
+
+                <div class="card-body " style="display: flex; flex-direction: column; justify-content: center; align-items: left">
+                    <h5 class="card-title " style="font-size: 1.5em; ">{{a.name}}</h5>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div id="news-feed" class="tabcontent neewsFeeds ">
+            <!-- <button class="f" id="fm" (click)='add()'>
+                        <i id="add" class="fas fa-plus-circle"></i>
+                    </button> -->
+
+
+            <div class="card flex-row mt-3 " style="width: 25rem; height: 8rem; margin: 0 auto; box-shadow: 5px 5px 10px rgba(49, 49, 49, 0.432);"
+                id="hover" *ngFor="let b of newsFeed" (click)="moreInfonews( b.message, b.title,b.image)">
+                <img class="card-img" style="width: 7rem; height: auto;" src="{{b.image}}" alt="" srcset="">
+
+                <div class="card-body " style="display: flex; flex-direction: column; justify-content: center; align-items: left">
+
+                    <h5 class="card-title ">{{b.title}}</h5>
+                    <!-- <p>{{b.message}}</p> -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- start of news feed -->
+    <!-- 
+    <div style="display: flex; flex-direction: row">
+        <div id="id01" class="modal">
+
+            <div class="modal-content animate">
+
+
+
+                <div class="container">
+
+                    <span onclick="document.getElementById('id01').style.display='none'"
+                        class="w3-button w3-xlarge w3-hover-white w3-display-topright"
+                        title="Close Modal">&times;</span>
+
+                    <div class="row">
+                        <div class="column" style="background-color: white">
+                            <div class="column1">
+                                <div style="background-color: white">
+                                    <img class="image" src="../../../assets/94076a023ede44f12fd31f2bb4233b77.png"
+                                        alt="" />
+                                </div>
+                                <h3>Farming is a profession of hope</h3>
+                                <p>Share news with others.</p>
+
+                            </div>
+                        </div>
+                        <div class="column"
+                            style="background-color: whitesmoke; border-top-left-radius: 2rem; border-bottom-left-radius: 2rem; padding-top: 16px; padding-bottom: 16px;  ">
+                            <div>
+                                <div>
+                                    <div class="input">
+                                        <input placeholder="Title *" class="w3-input w3-border w3-margin-bottom"
+                                            maxlength="150" minlength="5" type="text" #title [(ngModel)]="Title"
+                                            [ngModelOptions]="{standalone: true}" required>
+                                    </div>
+                                    <div class="input">
+                                        <label class="label">Upload Picture</label>
+                                        <input type="file" class="w3-input w3-border w3-margin-bottom" accept="image/*"
+                                            placeholder="Upload images*" #image (change)="insertImage($event)"
+                                            [(ngModel)]="farmImage" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input">
+                                <textarea minlength="10" id="subject" placeholder="Type your news message here*"
+                                    name="subject" style="height:200px " #message [(ngModel)]="Description"
+                                    required></textarea>
+                            </div>
+                            <br>
+                            <div>
+                                <input class="btnRegister" (click)="newsfeed(title.value , message.value)" type="submit"
+                                    value="Submit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div id="id01" class="modal">
+
+        <div>
+            <br>
+            <br>
+            <br>
+            <div class="container register ">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+
+                        <img src="../../../assets/94076a023ede44f12fd31f2bb4233b77.png" alt="" />
+                        <h3>MAKE IT EFFORTLESS FOR PEOPLE TO FIND YOU.</h3>
+                        <p>REGISTER YOUR FARMING BUSINESS NOW WITH FARM EAT.</p>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <div>
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" (click)="closeNews()" >&times;</span>
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading"> Add News Feed</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" maxlength="150" placeholder="New Title*" #nameS [(ngModel)]="newsTitle" [value]="name"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="label">Upload Picture</label>
+                                            <input type="file" class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)"
+                                                [(ngModel)]="NewsImage" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea minlength="10" id="subject" placeholder="Type your news message here*" name="subject" style="height:200px " #message
+                                                [(ngModel)]="News" class="textA  form-control" required></textarea>
+
+                                        </div>
+                                        <div class="form-group">
+
+                                        </div>
+                                        <div class="form-group">
+
+                                        </div>
+
+                                        <div>
+                                            <input class="btnRegister" (click)="newsfeed()" type="submit" value="Submit">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- close news feed -->
+    <!-- add farm -->
+
+    <!-- <div style="display: flex; flex-direction: row">
+        <div id="id02" class="modal">
+
+            <div class="modal-content animate">
+
+
+
+                <div class="container">
+
+
+
+                    <div class="addfarm-container">
+                        <span onclick="document.getElementById('id02').style.display='none'"
+                            class="w3-button w3-xlarge w3-hover-maroon w3-display-topright" style="color: white"
+                            title="Close Modal">&times;</span>
+
+                        <div class="header">
+                            <div class="header-text"> Add Farm</div>
+                        </div>
+                        <div class="addFarm-row">
+                            <div class="addFarmColumn">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" maxlength="150"
+                                        placeholder="Name of place *" #nameS [(ngModel)]="FarmName" required>
+                                </div>
+                                <div class="">
+                                    <input type="text" type="text" #address
+                                        [(ngModel)]="FarmAddress" required placeholder="Address *">
+                                </div>
+                                <div class="">
+                                    <input type="text" class="w3-input w3-border w3-margin-bottom" id="email" #email [(ngModel)]="FarmEmail" placeholder="Email" />
+
+                                </div>
+                                <div class="">
+                                    <input type="number"  class="form-control" placeholder="Contact Number *" #tel [(ngModel)]="FarmTel" required />
+                                </div>
+                                <div class="">
+                                    <input type="text"  class="form-control" placeholder="Website" #website [(ngModel)]="FarmWebsite" />
+                                </div>
+                                <div class="">
+                                    <input type="text"  class="form-control" placeholder="Facebook" #facebook [(ngModel)]="FarmFacebook" />
+                                </div>
+                                <div class="w3-input  w3-margin-bottom">
+                                    <select class="form-control" #farmType>
+                                        <option class="hidden" selected disabled>Select type of urban farm business
+                                        </option>
+
+                                        <option value="Vertical Farming">Vertical Farming</option>
+
+                                        <option value="Traditional Farming">Traditional Farming</option>
+
+                                        <option value="Green House">Green House</option>
+                                    </select>
+                                </div>
+                                <div class="checkBox-section  w3-margin-bottom ">
+                                    <label style="padding-left: 16px">Crops
+                                        <input type="checkbox" #crops [(ngModel)]="Farmcrops" checked="checked">
+                                    </label>
+                                    <label style="padding-left: 16px">Live Stock
+                                        <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
+                                    </label>
+                                    <label style="padding-left: 16px">BeeKeeping
+                                        <input type="checkbox" #beeKeeping [(ngModel)]="Farmbees">
+                                    </label>
+                                    <label style="padding-left: 16px">Aquatic
+                                        <input type="checkbox" #aquatic [(ngModel)]="FarmAquatic">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="addFarmColumn">
+                                <div class="column2">
+                                    <div class="">
+                                        <textarea id="subject" placeholder="Description of a Farm..*" name="subject"
+                                            class="form-control" style="height:200px " #description
+                                            [(ngModel)]="farmDescription" required></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="picture w3-margin-bottom">
+
+                                        <div class=" center  w3-margin-bottom">
+                                            <label class=" Products-list ">Upload Picture a farm</label>
+                                        </div>
+                                        <div>
+                                            <input class="w3-input w3-margin-bottom" type="file"
+                                                accept="image/*" placeholder="Upload images*" #image
+                                                [(ngModel)]="Farmpicture" (change)="insertImageForAddFarm($event)" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="products-section">
+                                    <div class="  ">
+                                        <div class=" Products-list " (click)="smallPageCounter()"> Products list:
+                                            {{itemLength}}</div>
+                                        <div id="myDropdown" class="dropdown-content">
+                                            <div class="card" *ngFor="let prod of itemsProd  ;let i = index">
+                                                <div class="container">
+                                                    <h4>
+                                                        <b>{{prod}}</b>
+                                                        <img src="../../../assets/icons8-multiply-50.png"
+                                                            (click)="delete(i)">
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <input type="text" placeholder="Search for products you sell/offer"
+                                            (input)="getProducts($event)" (click)="clicked()"
+                                            [(ngModel)]="chooseItem" />
+                                        <div class="list" id="hide" *ngFor="let item of products"
+                                            (click)="productClicked(item)">
+                                            {{item}}
+                                        </div>
+                                        <ng-template #non></ng-template>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div>
+                                    <input class="btnRegister"
+                                        (click)="initMyMap(nameS.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)"
+                                        type="submit" value="Submit">
+                                </div>
+                                <div class="model">
+
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div id="id02" class="modal">
+        <br>
+        <div>
+            <div class="container register ">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+
+                        <img src="../../../assets/94076a023ede44f12fd31f2bb4233b77.png" alt="" />
+                        <h3>MAKE IT EFFORTLESS FOR PEOPLE TO FIND YOU.</h3>
+                        <p>REGISTER YOUR FARMING BUSINESS NOW WITH FARM EAT.</p>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <div>
+                            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal" (click)="closefarm()" >&times;</span>
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Add Farm</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" maxlength="150" placeholder="Name of place *" #nameS [(ngModel)]="FarmName" required>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" type="text" #address [(ngModel)]="FarmAddress" required placeholder="Address *">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="email" #email [(ngModel)]="FarmEmail" placeholder="Email" />
+
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" placeholder="Contact Number *" #tel [(ngModel)]="FarmTel" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Website" #website [(ngModel)]="FarmWebsite" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text"  class="form-control" maxlength="150" placeholder="Facebook" #facebook [(ngModel)]="FarmFacebook" />
+                                        </div>
+
+
+
+                                        <div class="checkBox-section form-group ">
+                                            <label style="padding-left: 16px">Crops
+                                                <input type="checkbox" #crops [(ngModel)]="Farmcrops" checked="checked">
+                                            </label>
+                                            <label style="padding-left: 16px">Live Stock
+                                                <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
+                                            </label>
+                                            <label style="padding-left: 16px">BeeKeeping
+                                                <input type="checkbox" #beeKeeping [(ngModel)]="Farmbees">
+                                            </label>
+                                            <label style="padding-left: 16px">Aquatic
+                                                <input type="checkbox" #aquatic [(ngModel)]="FarmAquatic">
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <select class="form-control" [(ngModel)]="farmType">
+                                                <option class="hidden" selected disabled>Select type of urban farm business
+                                                </option>
+
+                                                <option value="Vertical Farming">Vertical Farming</option>
+
+                                                <option value="Traditional Farming">Traditional Farming</option>
+
+                                                <option value="Green House">Green House</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <textarea id="subject" maxlength="550" placeholder="Description of a Farm..*" name="subject" class="form-control" style="height:200px " #description
+                                                [(ngModel)]="farmDescription" required></textarea>
+
+                                        </div>
+                                        <div class="picture form-group">
+
+                                            <div class=" center  ">
+                                                <label class=" Products-list ">Upload Picture a farm</label>
+                                            </div>
+                                            <div>
+                                                <input class=" form-control " type="file" accept="image/*" placeholder="Upload images*" #image [(ngModel)]="Farmpicture"
+                                                    (change)="insertImageForAddFarm($event)" />
+                                            </div>
+                                        </div>
+
+                                        <div class="products-section form-group ">
+                                            <div class="  ">
+                                                <div class=" Products-list " (click)="smallPageCounter()"> Products list: {{itemLength}}
+                                                </div>
+                                                <div id="myDropdown" class="dropdown-content">
+                                                    <div class="card form-control " *ngFor="let prod of itemsProd  ;let i = index">
+                                                        <div class="container">
+                                                            <h4>
+                                                                <b>{{prod}}</b>
+                                                                <img src="../../../assets/icons8-multiply-50.png" (click)="delete(i)">
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <input type="text" placeholder="Search for products you sell/offer" (input)="getProducts($event)" (click)="clicked()" [(ngModel)]="chooseItem"
+                                                />
+                                                <div class="list" id="hide" *ngFor="let item of products" (click)="productClicked(item)">
+                                                    {{item}}
+                                                </div>
+                                                <ng-template #non></ng-template>
+                                            </div>
+                                            <br>
+                                        </div>
+
+                                        <div>
+                                            <input class="btnRegister addfarmbtn " (click)="initMyMap( )"
+                                                type="submit" value="Submit">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- clossing of add farm -->
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        var modal = document.getElementById('id02');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+
+    <button class="fabb" id="fabmain" (click)='addfarm()'>
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="fabblist" id="showfab" (click)='show()'>
+        <!-- <div class="fabcontainer" onclick="document.getElementById('id02').style.display='block'">
+            <button class="minifabb">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+            <label class="fabblabel">Add farm</label>
+        </div> -->
+        <!-- <div class="fabcontainer" onclick="document.getElementById('id01').style.display='block'">
+            <button class="minifabb">
+                <i class="fas fa-newspaper"></i>
+            </button>
+            <label class="fabblabel">News feed</label>
+        </div> -->
+        <div class="fabcontainer">
+            <a routerLink="/profile" class="minifabb">
+                <button>
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </a>
+            <label class="fabblabel">Profile</label>
+        </div>
+        <div class="fabcontainer">
+            <a routerLink="/home" (click)="logout()" class="minifabb" style=" color:red ">
+                <button>
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </a>
+
+            <label class="fabblabel">Logout</label>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        $('button').on('click', function () {
+            $('button').removeClass('selected');
+            $(this).addClass('selected');
+        });
+    </script>
+
+
+
+
+    <!-- <button class="f" id="fm" (click)='add()'>
+            <i id="add" class="fas fa-plus-circle"></i>
+        </button>
+        <div class="flist"  id="showf" (click)='showf()' >
+                <div class="fcontainer" onclick="document.getElementById('id02').style.display='block'">
+                        <button class="minif">
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                        <label class="flabel">Add farm</label>
+                    </div>
+                    <div class="fcontainer" onclick="document.getElementById('id01').style.display='block'">
+                        <button class="minif">
+                            <i class="fas fa-newspaper"></i>
+                        </button>
+                        <label class="flabel">News feed</label>
+                    </div>
+        </div> -->
+
+    <div class="footer">
+        <p>&copy; Copyright 2019 Farm-Eat </p>
+    </div>
+
+
+</body>

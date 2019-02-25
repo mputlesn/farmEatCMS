@@ -13,38 +13,30 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 <body > 
-  <div id="mySidenav" class="sidenav">  
-   
-      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
-    
-    <br>
-    <br> 
-     <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
-     <br>
 
-     <br>
-    <a routerLink="/dashboard"><span class="icons"> </span>Add farm</a>
-    <br>
-    <br>
-    <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
-    <br>
-    <br>
-    <a routerLink="/profile"><span class="icons"> </span>Profile</a>
-    <br>
-    <br>
-    <a (click)="logout()"><span class="icons"> </span>Logout</a>
-   
-  
-
-  </div>
+        <div class="topnav" id="myTopnav"> 
+                <div class="logo">  <a routerLink="/addedfarms"></a><h3>Farm-Eat</h3></div>
+                <div>  <a routerLink="/home" (click)="logout()"><span class="icons"> </span>Logout</a></div>
+             <div> <a routerLink="/profile"><span class="icons"> </span>Profile</a></div>
+             <div>   <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a></div> 
+             <div><a routerLink="/dashboard"><span class="icons"> </span>Add farm</a></div>
+                <div> <a routerLink="/addedfarms"><span class="icons"> </span>Home</a></div>
+               
+                    
+                
+             
+                   
+                     
+                   </div>
+ 
   <div id="main" class="container">
     </div>
 
   <br><br><br>
 
     
-<div class="container register">
-    <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
+<div class="container float-none register">
+  
     
 
 
@@ -59,20 +51,13 @@
            
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="dropdown">
-                        <div class="counter" (click)="smallPageCounter()">Products No. {{itemLength}}</div>
-                        <div id="myDropdown" class="dropdown-content">
-                            <div class="card" *ngFor="let prod of itemsProd  ;let i = index">
-                                <div class="container" >
-                                  <h4><b>{{prod}}</b><img src="../../../assets/icons8-multiply-50.png" (click)="delete(i)"></h4> 
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  
                   <h3 class="register-heading">Add  New Farming Business</h3>
                     <div class="row register-form">
+
                         <div class="col-md-6">
+                            
+                    
                             <div class="form-group"  >
                                     <input type="text" class="form-control" maxlength="150"  placeholder="Name of place *" #nameS [(ngModel)]="FarmName"  required >
                             </div>
@@ -84,7 +69,7 @@
                                
                             </div>
                             <div class="form-group">
-                                <input type="tel"  minlength="10" maxlength="10" class="form-control" placeholder="Contact Number *" #tel  [(ngModel)]="FarmTel" required />
+                                <input type="number" class="form-control" placeholder="Contact Number *" #tel  [(ngModel)]="FarmTel" required />
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control"  placeholder="Website" #website  [(ngModel)]="FarmWebsite" />                                
@@ -99,14 +84,17 @@
                                     <label>Crops
                                             <input type="checkbox" #crops  [(ngModel)]="Farmcrops">
                                           </label>
+                                          <br>
                                           <label >Live Stock
                                                 <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
-                                            
+                                               
                                               </label>
+                                               <br>
                                               <label >BeeKeeping
                                                 <input type="checkbox" #beeKeeping  [(ngModel)]="Farmbees">
                                                
                                               </label>
+                                              <br>
                                               <label  >Aquatic
                                                 <input type="checkbox" #aquatic  [(ngModel)]="FarmAquatic" >
                             
@@ -120,16 +108,33 @@
                             <div class="form-group">
                                     <select class="form-control"  #farmType  >
                                             <option class="hidden"  selected disabled>Select type of urban farm business</option>
+                                 
                                             <option value="Vertical Farming">Vertical Farming</option>
+                                           
                                             <option value="Traditional Farming">Traditional Farming</option>
+                                        
                                             <option value="Green House">Green House</option>
                                         </select>
                                 
                             </div>
+                            <div>
+
+                            </div>
+                            <div class="dropdown"  >
+                                    <div class="counter" (click)="smallPageCounter()">Products No. {{itemLength}}</div>
+                                    <div id="myDropdown" class="dropdown-content">
+                                        <div class="card" *ngFor="let prod of itemsProd  ;let i = index">
+                                            <div class="container" >
+                                              <h4><b>{{prod}}</b><img src="../../../assets/icons8-multiply-50.png" (click)="delete(i)"></h4> 
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                             <div class="form-group" > 
                               <label  >Search for products you sell/offer</label>
-                              <input type="text" class="form-control" placeholder="Product" (input)="getProducts($event)" (click)="clicked()"  [(ngModel)]="chooseItem"/>
+                              <input type="text" class="form-control" placeholder="Product" (input)="getProducts($event)" (click)="clicked()"  [(ngModel)]="chooseItem" />
                               <div class="list" id="hide" *ngFor="let item of products" (click)="productClicked(item)">
                                 
                                 {{item}}
@@ -147,7 +152,7 @@
 
                             </div>
                             <div class="form-group">
-                              <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)" />
+                              <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image [(ngModel)]="Farmpicture"  (change)="insertImage($event)" />
                             </div>
                             <div>
                                 <input class="btnRegister"(click)="initMyMap(nameS.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" 
@@ -168,7 +173,7 @@
  
     <div class="w3-container">
       
-        <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
+
       
         
 
@@ -182,26 +187,15 @@
           </div>
         </div>
       </div>
-<!-- 
-      <button class="test" (click)=test()></button> -->
 
-<!-- <div class="overlay" id="hide">
-<div  class="alert" >
-<h2 class="textalert">{{ message }}</h2>
-<div class="button"  id="theOkay" (click)="dismissAlert()">
-  <h6 class="h66"><b>OK</b></h6>
-</div>
-</div>      
-</div> -->
 
 <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
+
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
     }
     
-    // Close the dropdown if the user clicks outside of it
+ 
     window.onclick = function(event) {
       if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -217,3 +211,7 @@
     </script>
 
 </body>
+
+<div class="footer">
+        <p >&copy; Copyright 2019 Farm-Eat  </p>
+    </div>

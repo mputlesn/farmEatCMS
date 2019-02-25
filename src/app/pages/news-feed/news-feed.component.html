@@ -1,216 +1,160 @@
-<!-- <!DOCTYPE html>
-<html>
+
+
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="main.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="main.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body > 
-                <div id="mySidenav" class="sidenav">  
-   
-                                <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-                              <br>
-                              <br>
-                             <a routerLink="/dashboard"><span class="icons"> &nbsp; </span>Home</a>
-                              <br>
-                              <br>
-                              <a routerLink="/newsfeed"><span class="icons"> &nbsp; </span>News Feed</a>
-                              <br>
-                              <br>
-                              <a (click)="logout()" ><span class="icons">&nbsp; </span>Logout</a>
-                          
-                            </div>
-                            
-                            <div id="main" class="container">
-                                    <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
-                                        <div  class="form-container">
-                                                        <form>
-                                                                <header class="head-form">
-                                                                    <h1 style="color:white ">Add your News here</h1>
-                                                                </header>
-                                                                <br>
-                                                                <br>
-                                                                <div class="row" >
-                                                                    <div class=col-25 >
-                                                                            <label for="Checkin Date">News Title</label>
-                                                                    </div>
-                                                                    <div class="col-75" >
-                                                                            <input type="text" #title required>
-                                                                    </div>
-                                        
-                                                                </div>
-                                                                <div class="row" >
-                                                                        <div class=col-25 >
-                                                                                <label for="Checkin Date">Type your news message here</label>
-                                            
-                                                                        </div>
-                                                                        <div class="col-75" >
-                                                                                <br>
-                                                                                <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea>
-                                            
-                                                                        </div>
-                                            
-                                                                    </div>
-                                                                    <div class="row" >
-                                                                            <div class=col-25 >
-                                                                                    <br>
-                                                                                    
-                                                                                    <label>Add image</label> 
-                                                
-                                                                            </div>
-                                                                            <br>
-                                                                            <br>
-                                                                            <div class="col-75" >
-                                                                                    <input type="file" accept="image/*" (change)="insertImage($event)" >
-                                                
-                                                                            </div>
-                                                                            <br>
-                                                                        <br>
-                                                                        <br>
-                                                                        <br>
-                                                                        <br>
-                                                                        <br>
-                                                                            <input (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">
-                                                                        </div>
-                                                                     
-                                                              
-                                                            </form>
-                                                </div>
 
-  </div>
-     
-</body>
+<body onload="myFunction()" style="margin:0;">
 
-</html>
- -->
+        <div class="topnav" id="myTopnav"> 
+                <div class="logo"> <h3>Farm-Eat</h3></div>
+                      
+                <div>  <a routerLink="/home" (click)="logout()"><span class="icons"> </span>Logout</a></div>
+             <div> <a routerLink="/profile"><span class="icons"> </span>Profile</a></div>
+             <div>   <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a></div> 
+             <div><a routerLink="/dashboard"><span class="icons"> </span>Add farm</a></div>
+                <div>    <a routerLink="/addedfarms"><span class="icons"> </span>Home</a></div>
+               
+                    
+                
+             
+                   
+                     
+                   </div>
+          <br><br><br><br><br> <br> <br> <br>
 
-
+    <div id="main" class="container">
+    </div>
+  
+    <div id="loader"></div>
 
  
-<head>
-                <meta charset="utf-8" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <title>Page Title</title>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-                <script src="main.js"></script>
-                <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-              </head>
-            <body  onload="myFunction()" style="margin:0;">
-                
-              <div id="mySidenav" class="sidenav">  
-               
-                  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"> &times;</a>
-                  <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
-                <br>
-                <br>
-                <a routerLink="/dashboard"><span class="icons"> </span>Add farm</a>
-                <br>
-                <br>
-                <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
-                <br>
-                <br>
-                <a routerLink="/profile"><span class="icons"> </span>Profile</a>
-                <br>
-                <br>
-                <a (click)="logout()"><span class="icons"> </span>Logout</a>
-                
-              </div>
-              <div id="main" class="container">
-                </div>
-    <br> <br> <br> <br><br><br>
-    <div id="loader"></div>
-       <div class="customAlert0">
-                        <div class="text">
-                   
-                          <p>Have added news feed successfully </p>
-                        </div>
-                        <div class="confirmer" id="theOkay" (click)="dismissAlert()">
-                          <div class="OK">
-                            OK
-                          </div>
-                        </div>
-                      </div>
-                      <!-- <div class="customAlert01">
-                            <div class="text">
-                       
-                              <p>fill in all the field to submit</p>
-                            </div>
-                            <div class="confirmer" id="theOkay" (click)="dismissAlert()">
-                              <div class="OK">
-                                OK
-                              </div>
-                            </div>
-                          </div> -->
-<div class="container register">
-                <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span>
-              
-           
-                <div class="row">
-                    <div class="col-md-3 register-left">
-                        <img src="../../../assets/greenW (1).png" alt=""/>
-                        <h3>Farming is a profession of hope</h3>
-                        <p>Share news with others.</p>
-                      
-                    </div>
-                    <div class="col-md-9 register-right">
-                       
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Add your News feed here</h3>
-                                <div class="row register-form" id="newForm" >
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                        <input  placeholder="Title *"class="form-control" maxlength="20" minlength="5"   type="text" #title [(ngModel)]="Titlle" required>
-                                               
-                                        </div>
-                                        <div class="form-group" > 
-                                                        <label  >Upload Picture</label>
-                    
-                                                </div>
-                                                <div class="form-group">
-                                                       
-                                                        <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)" />
-                                                    </div>
-                                       
-                                    </div>
-                                    <div class="col-md-6">
-                                                                               
-                                       
-                                        <div class="form-group">
-                                                        <!-- <textarea  align ="center" rows="20" cols="100" class="form-input" type="text" #message required></textarea> -->
-                                                       
-                                            <textarea minlength="10" id="subject" placeholder="Type your news message here*" name="subject" class="form-control" style="height:200px "   #message [(ngModel)]="Description" required></textarea>
-                                        </div>
-                                       
-                                        <input class="btnRegister"  (click)="newsfeed(title.value , message.value)"type="submit" value="Submit">
-                                       
-                                        <!-- <input   class="btnRegister" (click)="initMap (name.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)" type="submit" value="Submit"> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
+
+    <!-- <div class="container register">
+     
+
+
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="../../../assets/greenW (1).png" alt="" />
+                <h3>Farming is a profession of hope</h3>
+                <p>Share news with others.</p>
+
             </div>
-              
-                <div class="w3-container">
-                    <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
-                  
-                    <div id="id01" class="w3-modal">
-                      <div class="w3-modal-content">
-                        <div class="w3-container">
-                          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                          <h1>You have loged in</h1>
-                         
+            <div class="col-md-9 register-right">
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Add your News feed here</h3>
+                        <div class="row register-form" id="newForm">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input placeholder="Title *"  class="form-control" maxlength="20" minlength="5" type="text" #title [(ngModel)]="Title" required>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Picture</label>
+
+                                </div>
+                                <div class="form-group">
+
+                                    <input type="file" class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)"
+                                    />
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+
+
+                                <div class="form-group">
+                               
+
+                                    <textarea minlength="10" id="subject" placeholder="Type your news message here*"  name="subject" class="form-control" style="height:200px "
+                                        #message [(ngModel)]="Description" required></textarea>
+                                </div>
+
+                                <input class="btnRegister" (click)="newsfeed(title.value , message.value)" type="submit" value="Submit">
+
+                              
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
+            </div>
+        </div>
+
+    </div>  -->
+
+
+
+
+    
+    <h2>Modal Login Form</h2>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+    
+    <div id="id01" class="modal">
+      
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+    
+        <div class="container">
+          
+                <div class="form-group">
+                        <input placeholder="Title *"  class="form-control" maxlength="150" minlength="5" type="text" #title [(ngModel)]="Title" required>
+
+                    </div>
+                     
+                    <div class="form-group">
+                               
+
+                            <textarea minlength="10" id="subject" placeholder="Type your news message here*"  name="subject" class="form-control" style="height:200px "
+                                #message [(ngModel)]="Description" required></textarea>
+                        </div>
+                    <div class="form-group">
+                        <label>Upload Picture</label>
+
+                    </div>
+                    <div class="form-group">
+
+                        <input type="file" class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)"
+                        />
+                    </div>
+
+                   
+
+                        <input class="btnRegister" (click)="newsfeed(title.value , message.value)" type="submit" value="Submit">
+        </div>
+    
+      </form>
+    </div>
+    
+
+    <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
             
-            </body>
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            </script>
+
+    <div class="footer">
+        <p>&copy; Copyright 2019 Farm-Eat  </p>
+    </div>
+</body>
