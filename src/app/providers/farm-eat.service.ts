@@ -157,7 +157,8 @@ export class FarmEatService {
         website: website,
         facebook: facebook,
         image: downloadURL,
-        products: products
+        products: products,
+        farmRate: 0
       });
       resolve();
     });
@@ -316,6 +317,9 @@ export class FarmEatService {
                 image:FarmDetails[k3].image ,
                 beeKeeping:FarmDetails[k3].beeKeeping ,
                 liveStock:FarmDetails[k3].liveStock ,
+
+
+                
                 facebook:FarmDetails[k3].facebook,
                 products:FarmDetails[k3].products
               }
