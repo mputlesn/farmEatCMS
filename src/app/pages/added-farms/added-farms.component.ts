@@ -61,10 +61,12 @@ export class AddedFarmsComponent implements OnInit {
   strPhone;
   newsTitle;
   News;
+  city
   NewsImage;
   farmRating = new Array();
   allFarms =  new Array();
   farmName = new Array();
+  farmViews = new Array();
   chart = []; // This will hold our chart info
   products = [
     'Search for products',
@@ -1170,9 +1172,7 @@ export class AddedFarmsComponent implements OnInit {
     console.log(this.FarmTel);
     console.log(this.Farmpicture);
 
-
-
-
+    
 
     if (this.FarmName == undefined && this.farmDescription == undefined && this.FarmAddress == undefined && this.FarmTel == +27 && this.Farmpicture == undefined) {
 
@@ -1239,6 +1239,7 @@ export class AddedFarmsComponent implements OnInit {
 
       geocoder.geocode({ 'address': this.FarmAddress }, function (results, status) {
         if (status === 'OK') {
+          var arr = results[0].address_components;
           this.desLatLng = results[0].geometry.location;
           console.log('Des method ' + this.desLatLng);
           console.log(this.desLatLng);
@@ -1250,7 +1251,9 @@ export class AddedFarmsComponent implements OnInit {
           lng = results[0].geometry.location.lng();
           console.log(lat);
           console.log(lng);
-
+          this.city = arr[3].long_name
+          console.log("city ", this.city);
+          
         } else {
 
 
@@ -1304,7 +1307,7 @@ export class AddedFarmsComponent implements OnInit {
           console.log(this.FarmFacebook);
 
           if(this.imageArr != []){
-            this.farmEat.addFarm(this.FarmName, this.FarmAddress, this.farmType, this.farmDescription, this.Farmcrops, this.FarmLivestock, this.Farmbees, this.FarmAquatic, this.FarmEmail, this.FarmTel, this.FarmWebsite, this.FarmFacebook, this.testImg, lat, lng, this.itemsArr).then(() => {
+            this.farmEat.addFarm(this.FarmName, this.FarmAddress, this.farmType, this.farmDescription, this.Farmcrops, this.FarmLivestock, this.Farmbees, this.FarmAquatic, this.FarmEmail, this.FarmTel, this.FarmWebsite, this.FarmFacebook, this.testImg, lat, lng, this.itemsArr, this.city).then(() => {
                   this.ngOnInit();
                   this.farmEat.sucess(" Farm Added Successfully");
           
@@ -1327,6 +1330,7 @@ export class AddedFarmsComponent implements OnInit {
               this.itemLength = 0
               this.farmImage = ""
               this.testImg = []
+              this.city = ""
           }
 
 
@@ -1485,8 +1489,6 @@ console.log("clicked gr")
           this.farmRating.push(rate)
           this.farmName.push(name)
           console.log(this.farmRating);
-          
-
 
         }
 
@@ -1549,25 +1551,66 @@ console.log("clicked gr")
 
   getViewStatsPerFarm(){
     return new Promise((resolve, reject) => {
-      this.farmEat.getallFarms().then((data: any) => {
-        this.allFarms = data
-        console.log(data);
-
-        for (let index = 0; index < this.allFarms.length; index++) {
-          var farmKey = this.allFarms[index].k;
-          this.farmEat.getFarmView(farmKey).then((data:any)=>{
-            console.log("number of views for this farm "+data);
+          this.farmEat.getFarmView().then((data:any)=>{
+            console.log(data);
+            console.log("dataViewed");
+            
+            this.farmViews = data
+            console.log("FArm Views");
+            console.log( this.farmViews);
+            console.log(data);
+            
+            setTimeout(() => {
+              var ctx = document.getElementById("views");
+            this.chart = new Chart("views", {
+                type: 'doughnut',
+                data: {
+                  labels: this.farmName,
+                  datasets: [{
+                    label: 'Number of Views per Farm',
+                    data: this.farmViews,
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  }
+                }
+              });
+            }, 3000);
             
           }).catch((error)=>{
-            console.log("number of views for this farm "+error.message);
+            console.log("number of views for this farm "+0);
           })
-          
+
+          resolve()
+        })
 
 
-        }
-        
-      })
-    })
     
   }
 

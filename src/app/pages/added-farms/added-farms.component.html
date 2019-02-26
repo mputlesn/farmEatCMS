@@ -46,7 +46,7 @@
 
 
     <div id="map"></div>
-    <div  class="graphs d-flex flex-row "  >
+    <!-- <div  class="graphs d-flex flex-row "  >
        
                     
               
@@ -54,13 +54,25 @@
 <span onclick="document.getElementById('graphchart').style.display='none'" class="closegraphs"  (click)="closegraphs()">&times;</span>
             <canvas id="ratings"></canvas>
         </div>
-        <!-- <div class="views-container">
+        <div class="views-container">
 view div
             <canvas  id="views"></canvas>
-        </div> -->
-    </div>
+        </div>
+    </div> -->
+    <div class="graphs">
+            <div class="chart-container" >
+               
+                          <canvas id="ratings"></canvas>
+                      </div>
+                      <div class="views-container" >
+                        
+                              <canvas id="views"></canvas>
+                          </div>  
+          </div>
 
-    <div id="absoluteNews" onclick="document.getElementById('id01').style.display='block'" (click)="absoluteNews()">
+
+
+    <div id="absoluteNews"  onclick="document.getElementById('id01').style.display='block'" (click)="absoluteNews()">
         <button class="buttonNewsFeeds ">
             <i id="icon" class="fas fa-newspaper"></i>
         </button>

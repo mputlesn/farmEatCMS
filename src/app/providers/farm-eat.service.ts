@@ -13,7 +13,7 @@ export class FarmEatService {
 
   getAllFarmArray = []
   newFeedArray = []
-
+  viewsArr = []
 
   constructor(public http: HttpClient) { }
 
@@ -135,7 +135,7 @@ export class FarmEatService {
 
 
   // tslint:disable-next-line:max-line-length
-  addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng, products) {
+  addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng, products, city) {
 
     
     let uid: any = firebase.auth().currentUser.uid;
@@ -158,7 +158,8 @@ export class FarmEatService {
         facebook: facebook,
         image: downloadURL,
         products: products,
-        farmRate: 0
+        farmRate: 0,
+        city: city
       });
       resolve();
     });
@@ -415,28 +416,52 @@ fgdf(){
   
 }
 
-getFarmView(farmK, allFArms){
+getFarmView(){
+  
   return new Promise ((resolve, reject) =>{
 
-    firebase.database().ref("FarmViews/"+farmK).on('value' , (data:any)=>{
-      var FarmViews =data.val();
-      console.log(FarmViews);
-      var views = 0
-      var keys: any = Object.keys(FarmViews);
-      for (let index = 0; index < keys.length; index++) {
-        var v = keys[index];
-        
-        console.log(keys[index]);
+    console.log("getFarmView Active");
+    this.getallFarms().then((data:any)=>{
+      for (let index = 0; index < data.length; index++) {
+        const element = data[index].k;
+        firebase.database().ref("FarmViews/"+element).on('value' , (data:any)=>{
+          var FarmViews =data.val();
+          console.log(FarmViews);
+          var views = 0
+          console.log("outside if statement provider");
+          
+          if(FarmViews == null || FarmViews == undefined){
+            console.log("content null or undefined");
+            
+            views += 0
+          }else if(FarmViews != null){
+            
+            var keys: any = Object.keys(FarmViews);
+            for (let index = 0; index < keys.length; index++) {
+              var v = keys[index];
+              console.log("content has views");
+              console.log(keys[index]);
+             
+              const element = FarmViews[v].view;
+              console.log(element);
+              
+              views += element
+            }
+          }
+          console.log("views");
+          console.log(views);
+          this.viewsArr.push(views)
+      
+          
+        })
        
-        const element = FarmViews[v].view;
-        console.log(element);
-        
-        views += element
       }
-      resolve(views)
     })
-    reject()
+  
+    
+    resolve(this.viewsArr)
   })
+   
  }
 
 }
