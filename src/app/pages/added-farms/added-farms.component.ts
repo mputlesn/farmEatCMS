@@ -1391,12 +1391,35 @@ export class AddedFarmsComponent implements OnInit {
     document.getElementById("absoluteNews").style.display = 'block';
 
   }
+  closegraphs(){
+    document.getElementById("graphchart").style.display = 'none';
+
+  }
   showNewsFeed() {
     document.getElementById("news-feed").style.display = 'block';
     document.getElementById("add-farm").style.display = 'none';
     document.getElementById("absoluteNews").style.display = 'block';
     document.getElementById("absoluteFarm").style.display = 'none';
   }
+  graphs(){
+console.log("clicked gr")
+    if(  document.getElementById("graphchart").style.display == 'block'){
+      console.log("ging")
+    document.getElementById("graphchart").style.display = 'none';
+     }else if( document.getElementById("graphchart").style.display =='none') {
+      console.log("goutg")
+      document.getElementById("graphchart").style.display = 'block';
+      console.log("goug")
+     }
+     else{
+      document.getElementById('graphchart').style.display = 'block'
+      console.log('outg');
+
+     }
+
+ 
+}
+
 
   addfarm() {
     console.log('click');
@@ -1499,6 +1522,8 @@ export class AddedFarmsComponent implements OnInit {
                   }]
                 },
                 options: {
+                  maintainAspectRatio : false,
+                  responsive:'true',
                   scales: {
                     yAxes: [{
                       ticks: {

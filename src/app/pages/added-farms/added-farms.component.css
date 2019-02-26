@@ -686,6 +686,17 @@ span.psw {
   font-weight: bold;
   z-index: 1;
 }
+.closegraphs{
+  float: right;
+  font-size: xx-large;
+  margin-top: -15px;
+
+}
+.closegraphs:hover,
+.closegraphs:focus {
+  color: red;
+  cursor: pointer;
+}
 
 .close:hover,
 .close:focus {
@@ -1110,6 +1121,7 @@ span.psw {
   color: red;
   cursor: pointer;
 }
+
 
 
 .animate {
@@ -1537,29 +1549,33 @@ font-size: 20px;
 }
 }
 .graphs{
-  display: flex;
+   display: flex;
   position: absolute;
-  left: 25%;
+  left: 24.5%;
   flex-direction: row;
-  bottom: 0%;
+  bottom: 5%;
   height: 35%;
   width: 75%;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: -webkit-flex; 
+  -webkit-flex-direction: row-reverse; 
   display: flex;
   flex-direction: row-reverse;
    grid-template-columns: 1fr 1fr;
    display: grid;
+   background-color: rgba(216, 25, 25, 0);
 }
 .chart-container{
-  width: 90%;
+  width: 50%;
 height: 100%;
+/* background-color: royalblue; */
 background-color: white;
 }
 .views-container{
-  width: 90%;
+  width: 50%;
 height: 100%;
-background-color: white;
+/* left: 50%; */
+background-color: rgb(20, 66, 34);
+/* background-color: white; */
  
 }
 
@@ -1586,6 +1602,15 @@ background-color: white;
 
 
 }
+
+#graphchart{
+  display: none;
+
+}
+/* #ratings{
+  width:40% ;
+  height:50% ;
+} */
 
 
 
