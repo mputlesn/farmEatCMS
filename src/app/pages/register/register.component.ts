@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FarmEatService } from '../../providers/farm-eat.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -7,11 +8,15 @@ import { FarmEatService } from '../../providers/farm-eat.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  numberuserPerMonth
+  constructor(private farmEat: FarmEatService , private router: Router) { 
 
-  constructor(private farmEat: FarmEatService) { }
+ 
+  }
 
   ngOnInit() {
   }
+
 
   Register(email, password, name){
     console.log(name);
@@ -22,12 +27,13 @@ export class RegisterComponent implements OnInit {
       email = "" 
       password = ""
       name = ""
- 
+      this.router.navigateByUrl('/addedfarms');
     } , (error)=>{
       alert(error.message)
     })
   }else{
     alert('Please enter email and password')
   }
+
   }
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Logs } from 'selenium-webdriver';
 import { Router } from '@angular/router';
-import { error } from '@angular/compiler/src/util';
+import { FarmEatService } from '../../providers/farm-eat.service';
+
 declare var firebase;
 
 @Component({
@@ -10,86 +11,114 @@ declare var firebase;
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
-  newsMessage
-
-  url 
-  constructor( private router: Router) { }
+  @ViewChild('image')image:ElementRef; 
+  newsMessage;
+  Description;
+  Title;
+  url ;
+  updateNews;
+  constructor( private router: Router ,  private farmEat: FarmEatService) { }
 
   ngOnInit() {
-  }
-  openNav() {
-    document.getElementById('mySidenav').style.width = '250px';
-  document.getElementById('main').style.marginLeft = '250px';
-  }
-  closeNav() {
-    document.getElementById('mySidenav').style.width = '0';
-    document.getElementById('main').style.marginLeft = '0';
+   
   }
 
 
-  insertImage(event: any){
+
+  insertImage(event: any) {
     this.url = event.target.files[0];
-    console.log(this.url);
+
     
+    console.log(this.url);
+
   }
 
-  newsfeed(message , title){
-   
+  
 
+  newsfeed(title, message) {
+    this.farmEat.test();
+this.Title = " ";
+this.Description = "";
 
-   console.log(message);
-   console.log(title);
+    if(title.length == 0 && message.length ==0){
+      this.farmEat.oops("Please enter all Details");
+    } else if (title.length == 0 ){
+      this.farmEat.oops("Please enter title")
+    } else if (message.length ==0){
+      this.farmEat.oops("Please enter description")
 
-
-   
-
-     if(message != undefined && title != undefined){
+    } else {
       var downloadURL: any;
       var filename = this.url.name;
+      console.log("in");
+      
       const metaData = {'contentType': this.url.type};
       //create reference
       var storageRef = firebase.storage().ref(name+'/'+filename)
       //upload the selected image to the storage
       var uploadTask = storageRef.put(this.url, metaData)
       // Get the download URL
+
+      console.log("out");
+      
       storageRef.getDownloadURL().then((url) => {
         downloadURL = url;
         console.log(downloadURL);
-      }).catch((error) => { 
+        console.log(title);
+        console.log(message);
+        console.log(url);
+        
+        
+        
+      }).catch((error) => {
       });
          setTimeout(()=>{
            firebase.database().ref('Newsfeed').push({
-        
-        
+ 
+ 
              message:message ,
              title:title ,
              image:downloadURL,
-            
-        
+ 
+ 
            })
+           this.farmEat.sucess("Added Successfully")
          }, 3000)
-           
-        
-          alert('You have successfully saved ')
-     
-     }
-     else if( message == undefined && title == undefined) {
-       alert('ccc')
-          
-  
-   }
-  
-  }
-  
-
-  logout(){
-    firebase.auth().signOut().then(()=>{
-      this.router.navigate(['']);
-      console.log("have logged out");
       
+         this.image.nativeElement.value = null;
+    }
+
+
+
+    
+   
+
+  }
+
+
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.router.navigate(['']);
+      console.log('have logged out');
+
     }).catch(function(error) {
       // An error happened.
     });
-  
+
+}
+
+UpdateNewsFeed(){
+
+  let uid: any = firebase.auth().currentUser.uid
+
+  this.updateNews = {
+    message: this.newsMessage,
+    desc:this.Description,
+    head:this.Title
+
+  }
+console.log(this.updateNews);
+
+  firebase.database().ref("Newsfeed/" + uid).update(this.updateNews)
 }
 }

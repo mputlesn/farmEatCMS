@@ -32,8 +32,6 @@ export class GeoComponent implements OnInit {
   }
 
   initMap(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
-   
-    console.log(email);
     var downloadURL: any;
     var filename = this.url.name;
     const metaData = {'contentType': this.url.type};
@@ -48,23 +46,13 @@ export class GeoComponent implements OnInit {
     }).catch((error) => { 
     });
 
-
-    if (email == this.validateEmail){
-      console.log(email);
-      
-    }else{
-      console.log('wrong');
-   
-      
-    }
-
     const geocoder = new google.maps.Geocoder;
-   
+
 
     var lat;
     var lng;
     geocoder.geocode({'address': address}, function(results, status) {
-      if (status === 'OK' ) {
+      if (status === 'OK') {
         this.desLatLng = results[0].geometry.location;
         console.log("Des method "+this.desLatLng);
         console.log(this.desLatLng);
@@ -76,24 +64,15 @@ export class GeoComponent implements OnInit {
         
        } else {
          alert('Geocode was not successful for the following reason: ' + status);
-       
        }
     });
 
-    setTimeout(()=>{
-      this.farmEat.addFarm(name, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
-        alert("Farm Info Added")
-      })
-    }, 5000)
-
-  
-
- 
-  }
- validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
+  //   setTimeout(()=>{
+  //     this.farmEat.addFarm(names, address,farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, this.imageArr, lat, lng).then(()=>{
+  //       alert("Farm Info Added")
+  //     })
+  //   }, 5000)
+ }
 
   logout(){
     firebase.auth().signOut().then(()=>{
@@ -104,5 +83,7 @@ export class GeoComponent implements OnInit {
   
     });
   
+
+    
 }
 }

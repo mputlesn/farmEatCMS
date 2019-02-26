@@ -1,0 +1,184 @@
+
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>     
+<body > 
+  
+  <!-- <div id="mySidenav" class="sidenav">  
+   
+     
+    <br>
+    <br> 
+     <a routerLink="/addedfarms"><span class="icons"> </span>Home</a>
+     <br>
+
+     <br>
+    <a routerLink="/dashboard"><span class="icons"> </span>Add farm</a>
+    <br>
+    <br>
+    <a routerLink="/newsfeed"><span class="icons"> </span>News Feed</a>
+    <br>
+    <br>
+    <a routerLink="/profile"><span class="icons"> </span>Profile</a>
+    <br>
+    <br>
+    <a (click)="logout()"><span class="icons"> </span>Logout</a>
+   
+  
+
+  </div> -->
+
+  <div class="topnav" id="myTopnav">
+    <div class="farmeat"
+        style=" color: white; padding: 16px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.548); font-size: 30px; font-weight: bold">
+        FARM-EAT
+    </div>
+</div>
+
+  <br><br><br>
+
+
+<div class="container register">
+    <!-- <span style="font-size:30px;cursor:pointer" class="menuside" (click)="openNav()">&#9776; </span> -->
+    
+
+
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="../../../assets/greenW (1).png" alt=""/>
+            <h3>MAKE IT EFFORTLESS FOR PEOPLE TO FIND YOU.</h3>
+            <p>REGISTER YOUR FARMING BUSINESS NOW WITH FARM EAT.</p>
+   
+        </div>
+        <div class="col-md-9 register-right"  >
+           
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Update</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group"  >
+                                    <input type="text" class="form-control" maxlength="20"  placeholder="Name of place *" #nameS [(ngModel)]="farmName" [value]="name" required >
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control"  type="text" #address  [(ngModel)]="FarmAddress" required  placeholder="Address *"  >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control"   id="email" #email  [(ngModel)]="FarmEmail"  placeholder="Email"   />
+                               
+                            </div>
+                            <div class="form-group">
+                                <input type="number"  minlength="10" maxlength="10" class="form-control" placeholder="Contact Number *" #tel  [(ngModel)]="FarmTel" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control"  placeholder="Website" #website  [(ngModel)]="FarmWebsite" />                                
+                            </div>
+                            <!-- <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Facebook" #facebook  [(ngModel)]="FarmFacebook"  />
+                                 
+                                </div> -->
+                            <div class="form-group">
+                                    <label>Crops
+                                            <input type="checkbox" #crops  [(ngModel)]="Farmcrops" checked="checked">
+                                          </label>
+                                          <label >Live Stock
+                                                <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
+                                            
+                                              </label>
+                                              <label >BeeKeeping
+                                                <input type="checkbox" #beeKeeping  [(ngModel)]="Farmbees">
+                                               
+                                              </label>
+                                              <label  >Aquatic
+                                                <input type="checkbox" #aquatic  [(ngModel)]="FarmAquatic" >
+                            
+                                              </label>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            
+                           
+                            <div class="form-group" [(ngModel)]="FarmType">
+                                    <select class="form-control"  #farmType  >
+                                            <!-- <option class="hidden"  selected disabled>Select type of urban farm business</option> -->
+                                            <option value="Vertical Farming">Vertical Farming</option>
+                                            <option value="Traditional Farming">Traditional Farming</option>
+                                            <option value="Green House">Green House</option>
+                                        </select>
+                                
+                            </div>
+                            
+                           
+                            <div class="form-group">
+                                
+                                <textarea id="subject" placeholder="Description of a Farm..*" name="subject" class="form-control" style="height:200px " #description  [(ngModel)]="farmDescription" required></textarea>
+                            </div>
+                            <div class="form-group" > 
+                                    <!-- <label  >Upload Picture a farm</label> -->
+
+                            </div>
+                            <div class="form-group">
+                              <!-- <input type="file"class="form-control" accept="image/*" placeholder="Upload images*" #image (change)="insertImage($event)"   [(ngModel)]="FarmImage" /> -->
+                            </div>
+                            <div>
+                                <input class="btnRegister"(click)="update(address.value, farmType.value)" type="submit" value="Update">
+                            </div>
+                               
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<button class="fabb" id="fabmain" (click)='addfarm()'  style="border:0;" >
+    <i class="fas fa-bars"></i>
+</button>
+<div class="fabblist" id="showfab" (click)='show()'  >
+    <div class="fabcontainer">
+        <a routerLink="/addedfarms" class="minifabb">
+            <span class="icons"> </span>
+            <button class="minifabb"  style="border:0;" >
+                <i class="fas fa-home"></i>
+            </button>
+        </a>
+        <label class="fabblabel">home</label>
+    </div>
+
+    <div class="fabcontainer">
+        <a routerLink="/profile" class="minifabb">
+            <button class="minifabb"  style="border:0;" >
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </a>
+        <label class="fabblabel">Profile</label>
+    </div>
+    <div class="fabcontainer">
+        <a routerLink="/home" (click)="logout()" class="minifabb">
+            <button class="minifabb"  style="border:0;" >
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </a>
+
+        <label class="fabblabel">Logout</label>
+    </div>
+</div>
+</body>
+<div class="footer">
+    <p >&copy; Copyright 2019 Farm-Eat  </p>
+</div>

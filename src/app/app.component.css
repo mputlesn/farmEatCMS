@@ -1,0 +1,64 @@
+/* .side{
+    width: 40%;
+   position: relative;
+   top: -100%;
+   left: 61%;
+   
+   
+   
+} */
+/* .sidenav {
+  height: 90%;
+  width: 0;
+  position: fixed;
+  z-index: 0;
+  top: 10%;
+  left: 0;
+  background-color: rgb(8, 113, 80);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2)
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.menuside{
+  color: white;
+margin: 16px;
+
+}
+.topdiv{
+  background-color: rgb(8, 113, 80);
+    margin: 0 auto;
+    padding-bottom: 15px;
+   z-index: 99;
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2)
+}
+h1{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 16px
+} */

@@ -1,0 +1,342 @@
+<!-- <!DOCTYPE html>
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="container-fluid register">
+
+    <div class="topnav" id="myTopnav">
+        <div class="farmeat"
+            style=" color: white; padding: 16px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.548); font-size: 30px; font-weight: bold">
+            FARM-EAT
+        </div>
+    </div>
+
+    <div id="main" class="container">
+    </div>
+    <div class="row">
+
+
+
+
+        <div id="profilecard">
+            <div class="col-md-1 register float-sm-left ">
+                <div class="card flex-row mt-3 " style="width: 30rem; height: 10rem; margin: 0 auto;" id="hover" *ngFor="let profile of profileArray"
+                    (click)="getFArm(profile.k)">
+                    <img class="card-img" style="width: 10rem; height: auto;" src="{{profile.image}}" alt="" srcset="">
+
+                    <div class="card-body ">
+                        <h5 class="card-title ">{{profile.name}}</h5>
+                        <p>{{profile.type}}</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8 register-right" style="background-color: rgb(243, 243, 243)">
+            <h3 class="register-heading">Company Description</h3>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+
+                    <div class=" register-form">
+                        <div class="col-md-6 float-xl-left ">
+
+
+                            <div class=" d-flex  ">
+                                <label class="labels" for=""> Name: &nbsp; &nbsp;</label>
+                                <h2 class="formcontrol">{{FarmObj.name}}</h2>
+                            </div>
+                            <div class="d-flex  ">
+                                <label class="labels" for=""> Address: </label>
+                                <h2 class="formcontrol">{{FarmObj.address}} </h2>
+
+
+                            </div>
+                            <div class="d-flex p-2 ">
+                                <label class="labels" for=""> Email: &nbsp; &nbsp; &nbsp; &nbsp; </label>
+                                <h2 class="formcontrol"> {{FarmObj.email}}</h2>
+
+                            </div>
+
+                            <div class="d-flex p-2 ">
+                                <label class="labels" for=""> Contacts:</label>
+                                <h2 class="formcontrol">{{FarmObj.tel}}</h2>
+                            </div> -->
+                            <!-- <div class="form-group">
+                              <h2 class="form-control">{{FarmObj.website}}</h2>                             
+                          </div>
+                          <div class="form-group">
+                              <h2 class="form-control">{{FarmObj.facebook}}</h2>
+                               
+                              </div> -->
+
+                        <!-- </div>
+                        <div class="col-md-6 float-sm-left ">
+
+
+                            <div class="d-flex p-2 ">
+                                <label class="labels" for=""> Description:</label>
+                                <h3 class="formcontrol">{{FarmObj.description}}</h3>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+
+                <button class="btnRegister" (click)="nextpageupdate()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+<button  style="border:0;"  class="fabb" id="fabmain" (click)='addfarm()'>
+    <i class="fas fa-bars"></i>
+</button>
+<div class="fabblist" id="showfab" (click)='show()'>
+    <div class="fabcontainer">
+        <a routerLink="/addedfarms" class="minifabb">
+            <span class="icons"> </span>
+            <button style="border:0;"  >
+                <i class="fas fa-home"></i>
+            </button>
+        </a>
+        <label class="fabblabel">home</label>
+    </div>
+
+    <div class="fabcontainer">
+        <a routerLink="/profile" class="minifabb">
+            <button   class="minifabb"  style="border:0;">
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </a>
+        <label class="fabblabel">Profile</label>
+    </div>
+    <div class="fabcontainer">
+        <a routerLink="/home" (click)="logout()" class="minifabb">
+            <button  class="minifabb"  style="border:0;" >
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </a>
+
+        <label class="fabblabel">Logout</label>
+    </div>
+</div>
+    <div class="footer">
+        <p>&copy; Copyrigth 2019 Farm-Eat </p>
+    </div>
+</body> -->
+
+
+
+
+
+<!DOCTYPE html>
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="container-fluid register">
+
+    <div class="topnav" id="myTopnav">
+        <div class="farmeat"
+            style=" color: white; padding: 16px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.548); font-size: 30px; font-weight: bold">
+            FARM-EAT
+        </div>
+    </div>
+  
+
+    <div id="main" class="container">
+    </div>
+    <div class="row">
+
+        <div id="profilecard">
+            <div class="col-md-1 register float-sm-left ">
+                <div class="card flex-row mt-3 " style="width: 30rem; height: 10rem; margin: 0 auto;" id="hover" *ngFor="let profile of profileArray"
+                    (click)="getFArm(profile.k)">
+                    <img class="card-img" style="width: 10rem; height: auto;" src="{{profile.image}}" alt="" srcset="">
+
+                    <div class="card-body ">
+                        <h5 class="card-title ">{{profile.name}}</h5>
+                        <p>{{profile.type}}</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8 register-right" style="background-color: rgb(243, 243, 243)">
+            <h3 class="register-heading">Company Description</h3>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+
+                    <div class=" register-form">
+                        <div class="col-md-6 float-xl-left ">
+
+
+                            <div class=" d-flex p-2 ">
+                                <label class="labels" for=""> Name: &nbsp; &nbsp;</label>
+                                <h2 class="formcontrol">{{FarmObj.name}}</h2>
+                            </div>
+                            <div class="d-flex p-2 ">
+                                <label class="labels" for=""> Address: </label>
+                                <h2 class="formcontrol">{{FarmObj.address}} </h2>
+
+
+                            </div>
+                            <div class="d-flex p-2 ">
+                                <label class="labels" for=""> Email: &nbsp; &nbsp; &nbsp; &nbsp; </label>
+                                <h2 class="formcontrol"> {{FarmObj.email}}</h2>
+
+                            </div>
+
+                            <div class="d-flex p-2 ">
+                                <label class="labels" for=""> Contacts:</label>
+                                <h2 class="formcontrol">{{FarmObj.tel}}</h2>
+                            </div>
+                            <!-- <div class="form-group">
+                              <h2 class="form-control">{{FarmObj.website}}</h2>                             
+                          </div>
+                          <div class="form-group">
+                              <h2 class="form-control">{{FarmObj.facebook}}</h2>
+                               
+                              </div> -->
+
+                        </div>
+                        <div class="col-md-6 float-sm-left ">
+
+
+                            <div class="d-flex p-2 ">
+                                <label class="labels" for=""> Description:</label>
+                                <h3 class="formcontrol">{{FarmObj.description}}</h3>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+
+                <button class="btnRegister" (click)="nextpageupdate()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+<button class="fabb" id="fabmain" (click)='addfarm()'>
+    <i class="fas fa-bars"></i>
+</button>
+<div class="fabblist" id="showfab" (click)='show()'>
+    <div class="fabcontainer">
+        <a routerLink="/addedfarms" class="minifabb">
+            <span class="icons"> </span>
+            <button>
+                <i class="fas fa-home"></i>
+            </button>
+        </a>
+        <label class="fabblabel">home</label>
+    </div>
+    <!-- <div class="fabcontainer" onclick="document.getElementById('id02').style.display='block'">
+        <button class="minifabb">
+            <i class="fas fa-plus-circle"></i>
+        </button>
+        <label class="fabblabel">Add farm</label>
+    </div> -->
+    <!-- <div class="fabcontainer" onclick="document.getElementById('id01').style.display='block'">
+        <button class="minifabb">
+            <i class="fas fa-newspaper"></i>
+        </button>
+        <label class="fabblabel">News feed</label>
+    </div> -->
+    <div class="fabcontainer">
+        <a routerLink="/profile" class="minifabb">
+            <button>
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </a>
+        <label class="fabblabel">Profile</label>
+    </div>
+    <div class="fabcontainer">
+        <a routerLink="/home" (click)="logout()" class="minifabb">
+            <button>
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </a>
+
+        <label class="fabblabel">Logout</label>
+    </div>
+</div>
+    <div class="footer">
+        <p>&copy; Copyrigth 2019 Farm-Eat </p>
+    </div>
+</body>

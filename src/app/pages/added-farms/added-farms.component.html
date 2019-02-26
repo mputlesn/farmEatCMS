@@ -1,0 +1,434 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+    <div class="topnav" id="myTopnav">
+        <div class="farmeat"
+            style=" color: white; padding: 16px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.548); font-size: 30px; font-weight: bold">
+            FARM-EAT
+        </div>
+    </div>
+    <div id="main">
+    </div>
+    <div id="mySidenav">
+
+
+
+    </div>
+
+
+
+    <div id="map"></div>
+
+
+
+    <div class="flexbox">
+
+
+        <div class="tab">
+                <button style=" color:red "  (click)="kbbb()">Number of registered this month</button>
+            <button class="tablinks" style="text-align: center;" (click)="showAddFarms()">All Farms</button>
+            <button class="tablinks" style="text-align: center;" (click)="showNewsFeed()">News Feeds</button>
+
+        </div>
+
+        <div id="add-farm" class="tabcontent">
+            <div class="card flex-row mt-3 "
+                style="width: 25rem; height: 8rem; margin: 0 auto; box-shadow: 5px 5px 10px rgba(49, 49, 49, 0.432);"
+                id="hover" *ngFor="let a of farmsOnSlide" (click)="moreInfo(a.description, a.name)">
+                <img class="card-img" style="width: 7rem; height: auto;" src="{{a.image}}" alt="" srcset="">
+
+                <div class="card-body "
+                    style="display: flex; flex-direction: column; justify-content: center; align-items: left">
+                    <h5 class="card-title " style="font-size: 1.5em; ">{{a.name}}</h5>
+                    
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div id="news-feed" class="tabcontent">
+            <div class="card flex-row mt-3 "
+            style="width: 25rem; height: 8rem; margin: 0 auto; box-shadow: 5px 5px 10px rgba(49, 49, 49, 0.432);"
+                id="hover" *ngFor="let b of newsFeed" (click)="moreInfonews( b.message, b.title,b.image)">
+                <img class="card-img"  style="width: 7rem; height: auto;" src="{{b.image}}" alt="" srcset="">
+
+                <div class="card-body "    style="display: flex; flex-direction: column; justify-content: center; align-items: left" >
+                    
+                    <h5 class="card-title ">{{b.title}}</h5>
+                    <!-- <p>{{b.message}}</p> -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div style="display: flex; flex-direction: row">
+        <div id="id01" class="modal">
+
+            <div class="modal-content animate">
+
+
+
+                <div class="container">
+
+                   
+
+                    <div class="row">
+                        <div class="column" style="background-color: white">
+                            <div class="column1">
+                                <div style="background-color: white">
+                                    <img class="image" src="../../../assets/94076a023ede44f12fd31f2bb4233b77.png"
+                                        alt="" />
+                                </div>
+                                <h3>Farming is a profession of hope</h3>
+                                <p>Share news with others.</p>
+
+                            </div>
+                        </div>
+                        <div class="column"
+                        
+                            style="background-color: whitesmoke; border-top-left-radius: 2rem; border-bottom-left-radius: 2rem; padding-top: 16px; padding-bottom: 16px;  ">
+                            <span onclick="document.getElementById('id01').style.display='none'"
+                            class="w3-button w3-xlarge w3-hover-white w3-display-topright buttons "
+                            title="Close Modal" style="padding-left: 106px;" >&times;</span>
+                            <div>
+                                <div>
+                                    <div class="input">
+                                        <input placeholder="Title *" class="w3-input w3-border w3-margin-bottom"
+                                            maxlength="150" minlength="5" type="text" #title [(ngModel)]="Title"
+                                            [ngModelOptions]="{standalone: true}" required>
+
+                                    </div>
+
+                                    <div class="input">
+                                        <label class="label">Upload Picture</label>
+                                        <input type="file" class="w3-input w3-border w3-margin-bottom" accept="image/*"
+                                            placeholder="Upload images*" #image (change)="insertImage($event)"
+                                            [(ngModel)]="farmImage" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="input">
+
+
+                                <textarea minlength="10" id="subject" placeholder="Type your news message here*"
+                                    name="subject" style="height:200px " #message [(ngModel)]="Description"
+                                    required></textarea>
+                            </div>
+                            <br>
+
+                            <div>
+                                <input class="btnRegister" (click)="newsfeed(title.value , message.value)" type="submit"
+                                    value="Submit">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div style="display: flex; flex-direction: row">
+        <div id="id02" class="modal">
+
+            <div class="modal-content animate">
+
+
+
+                <div class="container">
+
+
+
+                    <div class="addfarm-container">
+                        <span onclick="document.getElementById('id02').style.display='none'"
+                            class="w3-button w3-xlarge w3-hover-maroon w3-display-topright" style="color: white"
+                            title="Close Modal">&times;</span>
+
+                        <div class="header">
+                            <div class="header-text"> Add Farm</div>
+                        </div>
+                        <div class="addFarm-row">
+                            <div class="addFarmColumn">
+                                <div class="">
+                                    <input type="text" class="w3-input w3-border w3-margin-bottom" maxlength="150"
+                                        placeholder="Name of place *" #nameS [(ngModel)]="FarmName" required>
+                                </div>
+                                <div class="">
+                                    <input type="text" class="w3-input w3-border w3-margin-bottom" type="text" #address
+                                        [(ngModel)]="FarmAddress" required placeholder="Address *">
+                                </div>
+                                <div class="">
+                                    <input type="text" class="w3-input w3-border w3-margin-bottom" id="email" #email
+                                        [(ngModel)]="FarmEmail" placeholder="Email" />
+
+                                </div>
+                                <div class="">
+                                    <input type="number" class="w3-input w3-border w3-margin-bottom"
+                                        placeholder="Contact Number *" #tel [(ngModel)]="FarmTel" required   maxlength="10"/>
+                                </div>
+                                <div class="">
+                                    <input type="text" class="w3-input w3-border w3-margin-bottom" placeholder="Website"
+                                        #website [(ngModel)]="FarmWebsite" />
+                                </div>
+                                <div class="">
+                                    <input type="text" class="w3-input w3-border w3-margin-bottom"
+                                        placeholder="Facebook" #facebook [(ngModel)]="FarmFacebook" />
+
+                                </div>
+                                <div class="w3-input  w3-margin-bottom">
+                                    <select class="form-control" #farmType>
+                                        <option class="hidden" selected disabled>Select type of urban farm business
+                                        </option>
+
+                                        <option value="Vertical Farming">Vertical Farming</option>
+
+                                        <option value="Traditional Farming">Traditional Farming</option>
+
+                                        <option value="Green House">Green House</option>
+                                    </select>
+
+                                </div>
+                                <div class="checkBox-section  w3-margin-bottom ">
+                                    <label style="padding-left: 16px">Crops
+                                        <input type="checkbox" #crops [(ngModel)]="Farmcrops" checked="checked">
+                                    </label>
+
+                                    <label style="padding-left: 16px">Live Stock
+                                        <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
+
+                                    </label>
+
+                                    <label style="padding-left: 16px">BeeKeeping
+                                        <input type="checkbox" #beeKeeping [(ngModel)]="Farmbees">
+
+                                    </label>
+
+                                    <label style="padding-left: 16px">Aquatic
+                                        <input type="checkbox" #aquatic [(ngModel)]="FarmAquatic">
+
+                                    </label>
+
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div class="addFarmColumn">
+                                <div class="column2">
+                                    <div class="">
+
+                                        <textarea id="subject" placeholder="Description of a Farm..*" name="subject"
+                                            class="form-control" style="height:200px " #description
+                                            [(ngModel)]="farmDescription" required></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="picture w3-margin-bottom">
+
+                                        <div class=" center  w3-margin-bottom">
+                                            <label class=" Products-list ">Upload Picture a farm</label>
+
+                                        </div>
+                                        <div>
+                                            <input class="w3-input w3-margin-bottom" type="file"
+                                                accept="image/*" placeholder="Upload images*" #image
+                                                [(ngModel)]="Farmpicture" (change)="insertImageForAddFarm($event)" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="products-section">
+                                    <div class="  ">
+                                        <!-- <i class="fas fa-clipboard-list" style="font-size:24px; color: black "></i> -->
+                                        <div class=" Products-list " (click)="smallPageCounter()"> Products list:
+                                            {{itemLength}}</div>
+                                        <div id="myDropdown" class="dropdown-content">
+                                            <div class="card" *ngFor="let prod of itemsProd  ;let i = index">
+                                                <div class="container">
+                                                    <h4>
+                                                        <b>{{prod}}</b>
+                                                        <img src="../../../assets/icons8-multiply-50.png"
+                                                            (click)="delete(i)">
+                                                    </h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+
+                                        <input type="text" placeholder="Search for products you sell/offer"
+                                            (input)="getProducts($event)" (click)="clicked()"
+                                            [(ngModel)]="chooseItem" />
+                                        <div class="list" id="hide" *ngFor="let item of products"
+                                            (click)="productClicked(item)">
+
+                                            {{item}}
+                                        </div>
+                                        <ng-template #non></ng-template>
+                                    </div>
+                                    <br>
+
+
+
+                                </div>
+
+
+
+                                <div>
+                                    <input class="btnRegister"
+                                        (click)="initMyMap(nameS.value, address.value,farmType.value, description.value, crops.value, liveStock.value, beeKeeping.value, aquatic.value, email.value, tel.value, website.value, facebook.value)"
+                                        type="submit" value="Submit">
+                                </div>
+                                <div class="model">
+
+                                </div> 
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        var modal = document.getElementById('id02');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+
+    <button class="fabb" id="fabmain" (click)='addfarm()'>
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="fabblist" id="showfab" (click)='show()'>
+        <div class="fabcontainer">
+            <a routerLink="/addedfarms" class="minifabb">
+                <span class="icons"> </span>
+                <button>
+                    <i class="fas fa-home"></i>
+                </button>
+            </a>
+            <label class="fabblabel">home</label>
+        </div>
+        <div class="fabcontainer" onclick="document.getElementById('id02').style.display='block'">
+            <button class="minifabb">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+            <label class="fabblabel">Add farm</label>
+        </div>
+        <div class="fabcontainer" onclick="document.getElementById('id01').style.display='block'">
+            <button class="minifabb">
+                <i class="fas fa-newspaper"></i>
+            </button>
+            <label  class="fabblabel" >News feed &nbsp; &nbsp; &nbsp;</label>
+        </div>
+        <div class="fabcontainer">
+            <a routerLink="/profile" class="minifabb">
+                <button >
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </a>
+            <label class="fabblabel">Profile</label>
+        </div>
+        <div class="fabcontainer">
+            <a routerLink="/home" (click)="logout()" class="minifabb" style=" color:red " >
+                <button>
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </a>
+
+            <label class="fabblabel">Logout</label>
+        </div>
+    </div>
+
+   
+
+
+    <div class="footer">
+        <p>&copy; Copyright 2019 Farm-Eat </p>
+    </div>
+
+
+</body>
