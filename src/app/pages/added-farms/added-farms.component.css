@@ -1456,18 +1456,26 @@ font-size: 20px;
 
 #absoluteFarm{
   position: absolute;
-  bottom: 70px;
+  bottom: 10px;
 
   z-index: 1000;
   left: 80.5%;
   text-align: center;
 }
 #absoluteNews{
-  padding-left: 80.5%;
+ left: 80.5%;
   position: absolute;
-  bottom: 70px;
+  bottom: 10px;
 
   z-index: 1000;
+  display: none;
+}
+
+.register-left{
+  text-align: center;
+  color: #fff;
+  margin-top: 4%;
+  /* background-color: red; */
   display: none;
 }
 }
@@ -1507,7 +1515,7 @@ font-size: 20px;
 }
 #absoluteFarm{
   position: absolute;
-  bottom: 70px;
+  bottom: 10px;
 
   z-index: 1000;
   left: 80.5%;
@@ -1516,9 +1524,15 @@ font-size: 20px;
 #absoluteNews{
   left: 80.5%;
   position: absolute;
-  bottom: 70px;
+  bottom: 10px;
 
   z-index: 1000;
+  display: none;
+}
+.register-left{
+  text-align: center;
+  color: #fff;
+  margin-top: 4%;
   display: none;
 }
 }
