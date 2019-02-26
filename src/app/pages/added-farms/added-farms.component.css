@@ -1522,6 +1522,56 @@ font-size: 20px;
   display: none;
 }
 }
+.graphs{
+  display: flex;
+  position: absolute;
+  left: 25%;
+  flex-direction: row;
+  bottom: 0%;
+  height: 35%;
+  width: 75%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row-reverse;
+   grid-template-columns: 1fr 1fr;
+   display: grid;
+}
+.chart-container{
+  width: 90%;
+height: 100%;
+background-color: white;
+}
+.views-container{
+  width: 90%;
+height: 100%;
+background-color: white;
+ 
+}
+
+/* .containers{
+  position: relative;
+  top: -30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  color: white;
+
+
+} */
+
+.graphs > div{
+
+
+
+
+
+
+}
+.graphs > div:nthchild(odd){
+
+
+}
 
 
 

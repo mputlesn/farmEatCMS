@@ -320,6 +320,13 @@ h1{
     display: block;
     text-align: left;
   }
+  .chart-container{
+    position: absolute;
+    left: 50%;
+    transform: translate(50%)
+    
+
+  }
 }
 
 

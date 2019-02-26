@@ -303,7 +303,7 @@ export class FarmEatService {
                console.log(k3)
                let obj = {
                      
-                k:k ,
+                k:k3 ,
                 lat:FarmDetails[k3].lat ,
                 lng:FarmDetails[k3].lng ,
                 name: FarmDetails[k3].name ,
@@ -317,11 +317,9 @@ export class FarmEatService {
                 image:FarmDetails[k3].image ,
                 beeKeeping:FarmDetails[k3].beeKeeping ,
                 liveStock:FarmDetails[k3].liveStock ,
-
-
-                
                 facebook:FarmDetails[k3].facebook,
-                products:FarmDetails[k3].products
+                products:FarmDetails[k3].products,
+                farmRate: FarmDetails[k3].farmRate
               }
               this.farmArray.push(obj)
               console.log(this.farmArray)
@@ -416,5 +414,29 @@ fgdf(){
 
   
 }
+
+getFarmView(farmK, allFArms){
+  return new Promise ((resolve, reject) =>{
+
+    firebase.database().ref("FarmViews/"+farmK).on('value' , (data:any)=>{
+      var FarmViews =data.val();
+      console.log(FarmViews);
+      var views = 0
+      var keys: any = Object.keys(FarmViews);
+      for (let index = 0; index < keys.length; index++) {
+        var v = keys[index];
+        
+        console.log(keys[index]);
+       
+        const element = FarmViews[v].view;
+        console.log(element);
+        
+        views += element
+      }
+      resolve(views)
+    })
+    reject()
+  })
+ }
 
 }
