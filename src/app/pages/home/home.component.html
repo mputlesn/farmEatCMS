@@ -47,6 +47,7 @@
                        </div>
                    
 
+<<<<<<< HEAD
 
                     
 
@@ -88,6 +89,49 @@
  -->
 
 
+=======
+
+                    
+
+                       <div class="sign-up-htm">
+                            <div class="sign-up-htm col-md-6 ">
+                           <div class="group">
+                             <label for="user" class="label">Username</label>
+                             <input id="pass" type="text" class="col-md-12" #rName [(ngModel)]="username" >
+                           </div>
+                           <div class="group">
+                               <label for="pass" class="label">Email Address</label>
+                               <input id="pass" type="text" class="col-md-12" #rEmail  [(ngModel)]="emailz">
+                           </div>
+                           <div class="group">
+                             <label for="pass" class="label">Password</label>
+                             <input id="pass" type="password" class="col-md-12" data-type="password" #rPassword  [(ngModel)]="pass">
+                           </div>
+                           
+                           <div  class="group"  >
+                             <input type="submit" class="button" value="Sign Up" (click)="Registerz()">
+                           </div>
+                         </div>
+                        </div>
+                   </div>
+             </div>
+             </div>
+       </div>
+     </div>
+   
+   
+   </div>
+
+   
+    
+   
+</div>
+      
+</body>
+ -->
+
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
  <head>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -110,7 +154,11 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container">
+<<<<<<< HEAD
             <img src="../../../assets/green (1).png" class="brand_logo" alt="Logo">
+=======
+            <img src="../../../assets/icon newf (1).png" style="background-color: white" class="brand_logo" alt="Logo">
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
          
           </div>
          
@@ -175,7 +223,11 @@
             <div class="user_card">
               <div class="d-flex justify-content-center">
                 <div class="brand_logo_container">
+<<<<<<< HEAD
                   <img src="../../../assets/green (1).png" class="brand_logo" alt="Logo">
+=======
+                  <img src="../../../assets/icon newf (1).png" style="background-color: white" class="brand_logo" alt="Logo">
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
                
                 </div>
                
@@ -184,6 +236,7 @@
               <h1 style="text-align: center; color: white; padding: 16px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.548)" >Farm-Eat</h1>
               <div class="d-flex justify-content-center form_container">
                 
+<<<<<<< HEAD
                 <div>
                   
                 </div>
@@ -216,6 +269,42 @@
                     </div>
                   </div>
                 </div>
+=======
+                <!-- <div *ngIf="forgot == 0; else forgotPressed"></div> -->
+                <!-- <ng-template #forgotPressed>
+                    <p class="emailForget">    Please enter your email address and submit</p>
+                
+                </ng-template> -->
+                <div>
+                   
+                  <!-- <div class="input-group mb-3">
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" name="" class="form-control input_user" value="" placeholder="Company name">
+                  </div> -->
+                     
+                  <div class="input-group mb-4">
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    <input type="email" class="form-control input_user" placeholder="Email" pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required #email [(ngModel)]="emailLogin">
+                  </div>
+                 
+                  <div class="input-group mb-4">
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password"  class="form-control input_pass"  placeholder="Password" #password  [(ngModel)]="passwordLogin">
+                  </div>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customControlInline">
+              
+                    </div>
+                  </div>
+                </div>
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
               </div>
               <div class="d-flex justify-content-center mt-3 login_container">
                 <button type="submit" name="button" class="btn login_btn"  value="{{content}}"  (click)="Login()" >Login</button>
@@ -225,7 +314,11 @@
                   Don't have an account? &nbsp; <a href="#" class="ml-2 tablinks"   (click)="registertab()"><b > Sign Up</b></a>
                 </div>
                 <div class="d-flex justify-content-center links">
+<<<<<<< HEAD
                   <a href="#">Forgot your password?</a>
+=======
+                  <a (click)="forgetpassword()">Forgot Password?</a>
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
                 </div>
               </div>
             </div>

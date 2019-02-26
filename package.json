@@ -20,11 +20,18 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "angular-text-input-autocomplete": "^0.3.0",
+    "chart.js": "^2.7.3",
     "chartist": "^0.11.0",
     "core-js": "^2.5.4",
     "firebase": "^5.5.9",
+    "keyboardevent-key-polyfill": "^1.1.0",
     "ng-chartist": "^2.0.0-beta.1",
+<<<<<<< HEAD
     "rxjs": "^6.0.0",
+=======
+    "rxjs": "^6.3.3",
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
     "sweetalert2": "^8.0.3",
     "zone.js": "^0.8.26"
   },

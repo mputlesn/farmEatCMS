@@ -16,7 +16,10 @@ export class NewsFeedComponent implements OnInit {
   Description;
   Title;
   url ;
+<<<<<<< HEAD
   updateNews;
+=======
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   constructor( private router: Router ,  private farmEat: FarmEatService) { }
 
   ngOnInit() {
@@ -51,6 +54,7 @@ this.Description = "";
       var downloadURL: any;
       var filename = this.url.name;
       console.log("in");
+<<<<<<< HEAD
       
       const metaData = {'contentType': this.url.type};
       //create reference
@@ -85,6 +89,42 @@ this.Description = "";
            this.farmEat.sucess("Added Successfully")
          }, 3000)
       
+=======
+      
+      const metaData = {'contentType': this.url.type};
+      //create reference
+      var storageRef = firebase.storage().ref(name+'/'+filename)
+      //upload the selected image to the storage
+      var uploadTask = storageRef.put(this.url, metaData)
+      // Get the download URL
+
+      console.log("out");
+      
+      storageRef.getDownloadURL().then((url) => {
+        downloadURL = url;
+        console.log(downloadURL);
+        console.log(title);
+        console.log(message);
+        console.log(url);
+        
+        
+        
+      }).catch((error) => {
+      });
+         setTimeout(()=>{
+           firebase.database().ref('Newsfeed').push({
+ 
+ 
+             message:message ,
+             title:title ,
+             image:downloadURL,
+ 
+ 
+           })
+           this.farmEat.sucess("Added Successfully")
+         }, 3000)
+      
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
          this.image.nativeElement.value = null;
     }
 
@@ -106,6 +146,7 @@ this.Description = "";
     });
 
 }
+<<<<<<< HEAD
 
 UpdateNewsFeed(){
 
@@ -121,4 +162,6 @@ console.log(this.updateNews);
 
   firebase.database().ref("Newsfeed/" + uid).update(this.updateNews)
 }
+=======
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 }

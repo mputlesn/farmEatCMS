@@ -13,6 +13,7 @@ export class FarmEatService {
 
   getAllFarmArray = []
   newFeedArray = []
+<<<<<<< HEAD
 
 
   constructor(public http: HttpClient) { }
@@ -26,11 +27,22 @@ export class FarmEatService {
     return new Promise((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
         // tslint:disable-next-line:prefer-const
+=======
+  viewsArr = []
+
+  constructor(public http: HttpClient) { }
+
+  register(email, password, name) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+        //tslint:disable-next-line:prefer-const
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
         let uid: any = firebase.auth().currentUser.uid;
         firebase.database().ref('admins/' + uid).set({
           name: name,
           email: email,
           cover: "../../../assets/1841196866.jpeg",
+<<<<<<< HEAD
           proPicture: "../../../assets/Illustration-with-Variable-Rate_forWP.jpg" ,
           month : month 
       
@@ -50,6 +62,21 @@ console.log(current);
         // }).catch(function(error) {
         // // An error happened.
         // });
+=======
+          proPicture: "../../../assets/Illustration-with-Variable-Rate_forWP.jpg"
+        });
+
+        // tslint:disable-next-line:prefer-const
+         let user = firebase.auth().currentUser;
+
+        user.sendEmailVerification().then(function(a) {
+          console.log(a);
+          
+        
+        }).catch(function(error) {
+        // An error happened.
+        });
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
 
         resolve();
@@ -135,6 +162,10 @@ console.log(current);
 
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   signout() {
     firebase.auth().signOut().then(function () {
     }).catch(function (error) {
@@ -145,7 +176,11 @@ console.log(current);
 
 
   // tslint:disable-next-line:max-line-length
+<<<<<<< HEAD
   addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng, products) {
+=======
+  addFarm(name, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook, downloadURL, lat, lng, products, city) {
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
     
     let uid: any = firebase.auth().currentUser.uid;
@@ -167,26 +202,88 @@ console.log(current);
         website: website,
         facebook: facebook,
         image: downloadURL,
+<<<<<<< HEAD
         products: products
+=======
+        products: products,
+        farmRate: 0,
+        city: city
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
       });
       resolve();
     });
 
   }
 
+<<<<<<< HEAD
   forgetPassword(email) {
 
     return new Promise((resolve, reject) => {
+=======
+  async forgetPassword() {
+  // Swal.fire({
+  //   title: 'Fill in your registered email address.',
+  //   input: 'text',
+  //   inputAttributes: {
+  //     autocapitalize: 'off'
+  //   },
+  //   showCancelButton: true,
+  //   confirmButtonText: 'Reset',
+  //   showLoaderOnConfirm: true,
+  //   preConfirm: (email) => {
+
+  //      return new Promise((resolve, reject) => {
+  //     firebase.auth().sendPasswordResetEmail(email) .then(() => {
+  //             resolve();
+  //     } , (error) => {
+  //       reject(error);
+        
+  //     });
+  // });
+  //   }
+  // })
+    
+
+   
+
+  const {value: email} = await Swal.fire({
+    title: 'Input email address',
+    input: 'email',
+    inputPlaceholder: 'Enter your email address',
+
+    
+   })
+   
+       return new Promise((resolve, reject) => {
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
       firebase.auth().sendPasswordResetEmail(email) .then(() => {
               resolve();
       } , (error) => {
         reject(error);
+<<<<<<< HEAD
 
       });
 
   });
 
   }
+=======
+        
+      });
+      if (email) {
+    // Swal.fire('Your email ' + email +  'has been reset ')
+    Swal.fire(`Your email password has been resend, please check ${email} 
+    to reset. `)
+   }
+  });
+   
+   
+  
+  }
+
+
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   oops(message) {
     Swal.fire({
       type: 'error',
@@ -271,7 +368,11 @@ console.log(current);
                console.log(k3)
                let obj = {
                      
+<<<<<<< HEAD
                 k:k ,
+=======
+                k:k3 ,
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
                 lat:FarmDetails[k3].lat ,
                 lng:FarmDetails[k3].lng ,
                 name: FarmDetails[k3].name ,
@@ -286,7 +387,12 @@ console.log(current);
                 beeKeeping:FarmDetails[k3].beeKeeping ,
                 liveStock:FarmDetails[k3].liveStock ,
                 facebook:FarmDetails[k3].facebook,
+<<<<<<< HEAD
                 products:FarmDetails[k3].products
+=======
+                products:FarmDetails[k3].products,
+                farmRate: FarmDetails[k3].farmRate
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
               }
               this.farmArray.push(obj)
               console.log(this.farmArray)
@@ -335,7 +441,12 @@ getProfile(){
            image:farms[k].image ,
            beeKeeping:farms[k].beeKeeping ,
            liveStock:farms[k].liveStock ,
+<<<<<<< HEAD
            facebook:farms[k].facebook
+=======
+           facebook:farms[k].facebook,
+           website:farms[k].website
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
          }
          this.farmArray.push(obj) ;
          resolve(this.farmArray)
@@ -366,6 +477,7 @@ getAFarm(key){
   loginx(email , password){
     return firebase.auth().signInWithEmailAndPassword(email, password) ;
   }
+<<<<<<< HEAD
 
 
 
@@ -403,5 +515,69 @@ getAFarm(key){
 
 
   }
+=======
+fgdf(){
+  Swal.fire({
+    title: 'Submit your Github username',
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Look up',
+    showLoaderOnConfirm: true,
+  })
+
+  
+}
+
+getFarmView(){
+  
+  return new Promise ((resolve, reject) =>{
+
+    console.log("getFarmView Active");
+    this.getallFarms().then((data:any)=>{
+      for (let index = 0; index < data.length; index++) {
+        const element = data[index].k;
+        firebase.database().ref("FarmViews/"+element).on('value' , (data:any)=>{
+          var FarmViews =data.val();
+          console.log(FarmViews);
+          var views = 0
+          console.log("outside if statement provider");
+          
+          if(FarmViews == null || FarmViews == undefined){
+            console.log("content null or undefined");
+            
+            views += 0
+          }else if(FarmViews != null){
+            
+            var keys: any = Object.keys(FarmViews);
+            for (let index = 0; index < keys.length; index++) {
+              var v = keys[index];
+              console.log("content has views");
+              console.log(keys[index]);
+             
+              const element = FarmViews[v].view;
+              console.log(element);
+              
+              views += element
+            }
+          }
+          console.log("views");
+          console.log(views);
+          this.viewsArr.push(views)
+      
+          
+        })
+       
+      }
+    })
+  
+    
+    resolve(this.viewsArr)
+  })
+   
+ }
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
 }

@@ -7,6 +7,9 @@ import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { ifError } from 'assert';
 import { t } from '@angular/core/src/render3';
+import { Title } from '@angular/platform-browser';
+import Chart from 'chart.js'
+
 declare var google: any;
 declare var firebase;
 
@@ -17,6 +20,7 @@ declare var firebase;
   styleUrls: ['./added-farms.component.css']
 })
 export class AddedFarmsComponent implements OnInit {
+
   @ViewChild('name') name: ElementRef;
   @ViewChild('address') address: ElementRef;
   @ViewChild('farmType') farmType: ElementRef;
@@ -27,6 +31,8 @@ export class AddedFarmsComponent implements OnInit {
   @ViewChild('facebook') facebook: ElementRef;
   @ViewChild('image') image: ElementRef;
 
+  // @ViewChild('image') image: ElementRef;
+  seltab = 'farms';
   FarmAquatic = false;
   Farmbees = false;
   FarmLivestock = false;
@@ -57,6 +63,15 @@ export class AddedFarmsComponent implements OnInit {
   strPhone;
   correctTel;
   Title;
+  newsTitle;
+  News;
+  city
+  NewsImage;
+  farmRating = new Array();
+  allFarms =  new Array();
+  farmName = new Array();
+  farmViews = new Array();
+  chart = []; // This will hold our chart info
   products = [
     'Search for products',
     'Banana',
@@ -70,6 +85,7 @@ export class AddedFarmsComponent implements OnInit {
     'Corn',
     'Cow',
     'Crab',
+    'Cabbage',
     'Fish',
     'Garlic',
     'Goat',
@@ -109,11 +125,22 @@ export class AddedFarmsComponent implements OnInit {
     'Red berry',
     'Raspberry',
     'Black berry'
-    ,'Blue berry'
+    ,'Blue berry',
     
+ 
+ 
+    'Onion',
+    'Leek',
+    'Corn',
+    'Herbs',
+    'Green Pepper',
+    'Chilli Pepper',
+    'Eggs'
+
   ];
   newsMessage;
   Description;
+
   @ViewChild('map') mapRef: ElementRef;
   map: any;
   lat = -26.2583;
@@ -440,15 +467,16 @@ export class AddedFarmsComponent implements OnInit {
 
   userPerMonth = [] ;
 
+
+
+
+
+
   constructor(private farmEAtDb: FarmEatService, private farmEat: FarmEatService, private router: Router) {
-
-
-
-      
-  this.CountUsers()
-
+   
+    this.CountUsers()
     console.log(document.getElementById("map"));
-
+    this.newsFeed = []
 
     this.farmEAtDb.getallFarms().then((data) => {
       console.log(data);
@@ -463,6 +491,9 @@ export class AddedFarmsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seltab = 'farms';
+
+    console.log("alertc");
 
     this.farmEAtDb.test();
     this.showAddFarms();
@@ -521,7 +552,11 @@ export class AddedFarmsComponent implements OnInit {
       console.log(count);  
       console.log(this.userPerMonth);   
     })
+    this.getAllFarms()
+    this.getViewStatsPerFarm()
+
   }
+
 
 
 
@@ -551,6 +586,33 @@ export class AddedFarmsComponent implements OnInit {
       this.farmEat.oops("Please enter description")
 
     } else if (this.farmImage == undefined) {
+  newsfeed() {
+
+    // console.log(title);
+    // console.log(message);
+    // console.log(this.farmImage);
+    console.log(this.newsTitle);
+    console.log(this.newsTitle.length);
+
+
+    console.log(this.News);
+    console.log(this.url);
+    console.log(this.NewsImage);
+
+
+
+    // this.farmEat.test();
+    // this.Title = "";
+    // this.Description = "";
+
+    if (this.newsTitle.length == 0 && this.News.length == 0) {
+      this.farmEat.oops("Please enter all Details");
+    } else if (this.newsTitle.length == 0) {
+      this.farmEat.oops("Please enter title")
+    } else if (this.News.length == 0) {
+      this.farmEat.oops("Please enter description")
+
+    } else if (this.NewsImage == undefined) {
       this.farmEat.oops("Please upload image ")
 
     }
@@ -587,6 +649,40 @@ export class AddedFarmsComponent implements OnInit {
       }, 3000)
 
       this.image.nativeElement.value = null;
+
+        setTimeout(() => {
+          firebase.database().ref('Newsfeed/').push({
+
+
+            message: this.News,
+            title: this.newsTitle,
+            image: downloadURL,
+
+
+          }).catch((error) => {
+            console.log("News Upload");
+            console.log(error.message);
+
+          })
+          this.ngOnInit();
+          this.farmEat.sucess("Added Successfully")
+          this.News = ""
+          this.newsTitle = ""
+          this.NewsImage = ""
+          // this.image.nativeElement.value = null;
+        }, 3000)
+
+      }).catch((error) => {
+        console.log("Image Upload");
+        console.log(error.message);
+        this.farmEat.oops("Something went wrong while saving the news feed, please try saving again")
+
+      });
+
+
+      // this.image.nativeElement.value = null;
+
+
     }
 
 
@@ -802,6 +898,7 @@ export class AddedFarmsComponent implements OnInit {
   moreInfonews(message, title, ) {
     console.log(message);
     this.farmEAtDb.alertInfo(message, title)
+    this.farmEAtDb.alertInfo(message, title, )
   }
   openCity(evt, cityName) {
     console.log(evt);
@@ -868,6 +965,7 @@ export class AddedFarmsComponent implements OnInit {
         'Corn',
         'Cow',
         'Crab',
+        'Cabbage',
         'Fish',
         'Garlic',
         'Goat',
@@ -907,6 +1005,15 @@ export class AddedFarmsComponent implements OnInit {
         'Raspberry',
         'Black berry'
         ,'Blue berry'
+        'Zucchini',
+        'Spinach',
+        'Corn',
+        'Onion',
+        'Herbs',
+        'Pigs',
+        'Green Pepper',
+        'Chilli Pepper',
+        'Eggs',
       ];
     }
 
@@ -1024,9 +1131,48 @@ export class AddedFarmsComponent implements OnInit {
     else if (item == "Zucchini") {
       icon = "../../../assets/prodIcon/icons8-zucchini-48.png";
     }
+<<<<<<< HEAD
     else if (item == "Beetroot") {
       icon = "../../../assets/prodIcon/icons8-beet-48.png";
     }
+=======
+    else if (item == "Onion") {
+      icon = "../../../assets/prodIcon/Onion_96px.png";
+    }
+    else if (item == "Corn") {
+      icon = "../../../assets/prodIcon/Corn_100px.png";
+    }
+    else if (item == "Leek") {
+      icon = "../../../assets/prodIcon/Leek_96px.png";
+    }
+    else if (item == "Spinach") {
+      icon = "../../../assets/prodIcon/icons8-lettuce-48.png";
+    }
+    else if (item == "Cabbage") {
+      icon = "../../../assets/prodIcon/icons8_Cabbage_48px_1.png";
+    }
+    else if (item == "Pigs") {
+      icon = "../../../assets/prodIcon/icons8-pig-48.png";
+    } else if (item == "Green Pepper") {
+      icon = "../../../assets/prodIcon/icons8-pig-48.png";
+    }
+    else if (item == "Green Pepper") {
+      icon = "../../../assets/prodIcon/icons8_Paprika_48px_1.png";
+    }
+    else if (item == "Chilli Pepper") {
+      icon = "../../../assets/prodIcon/icons8_Chili_Pepper_48px_1.png";
+    }
+    else if (item == "Herbs") {
+      icon = "../../../assets/prodIcon/icons8_Plant_48px.png";
+    }
+    else if (item == "Eggs") {
+      icon = "../../../assets/prodIcon/icons8-eggs-48.png";
+    }
+
+
+
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
     if (item != 'Search for products') {
 
@@ -1051,9 +1197,43 @@ export class AddedFarmsComponent implements OnInit {
 
   insertImageForAddFarm(event: any) {
     this.url = event.target.files[0];
+<<<<<<< HEAD
     if (this.url !== ' ') {
       this.testImg.push(this.url);
       console.log(this.testImg);
+=======
+    if (this.url !== ' ' || this.url !== undefined) {
+      
+      console.log(this.testImg);
+
+     
+
+        let reader = new FileReader();
+        reader.readAsDataURL(this.url);
+
+        let selectedfile = this.url;
+        let filename = selectedfile.name;
+
+        let storageRef = firebase.storage().ref("Farms/" + filename);
+
+        let metadata = { contentType: "image/jpeg", size: 0.75 };
+        let uploadTask = storageRef.put(selectedfile, metadata).then((snapshot) => {
+          console.log('image uploaded');
+
+          // Get the download URL
+          storageRef.getDownloadURL().then((url) => {
+            console.log(url);
+            this.testImg.push(url)
+            console.log(this.testImg);
+          }).catch((error) => {
+          });
+        });
+
+
+
+
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
     } else {
       const myAlert = document.getElementsByClassName('customAlert0') as HTMLCollectionOf<HTMLElement>;
       const theOK = document.getElementById('theOkay');
@@ -1068,9 +1248,42 @@ export class AddedFarmsComponent implements OnInit {
   }
 
 
+<<<<<<< HEAD
   initMyMap(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook) {
     console.log(farmType);
     console.log(this.type);
+=======
+  initMyMap() {
+
+    console.log(this.farmType);
+
+
+    let timerInterval
+    Swal.fire({
+      title: 'Loading',
+      html: 'Please wait, still loading',
+      timer: 3000,
+      onBeforeOpen: () => {
+        Swal.showLoading()
+
+      },
+      onClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      if (
+        // Read more about handling dismissals
+        result.dismiss === Swal.DismissReason.timer
+      ) {
+        console.log('I was closed by the timer')
+      }
+    })
+   // console.log(this.FarmName, this.FarmAddress, farmtype, this.farmDescription, this.Farmcrops, this.FarmLivestock, this.Farmbees, this.FarmAquatic, this.FarmEmail, this.FarmTel, this.FarmWebsite, this.FarmFacebook);
+    // console.log(names, address, farmType, description, crops, liveStock, beeKeeping, aquatic, email, tel, website, facebook);
+    // console.log(farmType);
+    // console.log(this.type);
+    // console.log(description)
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
     var strNumber = '' + this.FarmTel
     console.log(strNumber.length);
@@ -1089,6 +1302,7 @@ export class AddedFarmsComponent implements OnInit {
 
     }
 
+<<<<<<< HEAD
 
     // if (strNumber.length == 9) {
     //   console.log(strNumber, "9 digits");
@@ -1109,26 +1323,63 @@ export class AddedFarmsComponent implements OnInit {
 
     console.log(strNumber.length);
     console.log("Before If");
+=======
+    console.log(strNumber);
+    console.log(this.correctTel);
+
+    console.log(strNumber.length);
+    console.log("Before If");
+
+    console.log(this.FarmName);
+
+    console.log(this.farmDescription);
+    console.log(this.FarmAddress);
+    console.log(this.FarmTel);
+    console.log(this.Farmpicture);
+
+    
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
     if (this.FarmName == undefined && this.farmDescription == undefined && this.FarmAddress == undefined && this.FarmTel == +27 && this.Farmpicture == undefined) {
 
       this.farmEat.oops('Fill in all requeried fields');
     } else if (this.FarmName === undefined) {
       this.farmEat.oops('Fill in Farm name');
     }
+<<<<<<< HEAD
     else if (this.correctTel.length > 11) {
       this.farmEat.oops('Your number has more then the required 11 digits');
     } else if (this.correctTel.length < 11) {
+=======
+    else if (a != "27") {
+      this.farmEat.oops('Please make sure your number starts with +27');
+    }
+    else if (strNumber.length > 11) {
+      this.farmEat.oops('Your number has more then the required 11 digits');
+    } else if (strNumber.length < 11) {
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
       this.farmEat.oops('Your number has less then the required 11 digits');
     }
     else if (this.farmDescription === undefined) {
       this.farmEat.oops('Fill in farm Description');
 
+<<<<<<< HEAD
     } else if (farmType === undefined) {
       this.farmEat.oops('Select farm type');
 
     } else if (address.length === 0) {
       this.farmEat.oops('Fill in farm address');
 
+=======
+    } else if (this.farmType === undefined) {
+      this.farmEat.oops('Select farm type');
+
+    } else if (this.FarmAddress.length === 0) {
+      this.farmEat.oops('Fill in farm address');
+
+    } else if (this.testImg.length == 0) {
+      this.farmEat.oops('Insert Images of your farm');
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
     } else {
 
       console.log("else statement");
@@ -1136,6 +1387,7 @@ export class AddedFarmsComponent implements OnInit {
       console.log("all good");
 
       // tslint:disable-next-line:prefer-const
+<<<<<<< HEAD
       let downloadURL: any;
       for (let index = 0; index < this.testImg.length; index++) {
 
@@ -1157,13 +1409,47 @@ export class AddedFarmsComponent implements OnInit {
 
 
       }
+=======
+      
+      // for (let index = 0; index < this.testImg.length; index++) {
+
+      //   const filename = this.url.name;
+      //   const metaData = { 'contentType': this.url.type };
+      //   const storageRef = firebase.storage().ref().child(filename);
+      //   const uploadTask = storageRef.put(this.url, metaData);
+
+
+
+      //   storageRef.getDownloadURL().then((url) => {
+      //     setTimeout(() => {
+      //       this.imageArr.push(url);
+      //       console.log(this.imageArr);
+      //       this.err = 'good';
+      //     }, 3000);
+      //   }).catch((error) => {
+      //     this.err = error.message;
+      //     console.log(error.message);
+      //     console.log(error);
+      //     // this.farmEat.oops(error.message);
+
+      //   });
+
+
+      // }
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
       const geocoder = new google.maps.Geocoder;
       let lat;
       let lng;
 
+<<<<<<< HEAD
       geocoder.geocode({ 'address': address }, function (results, status) {
         if (status === 'OK') {
+=======
+      geocoder.geocode({ 'address': this.FarmAddress }, function (results, status) {
+        if (status === 'OK') {
+          var arr = results[0].address_components;
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
           this.desLatLng = results[0].geometry.location;
           console.log('Des method ' + this.desLatLng);
           console.log(this.desLatLng);
@@ -1175,12 +1461,20 @@ export class AddedFarmsComponent implements OnInit {
           lng = results[0].geometry.location.lng();
           console.log(lat);
           console.log(lng);
+<<<<<<< HEAD
 
         } else {
           // this.farmEat.oops('Geocode was not successful for the following reason: ' + status);
           // this.farmEat.oops('Geocode was not successful for the following reason: ' );
 
           // alert('Geocode was not successful for the following reason');
+=======
+          this.city = arr[3].long_name
+          console.log("city ", this.city);
+          
+        } else {
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
           Swal.fire({
             type: 'error',
@@ -1191,6 +1485,7 @@ export class AddedFarmsComponent implements OnInit {
         }
       });
 
+<<<<<<< HEAD
 
       setTimeout(() => {
 
@@ -1242,16 +1537,102 @@ export class AddedFarmsComponent implements OnInit {
         });
 
       }, 3000);
+=======
+      if (this.testImg !== []) {
+        setTimeout(() => {
+
+          // tslint:disable-next-line:max-line-length
+          console.log(this.FarmName, this.FarmAddress, this.farmType, this.farmDescription, this.Farmcrops, this.FarmLivestock, this.Farmbees, this.FarmAquatic, this.FarmEmail, this.FarmTel, this.imageArr, lat, lng);
+
+
+          if (this.FarmEmail == undefined) {
+            if (this.FarmWebsite == undefined && this.FarmFacebook == undefined) {
+              this.FarmEmail = " "
+              this.FarmFacebook = " "
+              this.FarmWebsite = " "
+
+            } else if (this.FarmWebsite == undefined) {
+              this.FarmEmail = " "
+              this.FarmWebsite = " "
+            } else if (this.FarmFacebook == undefined) {
+              this.FarmEmail = " "
+              this.FarmFacebook = " "
+            } else {
+              this.FarmEmail = " "
+
+            }
+          } else if (this.FarmEmail != undefined) {
+            if (this.FarmWebsite == undefined && this.FarmFacebook == undefined) {
+              this.FarmFacebook = " "
+              this.FarmWebsite = " "
+            } else if (this.FarmWebsite == undefined) {
+              this.FarmWebsite = " "
+            } else if (this.FarmFacebook == undefined) {
+              this.FarmFacebook = " "
+            }
+          }
+
+
+
+          console.log("facebook");
+
+          console.log(this.FarmFacebook);
+
+          if(this.imageArr != []){
+            this.farmEat.addFarm(this.FarmName, this.FarmAddress, this.farmType, this.farmDescription, this.Farmcrops, this.FarmLivestock, this.Farmbees, this.FarmAquatic, this.FarmEmail, this.FarmTel, this.FarmWebsite, this.FarmFacebook, this.testImg, lat, lng, this.itemsArr, this.city).then(() => {
+                  this.ngOnInit();
+                  this.farmEat.sucess(" Farm Added Successfully");
+          
+            });
+
+
+          this.FarmName = "" 
+          this.FarmAddress = "" 
+          this.farmDescription = ""
+           this.Farmcrops = false
+            this.FarmLivestock = false 
+           this.Farmbees = false 
+           this.FarmAquatic= false 
+           this.FarmEmail = ""
+           this.FarmTel = +27 
+           this.FarmWebsite = ""
+            this.FarmFacebook = ""
+             this.imageArr  = []
+              this.itemsArr = []
+              this.itemLength = 0
+              this.farmImage = ""
+              this.testImg = []
+              this.city = ""
+          }
+
+
+
+
+        }, 5000);
+
+
+
+      } else {
+        this.farmEat.oops(" Please add more Pictuers ")
+      }
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
 
     }
 
+<<<<<<< HEAD
     // console.log("af If");
 
   }
 
 
 
+=======
+
+
+  }
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
   oops(message) {
     Swal.fire({
@@ -1277,6 +1658,7 @@ export class AddedFarmsComponent implements OnInit {
   showAddFarms() {
     document.getElementById("add-farm").style.display = 'block';
     document.getElementById("news-feed").style.display = 'none';
+<<<<<<< HEAD
   }
 
   showNewsFeed() {
@@ -1284,6 +1666,56 @@ export class AddedFarmsComponent implements OnInit {
     document.getElementById("add-farm").style.display = 'none';
 
   }
+=======
+    document.getElementById("absoluteFarm").style.display = 'block';
+    document.getElementById("absoluteNews").style.display = 'none';
+
+  }
+  absoluteFarm() {
+    document.getElementById("absoluteFarm").style.display = 'none';
+  }
+  absoluteNews() {
+    document.getElementById("absoluteNews").style.display = 'none';
+
+  }
+
+  closefarm() {
+    document.getElementById("absoluteFarm").style.display = 'block';
+  }
+  closeNews() {
+    document.getElementById("absoluteNews").style.display = 'block';
+
+  }
+  closegraphs(){
+    document.getElementById("graphchart").style.display = 'none';
+
+  }
+  showNewsFeed() {
+    document.getElementById("news-feed").style.display = 'block';
+    document.getElementById("add-farm").style.display = 'none';
+    document.getElementById("absoluteNews").style.display = 'block';
+    document.getElementById("absoluteFarm").style.display = 'none';
+  }
+  graphs(){
+console.log("clicked gr")
+    if(  document.getElementById("graphchart").style.display == 'block'){
+      console.log("ging")
+    document.getElementById("graphchart").style.display = 'none';
+     }else if( document.getElementById("graphchart").style.display =='none') {
+      console.log("goutg")
+      document.getElementById("graphchart").style.display = 'block';
+      console.log("goug")
+     }
+     else{
+      document.getElementById('graphchart').style.display = 'block'
+      console.log('outg');
+
+     }
+
+ 
+}
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
   addfarm() {
     console.log('click');
@@ -1304,6 +1736,7 @@ export class AddedFarmsComponent implements OnInit {
 
 
   }
+<<<<<<< HEAD
   show() {
     document.getElementById('showfab').style.display = 'none'
   }
@@ -1312,4 +1745,177 @@ export class AddedFarmsComponent implements OnInit {
  
 
 
+=======
+
+
+  show() {
+    document.getElementById('showfab').style.display = 'none'
+  }
+  showf() {
+    document.getElementById('showf').style.display = 'none'
+  }
+
+
+  add() {
+    console.log('click');
+    if (document.getElementById('showf').style.display == 'block') {
+      document.getElementById('showf').style.display = 'none'
+      console.log('in');
+    } else if (document.getElementById('showf').style.display == 'none') {
+      document.getElementById('showf').style.display = 'block'
+      console.log('out');
+    }
+
+    else {
+      document.getElementById('showf').style.display = 'block'
+      console.log('out');
+
+    }
+
+
+
+
+  }
+
+  getAllFarms() {
+
+    return new Promise((resolve, reject) => {
+      this.farmEat.getallFarms().then((data: any) => {
+        this.allFarms = data
+        console.log(data);
+
+        for (let index = 0; index < this.allFarms.length; index++) {
+          var rate = this.allFarms[index].farmRate;
+          var name = this.allFarms[index].name
+
+          this.farmRating.push(rate)
+          this.farmName.push(name)
+          console.log(this.farmRating);
+
+        }
+
+        
+          //this.getFarmGeoStats()
+    
+       
+            var ctx = document.getElementById("ratings");
+            this.chart = new Chart("ratings", {
+                type: 'doughnut',
+                data: {
+                  labels: this.farmName,
+                  datasets: [{
+                    label: 'my data',
+                    data: this.farmRating,
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  maintainAspectRatio : false,
+                  responsive:'true',
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  }
+                }
+              });
+        
+         
+    
+        
+      })
+      console.log(this.farmRating);
+      console.log(this.farmName);
+
+      resolve()
+    })
+
+
+  }
+
+  getViewStatsPerFarm(){
+    return new Promise((resolve, reject) => {
+          this.farmEat.getFarmView().then((data:any)=>{
+            console.log(data);
+            console.log("dataViewed");
+            
+            this.farmViews = data
+            console.log("FArm Views");
+            console.log( this.farmViews);
+            console.log(data);
+            
+            setTimeout(() => {
+              var ctx = document.getElementById("views");
+            this.chart = new Chart("views", {
+                type: 'doughnut',
+                data: {
+                  labels: this.farmName,
+                  datasets: [{
+                    label: 'Number of Views per Farm',
+                    data: this.farmViews,
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  }
+                }
+              });
+            }, 3000);
+            
+          }).catch((error)=>{
+            console.log("number of views for this farm "+0);
+          })
+
+          resolve()
+        })
+
+
+    
+  }
+
+  
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 }

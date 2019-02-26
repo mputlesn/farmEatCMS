@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 
 .con {
   
@@ -289,11 +290,149 @@ border-radius:40px 0px 0px 40px
 }
 .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
 	transform:rotate(0);
+=======
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* background: #ced4da !important;
+    background-color: #078150; */
+    /* background-image: url('../../../assets/farm.jpg') ; */
+    background-image:linear-gradient(rgba(0, 0, 0, 0.068),rgba(41, 41, 41, 0.424)),url('../../../assets/farm.jpg');
+    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+  }
+  /* .user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #07815054;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+  } */
+  .brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    /* background: white;   */
+ 
+  
+    text-align: center;
+  }
+  .brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid rgb(190, 190, 190); 
+      padding-top: 10px;
+  }
+  .form_container {
+    margin-top: 20px;
+  }
+  .login_btn {
+    width: 91%;
+    background: white !important;
+    color: #087150 !important;
+    font-weight: bold;
+    
+    
+  }
+  .login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+  .login_container {
+    padding: 0 2rem;
+  }
+  .input-group-text {
+    background: white !important;
+    color: rgb(7, 129, 80) !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+  }
+  .input_user,
+  .input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+  .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    /* background-color: #c0392b !important; */
+  }
+  a {
+    color: white !important;
+    }
+
+    .knockout {
+      background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
+      color: red;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      font-weight: bold;
+      font-size: 100px;
+      font-family: arial, helvetica;
+      /* width: 600px; */
+      margin: 50px auto;
+      text-align: center;
+    }
+    .user_card[_ngcontent-c1] {
+      height: 590px;
+      width: 550px;
+      margin-top: auto;
+      margin-bottom: auto;
+      background: rgba(7, 129, 80, 0.8);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 5px;
+  }
+  .mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+    width: 80%;
+    position: relative;
+    float: left;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+   
 }
-.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
-	transform:rotate(0);
+.mb-4, .my-4 {
+  margin-bottom: 1.5rem!important;
+  width: 89%;
+  position: relative;
+  float: left;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
+}
+.form_container[_ngcontent-c1] {
+  margin-top: 20px;
 }
 
+<<<<<<< HEAD
 .hr{
 	height:2px;
 	margin:60px 0 50px 0;
@@ -595,4 +734,8 @@ min-height:670px;
   width: 91%;
   background: white !important;
   color: #009f9d !important;
+=======
+button.selected{
+  color:red;
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 }

@@ -11,6 +11,7 @@ declare var firebase;
 })
 export class LoginComponent implements OnInit {
 
+<<<<<<< HEAD
   numberuserPerMonth
 
 
@@ -19,11 +20,22 @@ export class LoginComponent implements OnInit {
    
 
   }
+=======
+
+
+
+  linkValue = '/';
+  constructor(private farmEat: FarmEatService, private router: Router) { }
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
   ngOnInit() {
   }
 
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
   Login(email, password) {
 
@@ -38,7 +50,10 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/dashboard');
         // this.router.navigate(['dashboard']);
        // alert("Loggin in")
+<<<<<<< HEAD
       
+=======
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
       } , (error) => {
         alert(error.message);
 

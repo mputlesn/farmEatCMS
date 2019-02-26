@@ -23,15 +23,20 @@ export class HomeComponent implements OnInit {
   emailz;
   emailLogin;
   passwordLogin;
+<<<<<<< HEAD
   constructor(private farmEat: FarmEatService, private router: Router) { 
 
   }
+=======
+  constructor(private farmEat: FarmEatService, private router: Router) { }
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
   ngOnInit() {
     this.Logintab();
     
   }
 
+  
 
 
   Login() {
@@ -43,8 +48,28 @@ export class HomeComponent implements OnInit {
 
       this.farmEat.loginx(this.emailLogin, this.passwordLogin).then((data) => {
         console.log(data.user.emailVerified);
+<<<<<<< HEAD
         this.router.navigateByUrl('/addedfarms');
        
+=======
+       if (data.user.emailVerified == true) {
+        this.router.navigateByUrl('/addedfarms');
+  
+  
+        } 
+      else {
+          this.farmEat.oops('Please verify your Email')
+          firebase.auth().signOut().then(function () {
+            console.log('logout');
+  
+            this.router.navigateByUrl('/home');
+          }).catch(function (error) {
+            // An error happened.
+          });
+  
+        }
+  
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   
       }).catch((error) => {
   
@@ -61,10 +86,14 @@ export class HomeComponent implements OnInit {
    
    }
   forgetpassword() {
+<<<<<<< HEAD
     this.forgot = 1;
     this.content = 'Submit';
     this.farmEat.forgetPassword(this.emailLogin).then(() => {
       this.forgot = 1;
+=======
+    this.farmEat.forgetPassword().then(() => {
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
     });
 
   }
@@ -83,16 +112,33 @@ export class HomeComponent implements OnInit {
       this.password();
 
     } else {
+<<<<<<< HEAD
       this.farmEat.register(this.emailz, this.pass, this.username).then(() => {
       //  this.router.navigateByUrl('/addedfarms');
        // this.test();
       //  this.farmEat.sucess("Please Check your Email and Verify")
+=======
+
+      this.farmEat.register(this.emailz, this.pass, this.username).then(() => {
+        // this.router.navigateByUrl('/addedfarms');
+        // this.test();
+        this.farmEat.sucess("Please Check your Email and Verify")
+
+        this.emailz = ""
+        this.pass = ""
+        this.username = ""
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
       }, (error) => {
         this.cathingError(error.message);
       });
 
     }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   }
 
 
@@ -119,6 +165,7 @@ export class HomeComponent implements OnInit {
       }
     });
 
+<<<<<<< HEAD
   }
 
   seccess() {
@@ -130,6 +177,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
+=======
+  }
+
+  seccess() {
+    Swal.fire({
+      type: 'success',
+      title: 'Success ',
+      text: 'You have add Successfully',
+
+    });
+  }
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   name() {
     Swal.fire({
       type: 'error',

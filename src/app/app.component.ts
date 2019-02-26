@@ -10,7 +10,11 @@ declare var firebase;
 })
 export class AppComponent {
   constructor(private router: Router) { 
+<<<<<<< HEAD
   //  this.checkstate()
+=======
+   this.checkstate()
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   }
   title = 'app';
 
@@ -43,3 +47,4 @@ export class AppComponent {
    });
   }
 }
+

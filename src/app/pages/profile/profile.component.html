@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <!DOCTYPE html>
 
 <head>
@@ -11,10 +12,26 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     
+=======
+<!DOCTYPE html>
+
+<head>
+        <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+        crossorigin="anonymous">
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<<<<<<< HEAD
 <body class="container-fluid register">
 
     <div class="topnav" id="myTopnav">
@@ -105,12 +122,137 @@
             </div>
         </div>
     </div>
+=======
+<body>
+    <div class="topnav" id="myTopnav">
+        <div class="farmeat" style=" color: white; padding: 16px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.548); font-size: 30px; font-weight: bold">
+            Farmeat
+        </div>
+    </div>
+    <!-- <div>
+        <div>
+            <div id="hover" *ngFor="let profile of profileArray ;  let i =index" (click)="getFArm(profile.k , i)">
+                <img style="width: 10rem; height: auto;" src="{{profile.image}}" alt="" srcset="">
+
+                <div class="card-body ">
+                    <h5 class="card-title ">{{profile.name}}</h5>
+                    <p>{{profile.type}}</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div>
+        <h3 class="">Company Description</h3>
+        <div>
+            <div id="home">
+                <div>
+                    <div>
+                        <div>
+                            <label> Name: &nbsp; &nbsp;</label>
+                            <h2>{{FarmObj.name}}</h2>
+                        </div>
+                        <div>
+                            <label> Address: </label>
+                            <h2>{{FarmObj.address}} </h2>
+
+                        </div>
+                        <div>
+                            <label> Email: &nbsp; &nbsp; &nbsp; &nbsp; </label>
+                            <h2> {{FarmObj.email}}</h2>
+                        </div>
+                        <div>
+                            <label> Contacts:</label>
+                            <h2>{{FarmObj.tel}}</h2>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label> Description:</label>
+                            <h3>{{FarmObj.description}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button (click)="nextpageupdate()">Update</button>
+        </div>
+    </div> -->
+
+    <body>
+       
+       
+<br>
+    <div class="top">
+     
+        <h1 style="text-align: center; color:#fff;padding: 16px; margin: 0 auto; height: 25vh; display: flex; justify-content: center; align-items: center" ></h1>
+    <div class="flexall">
+        
+        <div class="leftcard">
+                <h1 style="text-align: center; color:#fff;" >Farms</h1>
+            <div class="card"   [class.active]="selectedIndex === i"   *ngFor="let profile of profileArray ;  let i =index" (click)="getFArm(profile.k , i) ;selectedIndex = i" >
+                <div class="d-flex flex-row" >
+                      <div class="imgblock" >
+                    <img class="imga" src="{{profile.image}}" alt="" srcset="">
+                </div>
+                <div class="textcard">
+                    <h4>{{profile.name}}</h4>
+                </div>
+                </div>
+              
+            </div>
+    
+        </div>
+        <div class="rightcard">
+              <h1 style="text-align: center; color:#087150;">Company Detailes</h1>
+              <hr>
+            <div class="cardtext">
+              
+                <div class="rightleft">
+                    <h6>Name of place:</h6>
+                    <h5>{{FarmObj.name}}</h5>
+                    <h6>Address:</h6>
+                    <h5>{{FarmObj.address}} </h5>
+                    <h6>Email:</h6>
+                    <h5>{{FarmObj.email}}</h5>
+                    <h6>Number:</h6>
+                    <h5>{{FarmObj.tel}}</h5>
+                    <h6>Website:</h6>
+                    <h5>{{FarmObj.website}} </h5>
+                    
+                </div>
+                <div class="rightright">
+                    <h6>Type of urban farm:</h6>
+                    <h5> {{FarmObj.type}}</h5>
+                    <h6>Description of farm:</h6>
+                    <h5>{{FarmObj.description}}</h5>
+                    <h6>Facebook:</h6>
+                    <h5>{{FarmObj.facebook}}</h5>
+                
+                </div>
+                   
+            </div>
+        <div >
+                        <button class="btn" (click)="nextpageupdate()">Update</button>
+                </div>
+        </div>
+    </div>
+</div>
+    <div class="footer">
+            <p>&copy; Copyright 2019 Farm-Eat </p>
+        </div>
+</body>
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
     <script>
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
         // Close the dropdown if the user clicks outside of it
         window.onclick = function (event) {
             if (!event.target.matches('.dropbtn')) {
@@ -125,6 +267,7 @@
             }
         }
     </script>
+<<<<<<< HEAD
 
 <button  style="border:0;"  class="fabb" id="fabmain" (click)='addfarm()'>
     <i class="fas fa-bars"></i>
@@ -339,4 +482,133 @@
     <div class="footer">
         <p>&copy; Copyrigth 2019 Farm-Eat </p>
     </div>
+=======
+    <!-- navbar -->
+    <button class="fabb" id="fabmain" (click)='addfarm()'>
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="fabblist" id="showfab" (click)='show()'>
+        <div class="fabcontainer">
+            <a routerLink="/addedfarms" class="minifabb">
+                <span class="icons"> </span>
+                <button style="border:0;">
+                    <i class="fas fa-home"></i>
+                </button>
+            </a>
+            <label class="fabblabel">home</label>
+        </div>
+        <div class="fabcontainer">
+            <a routerLink="/home" (click)="logout()" class="minifabb">
+                <button style="border:0;">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </a>
+            <label class="fabblabel">Logout</label>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; Copyrigth 2019 Farm-Eat </p>
+    </div>
+    <script>
+        var modal = document.getElementById('id01');
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- update modal -->
+    
+    <div id="id01" class="modal">
+      
+        <div>
+            <br>
+            <br>
+            <br>
+            <div class="container register ">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                         
+                        <img src="../../../assets/94076a023ede44f12fd31f2bb4233b77.png" alt="" />
+                        <h3>MAKE IT EFFORTLESS FOR PEOPLE TO FIND YOU.</h3>
+                        <p>REGISTER YOUR FARMING BUSINESS NOW WITH FARM EAT.</p>
+                    </div>
+                    <div class="col-md-9 register-right">
+                         <div>
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Update</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" maxlength="20" placeholder="Name of place *" #nameS [(ngModel)]="farmName" [value]="name"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" type="text" #address [(ngModel)]="FarmAddress" required placeholder="Address *" [value]="updateAddress">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="email" #email [(ngModel)]="FarmEmail" placeholder="Email" [value]="updateemail"
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="tel" minlength="10" maxlength="10" class="form-control" placeholder="Contact Number *" #tel [(ngModel)]="FarmTel"
+                                                required [value]="updateTel" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-pattern="/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/" placeholder="Website" #website [(ngModel)]="FarmWebsite" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Facebook" #facebook [(ngModel)]="FarmFacebook" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Crops
+                                                <input type="checkbox" #crops [(ngModel)]="Farmcrops" checked="checked">
+                                            </label>
+                                            <label>Live Stock
+                                                <input type="checkbox" #liveStock [(ngModel)]="FarmLivestock">
+                                            </label>
+                                            <label>BeeKeeping
+                                                <input type="checkbox" #beeKeeping [(ngModel)]="Farmbees">
+
+                                            </label>
+                                            <label>Aquatic
+                                                <input type="checkbox" #aquatic [(ngModel)]="FarmAquatic">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" [(ngModel)]="FarmType">
+                                            <select class="form-control" #farmType>
+                                                <option value="Vertical Farming">Vertical Farming</option>
+                                                <option value="Traditional Farming">Traditional Farming</option>
+                                                <option value="Green House">Green House</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea id="subject" maxlength="550" placeholder="Description of a Farm..*" name="subject" class="form-control" style="height:200px " #description
+                                                [(ngModel)]="farmDescription" required [value]="updateDescription"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                        </div>
+                                        <div class="form-group">
+                                        </div>
+                                        <div>
+                                            <input class="btn1" (click)="update(address.value, farmType.value)" type="submit" value="Update">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <input class="btn1" (click)="update(address.value, farmType.value)" type="submit" value="Update">-->
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 </body>

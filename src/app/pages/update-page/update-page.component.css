@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 html{
 }
 
@@ -47,16 +48,138 @@ body {
   height: 100vh;
  
   font-family: "Lato", sans-serif;
+=======
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+
+.container {
+  padding: 1px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 80%; 
+}
+
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 }
 
 
 
 
+<<<<<<< HEAD
 .register{
   background: -webkit-linear-gradient(left, #087150, #43d397);
  
   padding: 3%;
 }
+=======
+.logo{
+  float: left;
+  position: absolute;
+  padding-top: 10px;
+  color: white;
+  padding-left: 10px;
+
+
+}
+
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 .register-left{
   text-align: center;
   color: #fff;
@@ -76,6 +199,7 @@ body {
 }
 .register-right{
   background: #f8f9fa;
+<<<<<<< HEAD
   border-top-left-radius: 10% 50%; 
   border-bottom-left-radius: 10% 50%; 
 }
@@ -100,6 +224,20 @@ body {
   margin-top: -9%;
 }
 .register .register-form{
+=======
+
+}
+.register-left img{
+  margin-top: 50%;
+  margin-bottom: 5%;
+  width: 100%;
+
+}
+
+
+.register .register-form{
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   padding: 10%;
   margin-top: 10%;
 }
@@ -115,6 +253,7 @@ body {
   width: 50%;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .register .nav-tabs{
   margin-top: 3%;
   border: none;
@@ -141,6 +280,10 @@ body {
   border-top-left-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
 }
+=======
+
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 .register-heading{
   text-align: center;
   margin-top: 8%;
@@ -151,6 +294,7 @@ body {
 
 
 
+<<<<<<< HEAD
 .customAlert0{
   z-index:99999;
   position: absolute;
@@ -298,6 +442,12 @@ body {
   background: -webkit-linear-gradient(left, #087150, #43d397);
 
   padding: 3%;
+=======
+.register{
+  background: -webkit-linear-gradient(left, #087150, #43d397);
+  top: 50%;
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 }
 .register-left{
   text-align: center;
@@ -318,12 +468,18 @@ body {
 }
 .register-right{
   background: #f8f9fa;
+<<<<<<< HEAD
   border-top-left-radius: 10% 50%; 
   border-bottom-left-radius: 10% 50%; 
+=======
+  padding: 0%;
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 
 }
 
 .register-left img{
+<<<<<<< HEAD
   margin-top: 15%;
   margin-bottom: 5%;
   width: 25%;
@@ -343,6 +499,13 @@ body {
   padding: 12%;
   margin-top: -9%;
 }
+=======
+
+  width: 100%;
+
+}
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 .register .register-form{
   padding: 10%;
   margin-top: 10%;
@@ -359,6 +522,7 @@ body {
   width: 50%;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .register .nav-tabs{
   margin-top: 3%;
   border: none;
@@ -644,4 +808,15 @@ button[_ngcontent-c1] {
   margin: 0% auto;
 }
 
+=======
+.col-md-3{
+  padding-right: 0%;
+  margin-top: 0%;
+
+
+}
+.container register{
+  margin-top: 2000px;
+}
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 

@@ -15,7 +15,10 @@ export class UpdatePageComponent implements OnInit {
   farmName ;
   FarmEmail ;
   FarmTel ;
+<<<<<<< HEAD
   farmtel ;
+=======
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   FarmWebsite ;
   
   FarmFacebook
@@ -41,10 +44,15 @@ export class UpdatePageComponent implements OnInit {
   Aquatic = [] ;
   updateprofile = {}
   type =[] ;
+<<<<<<< HEAD
   image =[] ;
 
   correctTel ;
 
+=======
+  image =[]
+  updateDescription ;
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
   updateArray = UpdateKeyArr ;
 
   constructor(private farmEAtDb: FarmEatService,  private router: Router) { 
@@ -98,6 +106,7 @@ export class UpdatePageComponent implements OnInit {
   update(address, farmtype){
     
 
+<<<<<<< HEAD
     var strNumber = '' + this.farmtel
     console.log(strNumber.length);
     console.log(strNumber);
@@ -115,6 +124,8 @@ export class UpdatePageComponent implements OnInit {
 
     }
 
+=======
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
 this.farmEAtDb.test() ;
 
 console.log(this.FarmType);
@@ -146,7 +157,17 @@ console.log(farmtype);
          alert('Geocode was not successful for the following reason: ' + status);
 
         // this.farmEat.oops('Geocode was not successful for the following reason');
+<<<<<<< HEAD
       
+=======
+       
+        
+        
+        
+         
+        
+
+>>>>>>> 3a6e700d6d064ef68aed5ab8fad62069ce47ca70
        }
     });
     console.log("out")
