@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FarmEatService } from '../../providers/farm-eat.service';
 import Swal from 'sweetalert2';
 import { ifError } from 'assert';
+import Chart from 'chart.js'
 
 
 declare var firebase;
@@ -93,6 +94,11 @@ export class DashboardComponent implements OnInit {
     'Watermelon',
     'Zucchini',
   ];
+
+  farmRating = new Array();
+  allFarms =  new Array();
+  farmName = new Array();
+  chart = []; // This will hold our chart info
 
   constructor(private farmEat: FarmEatService, private router: Router) { }
 
@@ -519,6 +525,79 @@ export class DashboardComponent implements OnInit {
     } else {
       x.className = "topnav";
     }
+
+
+  }
+
+  getAllFarms() {
+    return new Promise((resolve, reject) => {
+      this.farmEat.getallFarms().then((data: any) => {
+        this.allFarms = data
+        console.log(data);
+
+        for (let index = 0; index < this.allFarms.length; index++) {
+          var rate = this.allFarms[index].farmRate;
+          var name = this.allFarms[index].name
+
+          this.farmRating.push(rate)
+          this.farmName.push(name)
+          console.log(this.farmRating);
+          
+
+
+        }
+
+        
+          //this.getFarmGeoStats()
+    
+       
+            var ctx = document.getElementById("ratings");
+            this.chart = new Chart("ratings", {
+                type: 'doughnut',
+                data: {
+                  labels: this.farmName,
+                  datasets: [{
+                    label: 'Ratings Per Farm',
+                    data: this.farmRating,
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  }
+                }
+              });
+        
+         
+    
+        
+      })
+      console.log(this.farmRating);
+      console.log(this.farmName);
+
+      resolve()
+    })
 
 
   }

@@ -12,6 +12,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+div.counter{
+ display: block;
+ left: 80%;
+}
 .list{
 
 border: 2px solid green;
@@ -315,6 +319,13 @@ h1{
     float: none;
     display: block;
     text-align: left;
+  }
+  .chart-container{
+    position: absolute;
+    left: 50%;
+    transform: translate(50%)
+    
+
   }
 }
 

@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
     
   }
 
+  
 
 
   Login() {
@@ -93,15 +94,22 @@ export class HomeComponent implements OnInit {
       this.password();
 
     } else {
+
       this.farmEat.register(this.emailz, this.pass, this.username).then(() => {
-       // this.router.navigateByUrl('/addedfarms');
-       // this.test();
-       this.farmEat.sucess("Please Check your Email and Verify")
+        // this.router.navigateByUrl('/addedfarms');
+        // this.test();
+        this.farmEat.sucess("Please Check your Email and Verify")
+
+        this.emailz = ""
+        this.pass = ""
+        this.username = ""
       }, (error) => {
         this.cathingError(error.message);
       });
 
     }
+
+
 
   }
 
